@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxKeyboard
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var baseView: LoginView
     var viewModel: LoginViewModel
@@ -131,8 +131,4 @@ class LoginViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         viewModel.activeTextField?.resignFirstResponder()
     }
-}
-
-extension LoginViewController: UITextFieldDelegate {
-
 }
