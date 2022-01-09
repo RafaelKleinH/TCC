@@ -1,0 +1,6 @@
+framework module Pods_OClock_OClockUITests {
+  umbrella header "Pods-OClock-OClockUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
