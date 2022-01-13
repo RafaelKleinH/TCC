@@ -14,7 +14,6 @@ protocol LoginViewServiceProtocol  {
 }
 
 class LoginViewService: LoginViewServiceProtocol {
-    
     func LoginUser(email: String, password: String)  -> Observable<(AuthDataResult?)> {
         return Observable.create { observer in
             Auth.auth().signIn(withEmail: email, password: password) { (authdata, error) in
@@ -30,3 +29,4 @@ class LoginViewService: LoginViewServiceProtocol {
     }
 }
   
+

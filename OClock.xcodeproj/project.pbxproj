@@ -58,6 +58,7 @@
 		9D76A2E6278BA47C0092C3D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */; };
 		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
 		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
+		9DFD178E2790E2EF004E4CBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD178D2790E2EF004E4CBF /* Assets.xcassets */; };
 		A1C3F9B44DAE6DFE06A169F9 /* Pods_OClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263FB1740A2521E26139F800 /* Pods_OClock.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,7 @@
 		9D9B8FDC278F983D00680D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9D9B9040278FACA500680D4A /* RFKSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKSize.swift; sourceTree = "<group>"; };
+		9DFD178D2790E2EF004E4CBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9E3AC5C9E42F0185B9A9B30 /* Pods-OClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock.debug.xcconfig"; path = "Target Support Files/Pods-OClock/Pods-OClock.debug.xcconfig"; sourceTree = "<group>"; };
 		CD80F41F2F35B218DF9E6E38 /* Pods_OClock_OClockUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClock_OClockUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEEDB1F8E9B1D66C3C4FAB2B /* Pods-OClockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClockTests.debug.xcconfig"; path = "Target Support Files/Pods-OClockTests/Pods-OClockTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				9D399711273C12FB00600544 /* Products */,
 				1A8FDC2DB2EA7D9C59CA458B /* Pods */,
 				7E429B1BE74739F6EAFA281A /* Frameworks */,
+				9DFD17892790E27D004E4CBF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +263,7 @@
 		9D399712273C12FB00600544 /* OClock */ = {
 			isa = PBXGroup;
 			children = (
+				9DFD178D2790E2EF004E4CBF /* Assets.xcassets */,
 				9D39976F273C13E100600544 /* Login */,
 				9D06866F278A44790009A6B9 /* LoginRegister */,
 				9D9B9045278FACD400680D4A /* RFK */,
@@ -271,7 +275,6 @@
 				9D399753273C136E00600544 /* AppDelegate.swift */,
 				9D399715273C12FB00600544 /* SceneDelegate.swift */,
 				9D39971E273C12FD00600544 /* LaunchScreen.storyboard */,
-				9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */,
 				9D068640278A328C0009A6B9 /* GoogleService-Info.plist */,
 				9D399721273C12FD00600544 /* Info.plist */,
 				9D9B8FDD278F983D00680D4A /* Localizable.strings */,
@@ -371,6 +374,14 @@
 				9D68F78A278A9D970036CBAB /* RFKDividerView.swift */,
 			);
 			path = RFK;
+			sourceTree = "<group>";
+		};
+		9DFD17892790E27D004E4CBF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +497,7 @@
 				9D068641278A328C0009A6B9 /* GoogleService-Info.plist in Resources */,
 				9D765BD42741982B00AF5884 /* Quicksand-Bold.ttf in Resources */,
 				9D765BD52741982B00AF5884 /* Quicksand-Regular.ttf in Resources */,
+				9DFD178E2790E2EF004E4CBF /* Assets.xcassets in Resources */,
 				9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */,
 				9D765BD22741982B00AF5884 /* Quicksand-Medium.ttf in Resources */,
 				9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */,

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import JGProgressHUD
 
+
+
 class LoginView: UIView {
     
     
@@ -23,11 +25,13 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     let contentView: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
 //
 //    let scrollView: UIScrollView = {
 //        var scroll = UIScrollView()
@@ -65,6 +69,7 @@ class LoginView: UIView {
         var rb = RFKButton()
         return rb
     }()
+    
     let appleLogin: RFKButton = {
         let button = RFKButton(type: .system)
         button.addSecondaryStyle()
@@ -90,7 +95,7 @@ class LoginView: UIView {
     let dividerView = RFKDividerView()
     
     private func setupViewBasics(){
-        
+
         emailTextField.styleTextField()
         passwordTextField.styleTextField()
         passwordTextField.setTrailingImageView(isHidden: false, image: UIImage(named: CustomImages.securityEnterDisabled) ?? .strokedCheckmark)
@@ -103,7 +108,7 @@ class LoginView: UIView {
     }
     
     private func addSubViews(){
-        //addSubview(scrollView)
+
         addSubview(contentView)
         contentView.addSubview(iconImageView)
         contentView.addSubview(stack)
@@ -117,11 +122,13 @@ class LoginView: UIView {
         contentView.addSubview(registerButton)
         
         addSubview(activityIndicator)
+
  
     }
     
     private func installConstraints(){
         
+
         contentView.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
         
         iconImageView.centerX(inView: self)

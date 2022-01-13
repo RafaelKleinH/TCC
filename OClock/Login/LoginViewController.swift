@@ -12,10 +12,12 @@ import RxCocoa
 import RxKeyboard
 import JGProgressHUD
 
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var baseView: LoginView
     var viewModel: LoginViewModelProtocol
+
     
     init(baseView: LoginView, viewModel: LoginViewModel) {
         self.baseView = baseView
@@ -38,7 +40,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
     }
     
@@ -54,6 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //                self?.viewModel.activeTextField = self?.baseView.emailTextField
 //            })
 //            .disposed(by: viewModel.myDisposeBag)
+
         
         viewModel.emailTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] a in
@@ -76,6 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .bind(to: baseView.appleLogin.rx.title())
             .disposed(by: viewModel.myDisposeBag)
         
+
         viewModel.loginButtonText
             .bind(to: baseView.loginButton.rx.title())
             .disposed(by: viewModel.myDisposeBag)
@@ -160,4 +163,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        viewModel.activeTextField?.resignFirstResponder()
 //    }
+
 }

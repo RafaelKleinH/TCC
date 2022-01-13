@@ -10,7 +10,6 @@ import RxSwift
 import FirebaseAuth
 
 
-
 enum LoginViewState {
     case initial
     case loading
@@ -41,10 +40,10 @@ protocol LoginViewModelProtocol {
 
     var login: Observable<(AuthDataResult?)>  { get }
 
+
 }
 
 class LoginViewModel: LoginViewModelProtocol {
-    
     let loginButtonText = BehaviorSubject<String>(value: "LoginButton".localized())
     let registerButtonText: Observable<String>
     let loginWithAppleText: Observable<String>
@@ -60,13 +59,11 @@ class LoginViewModel: LoginViewModelProtocol {
     let didTapLoginButton: AnyObserver<Void>
     let didTapRegisterButton: AnyObserver<Void>
     let didGoToLoginButton: AnyObserver<Void>
-    
+
     let emailText: AnyObserver<String>
     let passwordText: AnyObserver<String>
     
     let login: Observable<(AuthDataResult?)>
-    
-    
     
     init(service: LoginViewServiceProtocol = LoginViewService()) {
         
@@ -84,7 +81,7 @@ class LoginViewModel: LoginViewModelProtocol {
         
         let _didGoToLoginButton = PublishSubject<Void>()
         didGoToLoginButton = _didGoToLoginButton.asObserver()
-        
+
         let _emailText = PublishSubject<String>()
         emailText = _emailText.asObserver()
         
@@ -94,6 +91,7 @@ class LoginViewModel: LoginViewModelProtocol {
         let _state = PublishSubject<LoginViewState>()
         state = _state.asObservable()
         
+
         login = _didTapLoginButton
             .withLatestFrom(Observable.combineLatest(_emailText, _passwordText))
             .flatMapLatest { email, password in
