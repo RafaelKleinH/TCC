@@ -1,0 +1,20 @@
+// MARK: INGLES
+
+
+
+// MARK: LOGIN
+
+"LoginEmailTF" = "Email";
+"LoginPasswordTF" = "Password";
+"LoginDontHaveAccount" = "Without account? SignUp";
+"LoginButton"= "Login";
+"DividerText" = "OR";
+"LoginWithApple" = "Login with Apple";
+
+
+// MARK: REGISTER
+
+"RegisterEmailTF" = "Email";
+"RegisterPasswordTF" = "Password";
+"RegisterConfirmPasswordTF" = "Confirm Password";
+"RegisterButton" = "Register";

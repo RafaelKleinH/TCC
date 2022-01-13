@@ -1,0 +1,20 @@
+// MARK: PORTUGUES
+
+
+
+// MARK: Login
+
+"LoginEmailTF" = "Email";
+"LoginPasswordTF" = "Senha";
+"LoginDontHaveAccount" = "Não tem conta? Registrar";
+"LoginButton"= "Entrar";
+"DividerText" = "OU";
+"LoginWithApple" = "Entrar com Apple";
+
+
+// MARK: REGISTER
+
+"RegisterEmailTF" = "Email";
+"RegisterPasswordTF" = "Senha";
+"RegisterConfirmPasswordTF" = "Confirmar Senha";
+"RegisterButton" = "Registrar";

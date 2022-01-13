@@ -3,18 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D399714273C12FB00600544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399713273C12FB00600544 /* AppDelegate.swift */; };
+		0EF9E44587023A4B603015F4 /* Pods_OClock_OClockUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD80F41F2F35B218DF9E6E38 /* Pods_OClock_OClockUITests.framework */; };
+		1EF687275E043FD1538462B0 /* Pods_OClockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8D777E0F2F4BDCF4B734E9 /* Pods_OClockTests.framework */; };
+		9D068641278A328C0009A6B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D068640278A328C0009A6B9 /* GoogleService-Info.plist */; };
+		9D06866B278A3FB20009A6B9 /* LoginViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06866A278A3FB20009A6B9 /* LoginViewService.swift */; };
+		9D068676278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D068675278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift */; };
+		9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06867D278A45850009A6B9 /* PersonalRegisterViewController.swift */; };
+		9D068683278A45950009A6B9 /* PersonalRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D068682278A45950009A6B9 /* PersonalRegisterView.swift */; };
+		9D068688278A45A10009A6B9 /* PersonalRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D068687278A45A10009A6B9 /* PersonalRegisterViewModel.swift */; };
+		9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06868C278A45B10009A6B9 /* PersonalRegisterViewService.swift */; };
+		9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D068691278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift */; };
+		9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D068696278A45D30009A6B9 /* TimeDataRegisterViewController.swift */; };
+		9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06869B278A45E90009A6B9 /* TimeDataRegisterView.swift */; };
+		9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */; };
+		9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */; };
+		9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */; };
 		9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399715273C12FB00600544 /* SceneDelegate.swift */; };
-		9D399718273C12FB00600544 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399717273C12FB00600544 /* ViewController.swift */; };
-		9D39971B273C12FB00600544 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D399719273C12FB00600544 /* Main.storyboard */; };
-		9D39971D273C12FD00600544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D39971C273C12FD00600544 /* Assets.xcassets */; };
 		9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D39971E273C12FD00600544 /* LaunchScreen.storyboard */; };
 		9D39972B273C12FE00600544 /* OClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39972A273C12FE00600544 /* OClockTests.swift */; };
 		9D399736273C12FE00600544 /* OClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399735273C12FE00600544 /* OClockUITests.swift */; };
+		9D399754273C136E00600544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399753273C136E00600544 /* AppDelegate.swift */; };
+		9D399777273C13FB00600544 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399772273C13EB00600544 /* LoginView.swift */; };
+		9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399773273C13EB00600544 /* LoginViewController.swift */; };
+		9D39977F273C140000600544 /* LognViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399770273C13EB00600544 /* LognViewCoordinator.swift */; };
+		9D399783273C140300600544 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399771273C13EB00600544 /* LoginViewModel.swift */; };
+		9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4C92784EF27009FA50F /* RFKolors.swift */; };
+		9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4CE2784F107009FA50F /* RegisterViewService.swift */; };
+		9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */; };
+		9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */; };
+		9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */; };
+		9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */; };
+		9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */; };
+		9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */; };
+		9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */; };
+		9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F762278A8CBE0036CBAB /* Extensions.swift */; };
+		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
+		9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7417692786520A007BCF6A /* HomeViewController.swift */; };
+		9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */; };
+		9D74177427865221007BCF6A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74177327865221007BCF6A /* HomeView.swift */; };
+		9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7417782786522A007BCF6A /* HomeViewModel.swift */; };
+		9D765BBF2741786400AF5884 /* RFKGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BBE2741786400AF5884 /* RFKGradient.swift */; };
+		9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BC3274184B600AF5884 /* RFKitTextField.swift */; };
+		9D765BD12741982B00AF5884 /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D765BCC2741982B00AF5884 /* Quicksand-SemiBold.ttf */; };
+		9D765BD22741982B00AF5884 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D765BCD2741982B00AF5884 /* Quicksand-Medium.ttf */; };
+		9D765BD32741982B00AF5884 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D765BCE2741982B00AF5884 /* Quicksand-Light.ttf */; };
+		9D765BD42741982B00AF5884 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D765BCF2741982B00AF5884 /* Quicksand-Bold.ttf */; };
+		9D765BD52741982B00AF5884 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D765BD02741982B00AF5884 /* Quicksand-Regular.ttf */; };
+		9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BD9274198FA00AF5884 /* RFontsK.swift */; };
+		9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BDE27419A4800AF5884 /* RFKitButton.swift */; };
+		9D76A2E6278BA47C0092C3D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */; };
+		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
+		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
+		A1C3F9B44DAE6DFE06A169F9 /* Pods_OClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263FB1740A2521E26139F800 /* Pods_OClock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +79,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18E3AA3EF39A074F3F5ECDF6 /* Pods-OClockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClockTests.release.xcconfig"; path = "Target Support Files/Pods-OClockTests/Pods-OClockTests.release.xcconfig"; sourceTree = "<group>"; };
+		21E4A428FCFB6F8F9FD652EE /* Pods-OClock-OClockUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock-OClockUITests.release.xcconfig"; path = "Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests.release.xcconfig"; sourceTree = "<group>"; };
+		263FB1740A2521E26139F800 /* Pods_OClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D4A291902B93705CA4318C3 /* Pods-OClock-OClockUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock-OClockUITests.debug.xcconfig"; path = "Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D3FDD809C87958DA008105F /* Pods-OClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock.release.xcconfig"; path = "Target Support Files/Pods-OClock/Pods-OClock.release.xcconfig"; sourceTree = "<group>"; };
+		9C8D777E0F2F4BDCF4B734E9 /* Pods_OClockTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClockTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D068640278A328C0009A6B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D06866A278A3FB20009A6B9 /* LoginViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewService.swift; sourceTree = "<group>"; };
+		9D068675278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewCoordinator.swift; sourceTree = "<group>"; };
+		9D06867D278A45850009A6B9 /* PersonalRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewController.swift; sourceTree = "<group>"; };
+		9D068682278A45950009A6B9 /* PersonalRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterView.swift; sourceTree = "<group>"; };
+		9D068687278A45A10009A6B9 /* PersonalRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewModel.swift; sourceTree = "<group>"; };
+		9D06868C278A45B10009A6B9 /* PersonalRegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewService.swift; sourceTree = "<group>"; };
+		9D068691278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewCoordinator.swift; sourceTree = "<group>"; };
+		9D068696278A45D30009A6B9 /* TimeDataRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewController.swift; sourceTree = "<group>"; };
+		9D06869B278A45E90009A6B9 /* TimeDataRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterView.swift; sourceTree = "<group>"; };
+		9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewModel.swift; sourceTree = "<group>"; };
+		9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewService.swift; sourceTree = "<group>"; };
+		9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		9D399710273C12FB00600544 /* OClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D399713273C12FB00600544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D399715273C12FB00600544 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9D399717273C12FB00600544 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9D39971A273C12FB00600544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9D39971C273C12FD00600544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D39971F273C12FD00600544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D399721273C12FD00600544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D399726273C12FE00600544 /* OClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +108,43 @@
 		9D399731273C12FE00600544 /* OClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D399735273C12FE00600544 /* OClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OClockUITests.swift; sourceTree = "<group>"; };
 		9D399737273C12FE00600544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D399753273C136E00600544 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D399770273C13EB00600544 /* LognViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LognViewCoordinator.swift; sourceTree = "<group>"; };
+		9D399771273C13EB00600544 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9D399772273C13EB00600544 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9D399773273C13EB00600544 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9D46A4C92784EF27009FA50F /* RFKolors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKolors.swift; sourceTree = "<group>"; };
+		9D46A4CE2784F107009FA50F /* RegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewService.swift; sourceTree = "<group>"; };
+		9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitRoundedImageView.swift; sourceTree = "<group>"; };
+		9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewCoordinator.swift; sourceTree = "<group>"; };
+		9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
+		9D68F762278A8CBE0036CBAB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../../../Downloads/Extensions.swift; sourceTree = "<group>"; };
+		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
+		9D7417692786520A007BCF6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
+		9D74177327865221007BCF6A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9D7417782786522A007BCF6A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9D765BBE2741786400AF5884 /* RFKGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKGradient.swift; sourceTree = "<group>"; };
+		9D765BC3274184B600AF5884 /* RFKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitTextField.swift; sourceTree = "<group>"; };
+		9D765BCC2741982B00AF5884 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-SemiBold.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		9D765BCD2741982B00AF5884 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Medium.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		9D765BCE2741982B00AF5884 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Light.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		9D765BCF2741982B00AF5884 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		9D765BD02741982B00AF5884 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Regular.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		9D765BD9274198FA00AF5884 /* RFontsK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFontsK.swift; sourceTree = "<group>"; };
+		9D765BDE27419A4800AF5884 /* RFKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitButton.swift; sourceTree = "<group>"; };
+		9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D9B8FD2278F97D600680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9D9B8FDC278F983D00680D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9D9B9040278FACA500680D4A /* RFKSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKSize.swift; sourceTree = "<group>"; };
+		B9E3AC5C9E42F0185B9A9B30 /* Pods-OClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock.debug.xcconfig"; path = "Target Support Files/Pods-OClock/Pods-OClock.debug.xcconfig"; sourceTree = "<group>"; };
+		CD80F41F2F35B218DF9E6E38 /* Pods_OClock_OClockUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClock_OClockUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEEDB1F8E9B1D66C3C4FAB2B /* Pods-OClockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClockTests.debug.xcconfig"; path = "Target Support Files/Pods-OClockTests/Pods-OClockTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C3F9B44DAE6DFE06A169F9 /* Pods_OClock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF687275E043FD1538462B0 /* Pods_OClockTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +168,73 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EF9E44587023A4B603015F4 /* Pods_OClock_OClockUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A8FDC2DB2EA7D9C59CA458B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9E3AC5C9E42F0185B9A9B30 /* Pods-OClock.debug.xcconfig */,
+				8D3FDD809C87958DA008105F /* Pods-OClock.release.xcconfig */,
+				2D4A291902B93705CA4318C3 /* Pods-OClock-OClockUITests.debug.xcconfig */,
+				21E4A428FCFB6F8F9FD652EE /* Pods-OClock-OClockUITests.release.xcconfig */,
+				FEEDB1F8E9B1D66C3C4FAB2B /* Pods-OClockTests.debug.xcconfig */,
+				18E3AA3EF39A074F3F5ECDF6 /* Pods-OClockTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7E429B1BE74739F6EAFA281A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				263FB1740A2521E26139F800 /* Pods_OClock.framework */,
+				CD80F41F2F35B218DF9E6E38 /* Pods_OClock_OClockUITests.framework */,
+				9C8D777E0F2F4BDCF4B734E9 /* Pods_OClockTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D06866F278A44790009A6B9 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */,
+				9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */,
+				9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */,
+				9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */,
+				9D46A4CE2784F107009FA50F /* RegisterViewService.swift */,
+				9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		9D068670278A44880009A6B9 /* PersonalRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9D068675278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift */,
+				9D06867D278A45850009A6B9 /* PersonalRegisterViewController.swift */,
+				9D068682278A45950009A6B9 /* PersonalRegisterView.swift */,
+				9D068687278A45A10009A6B9 /* PersonalRegisterViewModel.swift */,
+				9D06868C278A45B10009A6B9 /* PersonalRegisterViewService.swift */,
+			);
+			path = PersonalRegister;
+			sourceTree = "<group>";
+		};
+		9D068674278A44AE0009A6B9 /* TimeDataRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9D068691278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift */,
+				9D068696278A45D30009A6B9 /* TimeDataRegisterViewController.swift */,
+				9D06869B278A45E90009A6B9 /* TimeDataRegisterView.swift */,
+				9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */,
+				9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */,
+			);
+			path = TimeDataRegister;
+			sourceTree = "<group>";
+		};
 		9D399707273C12FB00600544 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +242,8 @@
 				9D399729273C12FE00600544 /* OClockTests */,
 				9D399734273C12FE00600544 /* OClockUITests */,
 				9D399711273C12FB00600544 /* Products */,
+				1A8FDC2DB2EA7D9C59CA458B /* Pods */,
+				7E429B1BE74739F6EAFA281A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +260,21 @@
 		9D399712273C12FB00600544 /* OClock */ = {
 			isa = PBXGroup;
 			children = (
-				9D399713273C12FB00600544 /* AppDelegate.swift */,
+				9D39976F273C13E100600544 /* Login */,
+				9D06866F278A44790009A6B9 /* LoginRegister */,
+				9D9B9045278FACD400680D4A /* RFK */,
+				9D4F3DA32745707B004D7FD8 /* Register */,
+				9D741768278651EA007BCF6A /* Home */,
+				9D765BCB2741981100AF5884 /* Font */,
+				9D39976A273C13C000600544 /* Assets */,
+				9D399769273C13B700600544 /* Components */,
+				9D399753273C136E00600544 /* AppDelegate.swift */,
 				9D399715273C12FB00600544 /* SceneDelegate.swift */,
-				9D399717273C12FB00600544 /* ViewController.swift */,
-				9D399719273C12FB00600544 /* Main.storyboard */,
-				9D39971C273C12FD00600544 /* Assets.xcassets */,
 				9D39971E273C12FD00600544 /* LaunchScreen.storyboard */,
+				9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */,
+				9D068640278A328C0009A6B9 /* GoogleService-Info.plist */,
 				9D399721273C12FD00600544 /* Info.plist */,
+				9D9B8FDD278F983D00680D4A /* Localizable.strings */,
 			);
 			path = OClock;
 			sourceTree = "<group>";
@@ -128,6 +297,82 @@
 			path = OClockUITests;
 			sourceTree = "<group>";
 		};
+		9D399769273C13B700600544 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9D765BD9274198FA00AF5884 /* RFontsK.swift */,
+				9D68F762278A8CBE0036CBAB /* Extensions.swift */,
+				9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9D39976A273C13C000600544 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9D39976F273C13E100600544 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9D399770273C13EB00600544 /* LognViewCoordinator.swift */,
+				9D399773273C13EB00600544 /* LoginViewController.swift */,
+				9D399772273C13EB00600544 /* LoginView.swift */,
+				9D399771273C13EB00600544 /* LoginViewModel.swift */,
+				9D06866A278A3FB20009A6B9 /* LoginViewService.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9D4F3DA32745707B004D7FD8 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				9D068670278A44880009A6B9 /* PersonalRegister */,
+				9D068674278A44AE0009A6B9 /* TimeDataRegister */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		9D741768278651EA007BCF6A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */,
+				9D7417692786520A007BCF6A /* HomeViewController.swift */,
+				9D74177327865221007BCF6A /* HomeView.swift */,
+				9D7417782786522A007BCF6A /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9D765BCB2741981100AF5884 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				9D765BCF2741982B00AF5884 /* Quicksand-Bold.ttf */,
+				9D765BCE2741982B00AF5884 /* Quicksand-Light.ttf */,
+				9D765BCD2741982B00AF5884 /* Quicksand-Medium.ttf */,
+				9D765BD02741982B00AF5884 /* Quicksand-Regular.ttf */,
+				9D765BCC2741982B00AF5884 /* Quicksand-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		9D9B9045278FACD400680D4A /* RFK */ = {
+			isa = PBXGroup;
+			children = (
+				9D765BC3274184B600AF5884 /* RFKitTextField.swift */,
+				9D765BDE27419A4800AF5884 /* RFKitButton.swift */,
+				9D765BBE2741786400AF5884 /* RFKGradient.swift */,
+				9D46A4C92784EF27009FA50F /* RFKolors.swift */,
+				9D9B9040278FACA500680D4A /* RFKSize.swift */,
+				9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */,
+				9D68F78A278A9D970036CBAB /* RFKDividerView.swift */,
+			);
+			path = RFK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D39973A273C12FE00600544 /* Build configuration list for PBXNativeTarget "OClock" */;
 			buildPhases = (
+				B1003CFF74BA7E4D11169714 /* [CP] Check Pods Manifest.lock */,
 				9D39970C273C12FB00600544 /* Sources */,
 				9D39970D273C12FB00600544 /* Frameworks */,
 				9D39970E273C12FB00600544 /* Resources */,
+				3C48221E62FE9A2BEB663D9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +399,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D39973D273C12FE00600544 /* Build configuration list for PBXNativeTarget "OClockTests" */;
 			buildPhases = (
+				9696DCDED37B85347B2CBD35 /* [CP] Check Pods Manifest.lock */,
 				9D399722273C12FE00600544 /* Sources */,
 				9D399723273C12FE00600544 /* Frameworks */,
 				9D399724273C12FE00600544 /* Resources */,
@@ -170,9 +418,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D399740273C12FE00600544 /* Build configuration list for PBXNativeTarget "OClockUITests" */;
 			buildPhases = (
+				86FC455553B4491065EF4FF4 /* [CP] Check Pods Manifest.lock */,
 				9D39972D273C12FE00600544 /* Sources */,
 				9D39972E273C12FE00600544 /* Frameworks */,
 				9D39972F273C12FE00600544 /* Resources */,
+				0E07725269EDC618CE953F79 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +463,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 9D399707273C12FB00600544;
 			productRefGroup = 9D399711273C12FB00600544 /* Products */;
@@ -231,9 +482,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D765BD12741982B00AF5884 /* Quicksand-SemiBold.ttf in Resources */,
+				9D068641278A328C0009A6B9 /* GoogleService-Info.plist in Resources */,
+				9D765BD42741982B00AF5884 /* Quicksand-Bold.ttf in Resources */,
+				9D765BD52741982B00AF5884 /* Quicksand-Regular.ttf in Resources */,
+				9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */,
+				9D765BD22741982B00AF5884 /* Quicksand-Medium.ttf in Resources */,
 				9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */,
-				9D39971D273C12FD00600544 /* Assets.xcassets in Resources */,
-				9D39971B273C12FB00600544 /* Main.storyboard in Resources */,
+				9D76A2E6278BA47C0092C3D4 /* Assets.xcassets in Resources */,
+				9D765BD32741982B00AF5884 /* Quicksand-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +510,152 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E07725269EDC618CE953F79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C48221E62FE9A2BEB663D9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OClock/Pods-OClock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OClock/Pods-OClock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OClock/Pods-OClock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86FC455553B4491065EF4FF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OClock-OClockUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9696DCDED37B85347B2CBD35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OClockTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1003CFF74BA7E4D11169714 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OClock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9D39970C273C12FB00600544 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D399718273C12FB00600544 /* ViewController.swift in Sources */,
-				9D399714273C12FB00600544 /* AppDelegate.swift in Sources */,
+				9D399777273C13FB00600544 /* LoginView.swift in Sources */,
+				9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */,
+				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
+				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
+				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
+				9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */,
+				9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */,
+				9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */,
+				9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */,
+				9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */,
+				9D06866B278A3FB20009A6B9 /* LoginViewService.swift in Sources */,
+				9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */,
+				9D068683278A45950009A6B9 /* PersonalRegisterView.swift in Sources */,
+				9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */,
+				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
+				9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */,
+				9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */,
+				9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */,
+				9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */,
+				9D765BBF2741786400AF5884 /* RFKGradient.swift in Sources */,
+				9D068676278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift in Sources */,
+				9D068688278A45A10009A6B9 /* PersonalRegisterViewModel.swift in Sources */,
+				9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */,
+				9D39977F273C140000600544 /* LognViewCoordinator.swift in Sources */,
+				9D399754273C136E00600544 /* AppDelegate.swift in Sources */,
+				9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */,
+				9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */,
+				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
+				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
+				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
+				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
+				9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */,
+				9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */,
+				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
+				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
+				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,
+				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,20 +691,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9D399719273C12FB00600544 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D39971A273C12FB00600544 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D39971E273C12FD00600544 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9D39971F273C12FD00600544 /* Base */,
+				9D9B8FD2278F97D600680D4A /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9D9B8FDD278F983D00680D4A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D9B8FDC278F983D00680D4A /* en */,
+				9D9B8FE1278F984500680D4A /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -319,6 +716,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -380,6 +778,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -433,6 +832,7 @@
 		};
 		9D39973B273C12FE00600544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9E3AC5C9E42F0185B9A9B30 /* Pods-OClock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +852,7 @@
 		};
 		9D39973C273C12FE00600544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D3FDD809C87958DA008105F /* Pods-OClock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +872,7 @@
 		};
 		9D39973E273C12FE00600544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEEDB1F8E9B1D66C3C4FAB2B /* Pods-OClockTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +895,7 @@
 		};
 		9D39973F273C12FE00600544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18E3AA3EF39A074F3F5ECDF6 /* Pods-OClockTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +918,7 @@
 		};
 		9D399741273C12FE00600544 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D4A291902B93705CA4318C3 /* Pods-OClock-OClockUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +939,7 @@
 		};
 		9D399742273C12FE00600544 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21E4A428FCFB6F8F9FD652EE /* Pods-OClock-OClockUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
