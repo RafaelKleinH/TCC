@@ -14,6 +14,9 @@ target 'OClock' do
   pod 'IQKeyboardManagerSwift', '6.1.1'
   pod 'Firebase'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'KDCircularProgress'
+
   pod 'JGProgressHUD'
  
   target 'OClockTests' do

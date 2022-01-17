@@ -3,4 +3,118 @@
    uuid = "8E4D19F1-97C8-4C70-9325-6DE5661D61E5"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DC79827-4D49-47F7-8581-17618CD46698"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OClock/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "init(service:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6DC79827-4D49-47F7-8581-17618CD46698 - 98d248793764e034"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (()) -&gt; RxSwift.Observable&lt;Swift.Optional&lt;OClock.PersonalData&gt;&gt; in OClock.HomeViewModel.init(service: OClock.HomeViewServiceProtocol) -&gt; OClock.HomeViewModel"
+                  moduleName = "OClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafael.hartmann/Desktop/OClock/OClock/OClock/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "457">
+               </Location>
+               <Location
+                  uuid = "6DC79827-4D49-47F7-8581-17618CD46698 - a3886fbd7fddc894"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;OClock.PersonalData&gt;) -&gt; () in closure #1 (()) -&gt; RxSwift.Observable&lt;Swift.Optional&lt;OClock.PersonalData&gt;&gt; in OClock.HomeViewModel.init(service: OClock.HomeViewServiceProtocol) -&gt; OClock.HomeViewModel"
+                  moduleName = "OClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafael.hartmann/Desktop/OClock/OClock/OClock/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33211A5E-F41E-49D0-8875-0D40DF8642A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OClock/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "init(service:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "33211A5E-F41E-49D0-8875-0D40DF8642A0 - 98d248793764e0f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (()) -&gt; RxSwift.Observable&lt;Swift.Optional&lt;OClock.PersonalData&gt;&gt; in OClock.HomeViewModel.init(service: OClock.HomeViewServiceProtocol) -&gt; OClock.HomeViewModel"
+                  moduleName = "OClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafael.hartmann/Desktop/OClock/OClock/OClock/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "1585">
+               </Location>
+               <Location
+                  uuid = "33211A5E-F41E-49D0-8875-0D40DF8642A0 - 8bc51ddc45c7892"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Error) -&gt; RxSwift.Observable&lt;Swift.Optional&lt;OClock.PersonalData&gt;&gt; in closure #1 (()) -&gt; RxSwift.Observable&lt;Swift.Optional&lt;OClock.PersonalData&gt;&gt; in OClock.HomeViewModel.init(service: OClock.HomeViewServiceProtocol) -&gt; OClock.HomeViewModel"
+                  moduleName = "OClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafael.hartmann/Desktop/OClock/OClock/OClock/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83636365-0D11-4A66-A63E-CE94A5C77CA7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OClock/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "init(service:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

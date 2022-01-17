@@ -40,6 +40,8 @@
 		9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */; };
 		9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */; };
 		9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */; };
+		9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCD9927938E53000CA720 /* RFKProgress.swift */; };
+		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
 		9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F762278A8CBE0036CBAB /* Extensions.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
 		9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7417692786520A007BCF6A /* HomeViewController.swift */; };
@@ -56,6 +58,8 @@
 		9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BD9274198FA00AF5884 /* RFontsK.swift */; };
 		9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D765BDE27419A4800AF5884 /* RFKitButton.swift */; };
 		9D76A2E6278BA47C0092C3D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */; };
+		9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E7CCB279228C400336E2B /* HomeViewService.swift */; };
+		9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E7CD027922C7C00336E2B /* HomeModel.swift */; };
 		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
 		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
 		9DFD178E2790E2EF004E4CBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD178D2790E2EF004E4CBF /* Assets.xcassets */; };
@@ -123,6 +127,8 @@
 		9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewCoordinator.swift; sourceTree = "<group>"; };
 		9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
+		9D5CCD9927938E53000CA720 /* RFKProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKProgress.swift; sourceTree = "<group>"; };
+		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		9D68F762278A8CBE0036CBAB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../../../Downloads/Extensions.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
 		9D7417692786520A007BCF6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 		9D765BD9274198FA00AF5884 /* RFontsK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFontsK.swift; sourceTree = "<group>"; };
 		9D765BDE27419A4800AF5884 /* RFKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitButton.swift; sourceTree = "<group>"; };
 		9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D7E7CCB279228C400336E2B /* HomeViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewService.swift; sourceTree = "<group>"; };
+		9D7E7CD027922C7C00336E2B /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		9D9B8FD2278F97D600680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9D9B8FDC278F983D00680D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -264,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				9DFD178D2790E2EF004E4CBF /* Assets.xcassets */,
+				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D39976F273C13E100600544 /* Login */,
 				9D06866F278A44790009A6B9 /* LoginRegister */,
 				9D9B9045278FACD400680D4A /* RFK */,
@@ -314,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */,
+				9D6037B72795FE6B006B991C /* DataBase.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -333,7 +343,6 @@
 		9D4F3DA32745707B004D7FD8 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D068674278A44AE0009A6B9 /* TimeDataRegister */,
 			);
 			path = Register;
@@ -346,6 +355,8 @@
 				9D7417692786520A007BCF6A /* HomeViewController.swift */,
 				9D74177327865221007BCF6A /* HomeView.swift */,
 				9D7417782786522A007BCF6A /* HomeViewModel.swift */,
+				9D7E7CCB279228C400336E2B /* HomeViewService.swift */,
+				9D7E7CD027922C7C00336E2B /* HomeModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				9D9B9040278FACA500680D4A /* RFKSize.swift */,
 				9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */,
 				9D68F78A278A9D970036CBAB /* RFKDividerView.swift */,
+				9D5CCD9927938E53000CA720 /* RFKProgress.swift */,
 			);
 			path = RFK;
 			sourceTree = "<group>";
@@ -634,6 +646,7 @@
 				9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */,
 				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
 				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
+				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
 				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
 				9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */,
 				9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */,
@@ -658,9 +671,12 @@
 				9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */,
 				9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */,
 				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
+				9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */,
 				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
 				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
+				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
+				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
 				9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */,
 				9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */,
 				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,

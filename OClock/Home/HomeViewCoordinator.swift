@@ -29,7 +29,9 @@ class HomeViewCoordinator: CoordinatorProtocol {
                 switch target {
                 case .pop:
                     self.navigationController.popViewController(animated: true)
-            }
+                case .register:
+                    PersonalRegisterViewCoordinator(navigationController: self.navigationController).start()
+                }
             }).disposed(by: viewModel.myDisposeBag)
 
         navigationController.pushViewController(vc, animated: true)
@@ -40,5 +42,6 @@ class HomeViewCoordinator: CoordinatorProtocol {
 extension HomeViewCoordinator {
     enum Target {
         case pop
+        case register
     }
 }
