@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 struct RFKSize {
+    static let xxsmall = CGFloat(4)
+    static let xsmall = CGFloat(8)
     static let small = CGFloat(16)
     static let medium = CGFloat(24)
     static let high = CGFloat(32)

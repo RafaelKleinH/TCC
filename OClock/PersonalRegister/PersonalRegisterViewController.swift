@@ -30,6 +30,14 @@ class PersonalRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         baseView.imagePicker.delegate = self
+        view = baseView
+        rxBinds()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
     }
     
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
@@ -56,10 +64,53 @@ class PersonalRegisterViewController: UIViewController {
             .bind(to: baseView.imageView.rx.image)
             .disposed(by: viewModel.myDisposeBag)
         
-//        viewModel.imageExplicationLabelText
-//            .bind(to: baseView.imageExplicationLabel.rx.text)
-//            .disposed(by: viewModel.myDisposeBag)
+        viewModel.explicationLabelTitle
+            .subscribe(onNext: { [weak baseView] text in
+                baseView?.imageExplicationLabel.text = text
+            })
+            .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.nameTextFieldPlaceholder
+            .subscribe(onNext: { [weak baseView] text in
+                baseView?.nameTextField.placeholder = text
+                baseView?.nameTextField.placeholderColor = RFKolors.whiteTexts
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.occupationTextFieldPlaceholder
+            .subscribe(onNext: { [weak baseView] text in
+                baseView?.occupationTextField.placeholder = text
+                baseView?.occupationTextField.placeholderColor = RFKolors.whiteTexts
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.registerButtonTitle
+            .subscribe(onNext: { [weak baseView] text in
+                baseView?.registerButton.setTitle(text, for: .normal)
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.requests
+            .subscribe(onNext: { laland in
+                if laland {
+                    print("VAPOOO")
+                }
+        })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.nameTextField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.nameText)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.occupationTextField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.occupationText)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.registerButton.rx.tap
+            .bind(to: viewModel.loadData)
+            .disposed(by: viewModel.myDisposeBag)
     }
     
     private func present(from sourceView: UIView) {

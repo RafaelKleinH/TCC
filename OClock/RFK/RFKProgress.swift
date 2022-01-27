@@ -16,8 +16,6 @@ class RFKProgress: UIView {
         backgroundColor = UIColor(white: 1, alpha: 0.00001)
         setupSubviews()
         setupAnchors()
-        
-        uselessCircularProgress.animate(toAngle: 290, duration: 0, completion: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -44,7 +42,7 @@ class RFKProgress: UIView {
         $0.glowAmount = 0
         $0.trackColor = .clear
         $0.roundedCorners = true
-        $0.set(colors: RFKolors.primaryBlue)
+        $0.progressColors = [RFKolors.primaryBlue]
         return $0
     }(KDCircularProgress())
     
@@ -54,10 +52,47 @@ class RFKProgress: UIView {
     }
     
     func setupAnchors() {
-        circularProgress.center = CGPoint(x: self.center.x, y: self.center.y)
+        circularProgress.centerX(inView: self)
         circularProgress.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
-        uselessCircularProgress.center = CGPoint(x: self.center.x, y: self.center.y)
+        uselessCircularProgress.centerX(inView: self)
         uselessCircularProgress.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        
+    }
+    
+    func attColors()  {
+        circularProgress.progressColors = [RFKolors.primaryBlue]
+    }
+    
+    func startProgress(angle: Double, time: TimeInterval) {
+        circularProgress.progress = 0
+        circularProgress.animate(toAngle: angle, duration: time, completion: nil)
+    }
+    
+    func resumeProgress() {
+        let layer = circularProgress.layer
+        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+        layer.speed = 1.0
+        layer.timeOffset = 0.0
+        layer.beginTime = 0.0
+        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        layer.beginTime = timeSincePause
+    }
+    
+    func pauseProgress() {
+        let layer = circularProgress.layer
+        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+        layer.speed = 0.0
+        layer.timeOffset = pausedTime
+    }
+    
+    func setupProgress(startAngle: Double = -235, animateToAngle: Double = 290) {
+        uselessCircularProgress.startAngle = startAngle
+        uselessCircularProgress.animate(toAngle: animateToAngle, duration: 0, completion: nil)
+    }
+
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
     }
 }

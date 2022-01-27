@@ -97,6 +97,8 @@ class RegisterViewModel: RegisterViewModelProtocol {
                         return Observable.empty()
                     }
             }.share()
+        
+        
             
         
         navigationTarget = Observable.merge(
