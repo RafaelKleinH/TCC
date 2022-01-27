@@ -18,6 +18,10 @@ enum HomeState {
 protocol HomeViewModelProtocol {
     typealias Target = HomeViewCoordinator.Target
     
+    func saveHours(inOrOut: String)
+    func pauseTimer()
+    func startTime(_ sender: Any)
+    
     var navigationTarget: Observable<Target> { get }
     
     var didTapBackButton: AnyObserver<Void> { get }
@@ -39,7 +43,7 @@ protocol HomeViewModelProtocol {
     
     
     var fakeHours: Observable<[Double]> { get }
-    
+    var fakeNameReal: Observable<String> { get }
     var ableFakedRegister: BehaviorRelay<[String]> { get }
 }
 
@@ -66,6 +70,11 @@ class HomeViewModel: HomeViewModelProtocol {
     
     var isOpen: Bool = false
     
+    
+    //MARK:- FakeModels
+    
+    let fakeName: Observable<String>
+    var fakeNameReal: Observable<String>
     let fakeHours: Observable<[Double]>
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
     
@@ -88,6 +97,18 @@ class HomeViewModel: HomeViewModelProtocol {
         
         let _midTime = PublishSubject<Int>()
         midTime = _midTime.asObserver()
+            
+        fakeName = .just("Rafael Klein Hartmann")
+        
+        fakeNameReal = fakeName.map {
+            let sepName = $0.components(separatedBy: " ")
+            if let valOne = sepName.first, let valTwo = sepName.last {
+                let dale = valOne == valTwo ? valOne : valOne + " " + valTwo
+                return dale
+            } else {
+                return "Olá :D"
+            }
+        }
         
         fakeHours = .just([28800,  3600])
         

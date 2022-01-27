@@ -10,32 +10,31 @@ import RxSwift
 import RxCocoa
 
 protocol ConfigViewModelProtocol {
-    var timer: Observable<Int> { get }
+    var didClickLogoff: AnyObserver<Void> { get }
 }
+
 class ConfigViewModel: ConfigViewModelProtocol {
     
-    let timer: Observable<Int>
+    let didClickLogoff: AnyObserver<Void>
+    let logoffBack: Observable<Void>
+    let didPop: AnyObserver<Void>
     
-    init() {
+    init(service: ConfigViewService = ConfigViewService()) {
     
-        var next = 0
-    
-        timer = Observable.create { observer in
-            
-            let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
-            timer.schedule(deadline: .now(), repeating: 1)
-            
-            
-            
-            timer.setEventHandler {
-                observer.onNext(next)
-                next += 1
-            }
-            timer.resume()
-            
-            return Disposables.create()
-        }
+        let _didPop = PublishSubject<Void>()
+        didPop = _didPop.asObserver()
         
+        let _didClickLogoff = PublishSubject<Void>()
+        didClickLogoff = _didClickLogoff.asObserver()
         
+        logoffBack = _didClickLogoff
+            .flatMapLatest {
+                service.logoff()
+                    .asObservable()
+                    .observe(on: MainScheduler.instance)
+                    .do(onNext: { _didPop.onNext(()) },
+                        onSubscribe: { print("subs") })
+                
+            }.share()
     }
 }

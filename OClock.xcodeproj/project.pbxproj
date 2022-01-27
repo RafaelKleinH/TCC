@@ -45,6 +45,7 @@
 		9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */; };
 		9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */; };
 		9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCD9927938E53000CA720 /* RFKProgress.swift */; };
+		9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D918027A257E9004FB869 /* ConfigViewService.swift */; };
 		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
 		9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F762278A8CBE0036CBAB /* Extensions.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
@@ -145,6 +146,7 @@
 		9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewCoordinator.swift; sourceTree = "<group>"; };
 		9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
 		9D5CCD9927938E53000CA720 /* RFKProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKProgress.swift; sourceTree = "<group>"; };
+		9D5D918027A257E9004FB869 /* ConfigViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewService.swift; sourceTree = "<group>"; };
 		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		9D68F762278A8CBE0036CBAB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../../../Downloads/Extensions.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				9DD91710279797660015947E /* ConfigViewController.swift */,
 				9DD91715279797810015947E /* ConfigView.swift */,
 				9DD9171A2797978C0015947E /* ConfigViewModel.swift */,
+				9D5D918027A257E9004FB869 /* ConfigViewService.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */,
 				9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */,
 				9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */,
+				9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */,
 				9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */,
 				9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */,
 				9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */,

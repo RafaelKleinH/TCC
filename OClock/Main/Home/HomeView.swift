@@ -27,13 +27,17 @@ class HomeView: UIView {
         thirdSubProgress.progress.circularProgress.startAngle = 180
         fourthSubProgress.progress.circularProgress.startAngle = 180
         
-        circularProgress.uselessCircularProgress.progressColors = [RFKolors.whiteTexts.withAlphaComponent(0.025)]
+        circularProgress.uselessCircularProgress.progressColors = [RFKolors.progressMainBg]
+            
         
         firstSubProgress.progress.setupProgress(startAngle: 180, animateToAngle: 360)
         secondSubProgress.progress.setupProgress(startAngle: 180, animateToAngle: 360)
         thirdSubProgress.progress.setupProgress(startAngle: 180, animateToAngle: 360)
         fourthSubProgress.progress.setupProgress(startAngle: 180, animateToAngle: 360)
         circularProgress.setupProgress(startAngle: -235, animateToAngle: 290)
+        
+        personalImageView.image = UIImage(named: "userCircle")?.withRenderingMode(.alwaysTemplate)
+        personalImageView.tintColor = RFKolors.modeSecondary
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +54,22 @@ class HomeView: UIView {
         return $0
     }(UIView())
     
+    let horizontalStackView: UIStackView = {
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        return $0
+    }(UIStackView())
+    
+    let nameLabel: UILabel = {
+        $0.font = UIFont(name: RFontsK.QuicksandBold, size: RFKSize.medium)
+        $0.numberOfLines = 1
+        $0.adjustsFontSizeToFitWidth = true
+        $0.textColor = RFKolors.modeSecondary
+        return $0
+    }(UILabel())
+    
+    let personalImageView = RFKitRoundedImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
     let circularProgress: RFKProgress = {
         return $0
     }(RFKProgress())
@@ -60,15 +80,17 @@ class HomeView: UIView {
     let fourthSubProgress = RFKMiniLoader()
     
     let cronoImgView: UIImageView = {
-        $0.image = UIImage(named: "apple")
+        $0.image = UIImage(named: "apple")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = RFKolors.modeSecondary
         return $0
     }(UIImageView())
     
     let timeLabel: UILabel = {
-        $0.font = UIFont(name: RFontsK.QuicksandBold, size: 24)
+        $0.font = UIFont(name: RFontsK.QuicksandBold, size: RFKSize.medium)
         $0.numberOfLines = 1
         $0.adjustsFontSizeToFitWidth = true
         $0.text = "00:00:00"
+        $0.textColor = RFKolors.modeSecondary
         return $0
     }(UILabel())
     
@@ -81,6 +103,9 @@ class HomeView: UIView {
     func setupSubview() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.addSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(nameLabel)
+        horizontalStackView.addArrangedSubview(personalImageView)
         contentView.addSubview(circularProgress)
         contentView.addSubview(cronoImgView)
         contentView.addSubview(timeButton)
@@ -101,22 +126,25 @@ class HomeView: UIView {
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
        
-        circularProgress.anchor(top: contentView.topAnchor, paddingTop: 30, width: 300,height: 300)
+        horizontalStackView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium , paddingRight: RFKSize.medium)
+        personalImageView.setDimensions(height: RFKSize.high, width: RFKSize.high)
+        
+        circularProgress.anchor(top: horizontalStackView.bottomAnchor, paddingTop: RFKSize.xsmall, width: RFKSize.bigger, height: RFKSize.bigger)
         circularProgress.centerX(inView: self)
         
         
-        timeButton.anchor(top: circularProgress.circularProgress.topAnchor, left: circularProgress.circularProgress.leftAnchor, bottom: circularProgress.circularProgress.bottomAnchor, right: circularProgress.circularProgress.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
+        timeButton.anchor(top: circularProgress.circularProgress.topAnchor, left: circularProgress.circularProgress.leftAnchor, bottom: circularProgress.circularProgress.bottomAnchor, right: circularProgress.circularProgress.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingBottom: RFKSize.medium, paddingRight: RFKSize.medium)
         
         timeLabel.centerX(inView: circularProgress.circularProgress)
         timeLabel.centerY(inView: circularProgress)
         
         cronoImgView.centerX(inView: circularProgress.circularProgress)
-        cronoImgView.anchor(bottom: timeLabel.topAnchor, paddingBottom: 8, width: 24, height: 24)
+        cronoImgView.anchor(bottom: timeLabel.topAnchor, paddingBottom: RFKSize.xsmall, width: RFKSize.medium, height: RFKSize.medium)
         
-        firstSubProgress.progress.setHeight(height: 150)
-        secondSubProgress.progress.setHeight(height: 150)
-        thirdSubProgress.progress.setHeight(height: 150)
-        fourthSubProgress.progress.setHeight(height: 150)
+        firstSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+        secondSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+        thirdSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+        fourthSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
         
         firstSubProgress.anchor(top: circularProgress.bottomAnchor, left: contentView.leftAnchor, right: contentView.centerXAnchor, paddingTop: RFKSize.xsmall, paddingLeft: RFKSize.xsmall, paddingRight: RFKSize.xxsmall)
         secondSubProgress.anchor(top: firstSubProgress.topAnchor, left: contentView.centerXAnchor, right: contentView.rightAnchor, paddingLeft: RFKSize.xxsmall, paddingRight: RFKSize.xsmall)

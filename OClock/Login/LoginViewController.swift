@@ -187,10 +187,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             viewModel.getUserDefaults.onNext(())
         }
     }
-    
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        viewModel.activeTextField?.resignFirstResponder()
-//    }
+
 
 }

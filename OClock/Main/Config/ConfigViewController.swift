@@ -30,9 +30,10 @@ class ConfigViewController: UIViewController {
     }
     
     func rxBinds() {
-        viewModel.timer
-            .subscribe(onNext: { [baseView] time in
-                baseView.clockLabel.text = "\(time)"
+        baseView.logOffBtn.rx.tap
+            .subscribe(onNext: { _ in
+                self.viewModel.didClickLogoff.onNext(())
+                print("aaaa")
             })
             .disposed(by: DisposeBag())
     }

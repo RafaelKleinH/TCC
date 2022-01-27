@@ -12,7 +12,7 @@ import RxCocoa
 
 class HomeViewController: UIViewController {
 
-    var viewModel: HomeViewModel
+    var viewModel: HomeViewModelProtocol
     var baseView: HomeView
     
     init(vm: HomeViewModel, v: HomeView) {
@@ -88,6 +88,10 @@ class HomeViewController: UIViewController {
         
         viewModel.stringTime
             .bind(to: baseView.timeLabel.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.fakeNameReal
+            .bind(to: baseView.nameLabel.rx.text)
             .disposed(by: viewModel.myDisposeBag)
     }
     

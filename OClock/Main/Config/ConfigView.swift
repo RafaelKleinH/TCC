@@ -19,20 +19,22 @@ class ConfigView: UIView {
         setupConstraints()
     }
     
-    let clockLabel: UILabel = {
-        
-        return $0
-    }(UILabel())
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let logOffBtn: UIButton = {
+        $0.backgroundColor = RFKolors.secondaryBlue
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIButton())
+    
     func setupSubview() {
-        addSubview(clockLabel)
+        addSubview(logOffBtn)
     }
     
     func setupConstraints() {
-        clockLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 18, paddingLeft: 12, paddingRight: 12)
+        logOffBtn.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 16, paddingBottom: 32, paddingRight: 16, height: 32)
+        
     }
 }

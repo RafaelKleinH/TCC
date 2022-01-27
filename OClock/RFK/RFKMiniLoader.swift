@@ -11,7 +11,7 @@ import UIKit
 class RFKMiniLoader: UIView {
     
     let titleLabel: UILabel = {
-        $0.textColor = RFKolors.primaryBlue
+        $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandBold, size: 18)
         $0.textAlignment = .left
         return $0
@@ -46,7 +46,7 @@ class RFKMiniLoader: UIView {
     }
     
     func updateColor() {
-        titleLabel.textColor = RFKolors.primaryBlue
+        titleLabel.textColor = RFKolors.modeSecondary
         progress.attColors()
     }
     
