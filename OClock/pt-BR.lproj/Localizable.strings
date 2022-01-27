@@ -10,6 +10,7 @@
 "LoginButton"= "Entrar";
 "DividerText" = "OU";
 "LoginWithApple" = "Entrar com Apple";
+"LoginUserDefaults" = "Salvar usuario";
 
 
 // MARK: REGISTER
@@ -18,3 +19,11 @@
 "RegisterPasswordTF" = "Senha";
 "RegisterConfirmPasswordTF" = "Confirmar Senha";
 "RegisterButton" = "Registrar";
+
+
+// MARK: PERSONALREGISTER
+
+"PersonalRegisterName" = "Nome";
+"PersonalRegisterOccupation" = "Ocupação";
+"PersonalRegisterExplication" = "Clique na imagem para selecionar";
+"PersonalRegisterButton" = "Registrar";

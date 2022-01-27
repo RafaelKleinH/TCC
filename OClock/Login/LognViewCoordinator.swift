@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 class LoginViewCoordinator: CoordinatorProtocol {
+    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -27,7 +28,7 @@ class LoginViewCoordinator: CoordinatorProtocol {
                 guard let self = self else { return }
                 switch target {
                 case .loginButton:
-                    HomeViewCoordinator(navigationController: self.navigationController).start()
+                    MainTabBarCoordinator(navC: self.navigationController).start()
                 case .registerButton:
                     RegisterViewCoordinator(navigationController: self.navigationController).start()
                 }

@@ -25,11 +25,18 @@ class PersonalRegisterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     let imageView = RFKitRoundedImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     let imagePicker = UIImagePickerController()
     
     let imageExplicationLabel = UILabel()
+    
+    let nameTextField = RFKTextField()
+    
+    let occupationTextField = RFKTextField()
+      
+    let registerButton = RFKButton()
     
     func setupViewBasics() {
         imageExplicationLabel.textAlignment = .center
@@ -37,24 +44,37 @@ class PersonalRegisterView: UIView {
         imageExplicationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         
         imageView.image = UIImage(named: CustomImages.defaultImageCircle)
+        
+        nameTextField.styleTextField()
+        nameTextField.placeholderColor = RFKolors.whiteTexts
+        
+        occupationTextField.styleTextField()
+        occupationTextField.placeholderColor = RFKolors.whiteTexts
+   
+        registerButton.addPrimaryStyle()
     }
     
     func setupSubviews() {
         addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageExplicationLabel)
-        imageExplicationLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nameTextField)
+        addSubview(occupationTextField)
+        addSubview(registerButton)
     }
 
     func setupConstraints() {
         imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 20).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        imageView.centerXAnchor.constraint(equalTo:  centerXAnchor).isActive = true
+
+        imageView.anchor(top: layoutMarginsGuide.topAnchor, paddingTop: RFKSize.high)
+        imageView.centerX(inView: self)
+        imageView.setDimensions(height: 120, width: 120)
         
-        imageExplicationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12).isActive = true
-        imageExplicationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        imageExplicationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        imageExplicationLabel.anchor(top: imageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
+        
+        nameTextField.anchor(top: imageExplicationLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
+        occupationTextField.anchor(top: nameTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+    
+        registerButton.anchor(top: occupationTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     }
     
 }

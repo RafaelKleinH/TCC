@@ -92,6 +92,25 @@ class LoginView: UIView {
         return $0
     }(UIStackView())
     
+    let thirdStack: UIStackView = {
+        $0.axis = .horizontal
+        $0.spacing = RFKSize.medium
+        return $0
+    }(UIStackView())
+    
+    let userDefaultLabel: UILabel = {
+        $0.textColor = RFKolors.whiteTexts
+        $0.font = UIFont(name: RFontsK.QuicksandMedium, size: 16)
+        return $0
+    }(UILabel())
+    
+    let userDefaultSwith: UISwitch = {
+        $0.isOn = false
+        $0.preferredStyle = .sliding
+        $0.onTintColor = RFKolors.secondaryBlue
+        return $0
+    }(UISwitch())
+    
     let dividerView = RFKDividerView()
     
     private func setupViewBasics(){
@@ -114,6 +133,9 @@ class LoginView: UIView {
         contentView.addSubview(stack)
         stack.addArrangedSubview(emailTextField)
         stack.addArrangedSubview(passwordTextField)
+        stack.addArrangedSubview(thirdStack)
+        thirdStack.addArrangedSubview(userDefaultLabel)
+        thirdStack.addArrangedSubview(userDefaultSwith)
         contentView.addSubview(secondaryStack)
         secondaryStack.addArrangedSubview(loginButton)
         secondaryStack.addArrangedSubview(dividerView)

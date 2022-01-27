@@ -19,29 +19,24 @@ class HomeViewCoordinator: CoordinatorProtocol {
 
     func start() {
         let viewModel = HomeViewModel()
-        let v = HomeView()
-        let vc = HomeViewController(vm: viewModel, v: v)
-
+        let baseView = HomeView()
+        let viewController = HomeViewController(vm: viewModel, v: baseView)
+        
         viewModel.navigationTarget
             .observe(on:  MainScheduler.instance)
-            .subscribe(onNext: { [weak self] target in
-                guard let self = self else { return }
+            .subscribe(onNext: { [navigationController] target in
                 switch target {
-                case .pop:
-                    self.navigationController.popViewController(animated: true)
                 case .register:
-                    PersonalRegisterViewCoordinator(navigationController: self.navigationController).start()
+                    PersonalRegisterViewCoordinator(navigationController: navigationController).start()
                 }
             }).disposed(by: viewModel.myDisposeBag)
-
-        navigationController.pushViewController(vc, animated: true)
-    }
-
+        
+        navigationController.pushViewController(viewController, animated: true)
+        }
 
 }
 extension HomeViewCoordinator {
     enum Target {
-        case pop
         case register
     }
 }

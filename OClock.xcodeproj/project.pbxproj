@@ -22,6 +22,9 @@
 		9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */; };
 		9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */; };
 		9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */; };
+		9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */; };
+		9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF72797818700DCCB25 /* LoginModel.swift */; };
+		9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BFD2797875000DCCB25 /* tabBarController.swift */; };
 		9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399715273C12FB00600544 /* SceneDelegate.swift */; };
 		9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D39971E273C12FD00600544 /* LaunchScreen.storyboard */; };
 		9D39972B273C12FE00600544 /* OClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39972A273C12FE00600544 /* OClockTests.swift */; };
@@ -31,6 +34,7 @@
 		9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399773273C13EB00600544 /* LoginViewController.swift */; };
 		9D39977F273C140000600544 /* LognViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399770273C13EB00600544 /* LognViewCoordinator.swift */; };
 		9D399783273C140300600544 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399771273C13EB00600544 /* LoginViewModel.swift */; };
+		9D40AA98279A156D009C493E /* RFKMiniLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40AA97279A156D009C493E /* RFKMiniLoader.swift */; };
 		9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4C92784EF27009FA50F /* RFKolors.swift */; };
 		9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4CE2784F107009FA50F /* RegisterViewService.swift */; };
 		9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */; };
@@ -62,6 +66,15 @@
 		9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E7CD027922C7C00336E2B /* HomeModel.swift */; };
 		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
 		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
+		9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91705279792FC0015947E /* tabBarCoordinator.swift */; };
+		9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9170B2797974A0015947E /* ConfigCoordinator.swift */; };
+		9DD91711279797660015947E /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91710279797660015947E /* ConfigViewController.swift */; };
+		9DD91716279797810015947E /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91715279797810015947E /* ConfigView.swift */; };
+		9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9171A2797978C0015947E /* ConfigViewModel.swift */; };
+		9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4CF8279615AE00750AF2 /* UserDataCoordinator.swift */; };
+		9DEF4D012796162C00750AF2 /* UserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4D002796162C00750AF2 /* UserDataViewController.swift */; };
+		9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4D052796166C00750AF2 /* UserDataView.swift */; };
+		9DEF4D0B279616A300750AF2 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4D0A279616A300750AF2 /* UserDataViewModel.swift */; };
 		9DFD178E2790E2EF004E4CBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD178D2790E2EF004E4CBF /* Assets.xcassets */; };
 		A1C3F9B44DAE6DFE06A169F9 /* Pods_OClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263FB1740A2521E26139F800 /* Pods_OClock.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +116,9 @@
 		9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewModel.swift; sourceTree = "<group>"; };
 		9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewService.swift; sourceTree = "<group>"; };
 		9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValue.swift; sourceTree = "<group>"; };
+		9D231BF72797818700DCCB25 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		9D231BFD2797875000DCCB25 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		9D399710273C12FB00600544 /* OClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D399715273C12FB00600544 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D39971F273C12FD00600544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,6 +134,7 @@
 		9D399771273C13EB00600544 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9D399772273C13EB00600544 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9D399773273C13EB00600544 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9D40AA97279A156D009C493E /* RFKMiniLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKMiniLoader.swift; sourceTree = "<group>"; };
 		9D46A4C92784EF27009FA50F /* RFKolors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKolors.swift; sourceTree = "<group>"; };
 		9D46A4CE2784F107009FA50F /* RegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewService.swift; sourceTree = "<group>"; };
 		9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitRoundedImageView.swift; sourceTree = "<group>"; };
@@ -151,6 +168,15 @@
 		9D9B8FDC278F983D00680D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9D9B9040278FACA500680D4A /* RFKSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKSize.swift; sourceTree = "<group>"; };
+		9DD91705279792FC0015947E /* tabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarCoordinator.swift; sourceTree = "<group>"; };
+		9DD9170B2797974A0015947E /* ConfigCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCoordinator.swift; sourceTree = "<group>"; };
+		9DD91710279797660015947E /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		9DD91715279797810015947E /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		9DD9171A2797978C0015947E /* ConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewModel.swift; sourceTree = "<group>"; };
+		9DEF4CF8279615AE00750AF2 /* UserDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCoordinator.swift; sourceTree = "<group>"; };
+		9DEF4D002796162C00750AF2 /* UserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewController.swift; sourceTree = "<group>"; };
+		9DEF4D052796166C00750AF2 /* UserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataView.swift; sourceTree = "<group>"; };
+		9DEF4D0A279616A300750AF2 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		9DFD178D2790E2EF004E4CBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9E3AC5C9E42F0185B9A9B30 /* Pods-OClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock.debug.xcconfig"; path = "Target Support Files/Pods-OClock/Pods-OClock.debug.xcconfig"; sourceTree = "<group>"; };
 		CD80F41F2F35B218DF9E6E38 /* Pods_OClock_OClockUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClock_OClockUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +271,18 @@
 			path = TimeDataRegister;
 			sourceTree = "<group>";
 		};
+		9D231BFC2797872A00DCCB25 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9D40AA96279A1537009C493E /* New Group */,
+				9DD9170A279797380015947E /* Config */,
+				9D741768278651EA007BCF6A /* Home */,
+				9D231BFD2797875000DCCB25 /* tabBarController.swift */,
+				9DD91705279792FC0015947E /* tabBarCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		9D399707273C12FB00600544 = {
 			isa = PBXGroup;
 			children = (
@@ -271,13 +309,14 @@
 		9D399712273C12FB00600544 /* OClock */ = {
 			isa = PBXGroup;
 			children = (
+				9D231BFC2797872A00DCCB25 /* Main */,
+				9DEF4CF72796157E00750AF2 /* userDataRegister */,
 				9DFD178D2790E2EF004E4CBF /* Assets.xcassets */,
 				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D39976F273C13E100600544 /* Login */,
 				9D06866F278A44790009A6B9 /* LoginRegister */,
 				9D9B9045278FACD400680D4A /* RFK */,
 				9D4F3DA32745707B004D7FD8 /* Register */,
-				9D741768278651EA007BCF6A /* Home */,
 				9D765BCB2741981100AF5884 /* Font */,
 				9D39976A273C13C000600544 /* Assets */,
 				9D399769273C13B700600544 /* Components */,
@@ -324,6 +363,7 @@
 			children = (
 				9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */,
 				9D6037B72795FE6B006B991C /* DataBase.swift */,
+				9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -336,8 +376,16 @@
 				9D399772273C13EB00600544 /* LoginView.swift */,
 				9D399771273C13EB00600544 /* LoginViewModel.swift */,
 				9D06866A278A3FB20009A6B9 /* LoginViewService.swift */,
+				9D231BF72797818700DCCB25 /* LoginModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		9D40AA96279A1537009C493E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		9D4F3DA32745707B004D7FD8 /* Register */ = {
@@ -384,8 +432,31 @@
 				9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */,
 				9D68F78A278A9D970036CBAB /* RFKDividerView.swift */,
 				9D5CCD9927938E53000CA720 /* RFKProgress.swift */,
+				9D40AA97279A156D009C493E /* RFKMiniLoader.swift */,
 			);
 			path = RFK;
+			sourceTree = "<group>";
+		};
+		9DD9170A279797380015947E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9DD9170B2797974A0015947E /* ConfigCoordinator.swift */,
+				9DD91710279797660015947E /* ConfigViewController.swift */,
+				9DD91715279797810015947E /* ConfigView.swift */,
+				9DD9171A2797978C0015947E /* ConfigViewModel.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		9DEF4CF72796157E00750AF2 /* userDataRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9DEF4CF8279615AE00750AF2 /* UserDataCoordinator.swift */,
+				9DEF4D002796162C00750AF2 /* UserDataViewController.swift */,
+				9DEF4D052796166C00750AF2 /* UserDataView.swift */,
+				9DEF4D0A279616A300750AF2 /* UserDataViewModel.swift */,
+			);
+			path = userDataRegister;
 			sourceTree = "<group>";
 		};
 		9DFD17892790E27D004E4CBF /* Recovered References */ = {
@@ -644,6 +715,7 @@
 			files = (
 				9D399777273C13FB00600544 /* LoginView.swift in Sources */,
 				9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */,
+				9DD91716279797810015947E /* ConfigView.swift in Sources */,
 				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
 				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
 				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
@@ -652,15 +724,22 @@
 				9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */,
 				9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */,
 				9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */,
+				9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */,
+				9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */,
 				9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */,
+				9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */,
 				9D06866B278A3FB20009A6B9 /* LoginViewService.swift in Sources */,
 				9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */,
 				9D068683278A45950009A6B9 /* PersonalRegisterView.swift in Sources */,
 				9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */,
+				9DD91711279797660015947E /* ConfigViewController.swift in Sources */,
 				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
+				9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */,
 				9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */,
 				9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */,
 				9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */,
+				9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */,
+				9D40AA98279A156D009C493E /* RFKMiniLoader.swift in Sources */,
 				9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */,
 				9D765BBF2741786400AF5884 /* RFKGradient.swift in Sources */,
 				9D068676278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift in Sources */,
@@ -672,18 +751,23 @@
 				9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */,
 				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
 				9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */,
+				9DEF4D012796162C00750AF2 /* UserDataViewController.swift in Sources */,
 				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
 				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
 				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
+				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
 				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
 				9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */,
 				9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */,
+				9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */,
 				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,
+				9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
 				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,
 				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
+				9DEF4D0B279616A300750AF2 /* UserDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

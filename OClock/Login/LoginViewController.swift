@@ -35,12 +35,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         baseView.passwordTextField.delegate = self
         navigationBarConfig()
         reactiveBinds()
+        isUserLogged()
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
+        baseView.layoutIfNeeded()
     }
     
     func navigationBarConfig() {
@@ -126,8 +127,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .bind(to: viewModel.passwordText)
             .disposed(by: viewModel.myDisposeBag)
         
+        baseView.userDefaultSwith.rx
+            .value
+            .map { $0 }
+            .bind(to: viewModel.toggleDefault)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.loginDefaults
+            .bind(to: baseView.userDefaultLabel.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
         viewModel.login
             .subscribe()
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.defaultReturn
+            .throttle(.microseconds(300), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] user in
+                self?.viewModel.emailText.onNext(user.mail)
+                self?.viewModel.passwordText.onNext(user.password)
+                self?.viewModel.toggleDefault.onNext(false)
+                self?.viewModel.didTapLoginButton.onNext(())
+            })
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.state
@@ -157,6 +178,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
             .disposed(by: viewModel.myDisposeBag)
             
+    }
+    
+    func isUserLogged() {
+        let isUserLogged = UserDefaults.standard.bool(forKey: UserDefaultValue.logged.rawValue)
+        
+        if isUserLogged {
+            viewModel.getUserDefaults.onNext(())
+        }
     }
     
     
