@@ -10,14 +10,34 @@ import RxSwift
 import RxCocoa
 
 protocol ConfigViewModelProtocol {
+    typealias Target = MainTabBarCoordinator.TargetC
+    
+    var myDisposeBag: DisposeBag { get }
+    
     var didClickLogoff: AnyObserver<Void> { get }
+    
+    var logoffBack: Observable<Void> { get }
+    var logOffText: Observable<String> { get }
+    var hourRegister: Observable<String> { get }
+    var notifiesRegister: Observable<String> { get }
+    
+    var navigationTarget: Observable<Target> { get }
+    
 }
 
 class ConfigViewModel: ConfigViewModelProtocol {
     
+    let myDisposeBag = DisposeBag()
+    
     let didClickLogoff: AnyObserver<Void>
     let logoffBack: Observable<Void>
     let didPop: AnyObserver<Void>
+    
+    let navigationTarget: Observable<Target>
+    
+    let logOffText: Observable<String>
+    let hourRegister: Observable<String>
+    let notifiesRegister: Observable<String>
     
     init(service: ConfigViewService = ConfigViewService()) {
     
@@ -27,6 +47,11 @@ class ConfigViewModel: ConfigViewModelProtocol {
         let _didClickLogoff = PublishSubject<Void>()
         didClickLogoff = _didClickLogoff.asObserver()
         
+        
+        hourRegister = .just("Registros dos Horarios")
+        notifiesRegister = .just("Opções de Notificações")
+        logOffText = .just("Sair")
+        
         logoffBack = _didClickLogoff
             .flatMapLatest {
                 service.logoff()
@@ -34,7 +59,14 @@ class ConfigViewModel: ConfigViewModelProtocol {
                     .observe(on: MainScheduler.instance)
                     .do(onNext: { _didPop.onNext(()) },
                         onSubscribe: { print("subs") })
+                    .catchError({ error in
+                           return Observable.empty()
+                    })
                 
             }.share()
+        
+        navigationTarget = Observable.merge(
+            _didPop.map({ .logoff })
+        )
     }
 }

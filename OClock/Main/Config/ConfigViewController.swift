@@ -16,7 +16,9 @@ class ConfigViewController: UIViewController {
     var baseView: ConfigView
     
     override func viewDidLoad() {
-        view = baseView 
+        view = baseView
+        
+        rxBinds()
     }
     
     init(v: ConfigView, vm: ConfigViewModelProtocol) {
@@ -35,6 +37,20 @@ class ConfigViewController: UIViewController {
                 self.viewModel.didClickLogoff.onNext(())
                 print("aaaa")
             })
-            .disposed(by: DisposeBag())
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.logoffBack.subscribe().disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.logOffText
+            .bind(to: baseView.logOffBtn.rx.title())
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.notifiesRegister
+            .bind(to: baseView.notifiesDataBtn.rx.title())
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.hourRegister
+            .bind(to: baseView.registerDataBtn.rx.title())
+            .disposed(by: viewModel.myDisposeBag)
     }
 }

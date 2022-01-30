@@ -25,4 +25,33 @@ class RFKButton: UIButton {
         layer.cornerRadius = 4
         titleLabel?.font = UIFont(name: RFontsK.QuicksandMedium, size: 20)
     }
+    
+    func addTStyle(haveArrow: Bool = false) {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = RFKolors.bgColor
+        setTitleColor(RFKolors.modeSecondary, for: .normal)
+        titleLabel?.font = UIFont(name: RFontsK.QuicksandMedium, size: 20)
+        
+        let borderTView: UIView = {
+            $0.backgroundColor = RFKolors.modeSecondary
+            return $0
+        }(UIView())
+        
+        let borderBView: UIView = {
+            $0.backgroundColor = RFKolors.modeSecondary
+            return $0
+        }(UIView())
+        
+        if haveArrow {
+            let imageView: UIImageView = {
+                $0.image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
+                $0.tintColor = RFKolors.modeSecondary
+                return $0
+            }(UIImageView())
+            
+            addSubview(imageView)
+            imageView.anchor(right: rightAnchor, width: 16, height: 16)
+            imageView.centerY(inView: self)
+        }
+    }
 }

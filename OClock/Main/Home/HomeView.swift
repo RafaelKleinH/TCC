@@ -13,7 +13,7 @@ class HomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "BgColor")
+        backgroundColor = RFKolors.bgColor
         setupSubview()
         setupAnchors()
         

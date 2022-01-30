@@ -90,10 +90,11 @@ class PersonalRegisterViewController: UIViewController {
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        //TODO MEMORY LEAK AQUI
         viewModel.requests
-            .subscribe(onNext: { laland in
-                if laland {
-                    print("VAPOOO")
+            .subscribe(onNext: { requestSuccess in
+                if requestSuccess {
+                    self.viewModel.didGoToNextView.onNext(())
                 }
         })
             .disposed(by: viewModel.myDisposeBag)

@@ -314,7 +314,6 @@
 				9D231BFC2797872A00DCCB25 /* Main */,
 				9DEF4CF72796157E00750AF2 /* userDataRegister */,
 				9DFD178D2790E2EF004E4CBF /* Assets.xcassets */,
-				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D39976F273C13E100600544 /* Login */,
 				9D06866F278A44790009A6B9 /* LoginRegister */,
 				9D9B9045278FACD400680D4A /* RFK */,
@@ -393,6 +392,7 @@
 		9D4F3DA32745707B004D7FD8 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D068674278A44AE0009A6B9 /* TimeDataRegister */,
 			);
 			path = Register;

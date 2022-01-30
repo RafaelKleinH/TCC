@@ -19,7 +19,8 @@ class PersonalRegisterViewService: PersonalRegisterViewServiceProtocol {
     func postInformations(name: String, occupation: String, image: UIImage) -> Observable<Bool> {
         
         return Observable.create { observer in
-            RFKDatabase().userDataBaseWithUID.updateChildValues(["name": name, "occupation": occupation, "profileImage": image]) { (error, db) in
+            //TODO: Salvar imagem
+            RFKDatabase().userDataBaseWithUID.updateChildValues(["name": name, "occupation": occupation, "profileImage": "image"]) { (error, db) in
                 if let error = error {
                     observer.onError(error)
                 } else {

@@ -31,6 +31,8 @@ class PersonalRegisterViewCoordinator: CoordinatorProtocol {
                 switch target {
                 case .pop:
                     self.navigationController.popViewController(animated: true)
+                case .nextView:
+                    TimeDataRegisterViewCoordinator(navC: self.navigationController).start()
             }
         }).disposed(by: viewModel.myDisposeBag)
         
@@ -42,5 +44,6 @@ class PersonalRegisterViewCoordinator: CoordinatorProtocol {
 extension PersonalRegisterViewCoordinator {
     enum Target {
         case pop
+        case nextView
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class MainTabBarCoordinator: CoordinatorProtocol {
     
@@ -23,16 +24,47 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage.add, tag: 0)
         homeViewController.tabBarItem = homeTabBarItem
         
+        homeViewModel.navigationTarget
+            .observe(on:  MainScheduler.instance)
+            .subscribe(onNext: { [navigationController] target in
+                switch target {
+                case .registerBaseData:
+                    PersonalRegisterViewCoordinator(navigationController: navigationController).start()
+                }
+            }).disposed(by: homeViewModel.myDisposeBag)
         
         
         let configViewModel = ConfigViewModel()
+        let configCoordinator = ConfigCoordinator(navC: navigationController, vm: configViewModel)
+        configCoordinator.start()
         let configView = ConfigView()
         let configViewController = ConfigViewController(v: configView, vm: configViewModel)
+        
+        configViewModel.navigationTarget.subscribe(onNext: { [weak navigationController] target in
+            switch target {
+            case .logoff:
+                navigationController?.popViewController(animated: true)
+            }
+        }).disposed(by: configViewModel.myDisposeBag)
+
+        
         let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 1)
         configViewController.tabBarItem = configTabBarItem
+        
+        
         
         let tabBarController = MainTabBarController(HomeVC: homeViewController, ConfigVC: configViewController)
         
         navigationController.pushViewController(tabBarController, animated: true)
+    }
+}
+
+extension MainTabBarCoordinator {
+    enum TargetC {
+        case logoff
+    }
+    
+    enum TargetH {
+        case registerBaseData
     }
 }

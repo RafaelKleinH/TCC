@@ -16,7 +16,7 @@ enum HomeState {
 }
 
 protocol HomeViewModelProtocol {
-    typealias Target = HomeViewCoordinator.Target
+    typealias Target = MainTabBarCoordinator.TargetH
     
     func saveHours(inOrOut: String)
     func pauseTimer()
@@ -135,7 +135,7 @@ class HomeViewModel: HomeViewModelProtocol {
         }.share()
      
         navigationTarget = Observable.merge(
-            _didGoToRegisterView.map { .register }
+            _didGoToRegisterView.map { .registerBaseData }
         )
     }
     
