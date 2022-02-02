@@ -112,6 +112,24 @@ class PersonalRegisterViewController: UIViewController {
         baseView.registerButton.rx.tap
             .bind(to: viewModel.loadData)
             .disposed(by: viewModel.myDisposeBag)
+        
+        
+        //TODO weak
+        viewModel.state
+            .subscribe(onNext: { state in
+                switch state {
+                case .initial:
+                    print("init")
+                case .loading:
+                    print("loading")
+                case .success:
+                    print("success")
+                    self.viewModel.didGoToNextView.onNext(())
+                case let .error(error):
+                    print(error)
+                }
+            })
+            
     }
     
     private func present(from sourceView: UIView) {

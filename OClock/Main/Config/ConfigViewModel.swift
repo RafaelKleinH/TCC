@@ -15,6 +15,7 @@ protocol ConfigViewModelProtocol {
     var myDisposeBag: DisposeBag { get }
     
     var didClickLogoff: AnyObserver<Void> { get }
+    var didClickHoursRegister: AnyObserver<Void> { get }
     
     var logoffBack: Observable<Void> { get }
     var logOffText: Observable<String> { get }
@@ -29,6 +30,7 @@ class ConfigViewModel: ConfigViewModelProtocol {
     
     let myDisposeBag = DisposeBag()
     
+    let didClickHoursRegister: AnyObserver<Void>
     let didClickLogoff: AnyObserver<Void>
     let logoffBack: Observable<Void>
     let didPop: AnyObserver<Void>
@@ -47,6 +49,8 @@ class ConfigViewModel: ConfigViewModelProtocol {
         let _didClickLogoff = PublishSubject<Void>()
         didClickLogoff = _didClickLogoff.asObserver()
         
+        let _didClickHoursRegister = PublishSubject<Void>()
+        didClickHoursRegister = _didClickHoursRegister.asObserver()
         
         hourRegister = .just("Registros dos Horarios")
         notifiesRegister = .just("Opções de Notificações")
@@ -58,7 +62,7 @@ class ConfigViewModel: ConfigViewModelProtocol {
                     .asObservable()
                     .observe(on: MainScheduler.instance)
                     .do(onNext: { _didPop.onNext(()) },
-                        onSubscribe: { print("subs") })
+                        onSubscribe: { })
                     .catchError({ error in
                            return Observable.empty()
                     })
@@ -66,7 +70,8 @@ class ConfigViewModel: ConfigViewModelProtocol {
             }.share()
         
         navigationTarget = Observable.merge(
-            _didPop.map({ .logoff })
+            _didPop.map({ .logoff }),
+            _didClickHoursRegister.map({ .registerHours })
         )
     }
 }

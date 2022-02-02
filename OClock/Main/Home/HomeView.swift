@@ -99,14 +99,17 @@ class HomeView: UIView {
         return $0
     }(UIButton())
 
+    var clockImageView = UIImageView()
     
     func setupSubview() {
+        addSubview(UIView(frame: .zero))
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(horizontalStackView)
         horizontalStackView.addArrangedSubview(nameLabel)
         horizontalStackView.addArrangedSubview(personalImageView)
         contentView.addSubview(circularProgress)
+        contentView.addSubview(clockImageView)
         contentView.addSubview(cronoImgView)
         contentView.addSubview(timeButton)
         contentView.addSubview(timeLabel)
@@ -120,7 +123,7 @@ class HomeView: UIView {
         
         scrollView.centerX(inView: self)
         scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        scrollView.anchor(top: topAnchor, bottom: bottomAnchor)
+        scrollView.anchor(top: layoutMarginsGuide.topAnchor, bottom: bottomAnchor)
      
         contentView.centerX(inView: scrollView)
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -132,11 +135,12 @@ class HomeView: UIView {
         circularProgress.anchor(top: horizontalStackView.bottomAnchor, paddingTop: RFKSize.xsmall, width: RFKSize.bigger, height: RFKSize.bigger)
         circularProgress.centerX(inView: self)
         
-        
         timeButton.anchor(top: circularProgress.circularProgress.topAnchor, left: circularProgress.circularProgress.leftAnchor, bottom: circularProgress.circularProgress.bottomAnchor, right: circularProgress.circularProgress.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingBottom: RFKSize.medium, paddingRight: RFKSize.medium)
         
         timeLabel.centerX(inView: circularProgress.circularProgress)
         timeLabel.centerY(inView: circularProgress)
+
+        clockImageView.anchor(top: circularProgress.circularProgress.topAnchor, left: circularProgress.circularProgress.leftAnchor, bottom: circularProgress.circularProgress.bottomAnchor, right: circularProgress.circularProgress.rightAnchor)
         
         cronoImgView.centerX(inView: circularProgress.circularProgress)
         cronoImgView.anchor(bottom: timeLabel.topAnchor, paddingBottom: RFKSize.xsmall, width: RFKSize.medium, height: RFKSize.medium)

@@ -34,6 +34,11 @@ class ConfigView: UIView {
         return $0
     }(UIView())
     
+    let separatorNav: UIView = {
+        $0.backgroundColor = RFKolors.modeSecondary
+        return $0
+    }(UIView())
+    
     let registerDataBtn = RFKButton()
     
     let notifiesDataBtn = RFKButton()
@@ -43,6 +48,7 @@ class ConfigView: UIView {
     
     func setupSubview() {
         addSubview(contentView)
+        contentView.addSubview(separatorNav)
         contentView.addSubview(registerDataBtn)
         contentView.addSubview(notifiesDataBtn)
         contentView.addSubview(logOffBtn)
@@ -50,10 +56,13 @@ class ConfigView: UIView {
     
     func setupConstraints() {
         
-        contentView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        registerDataBtn.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 64, paddingLeft: 24, paddingRight: 24,  height: 52)
+        contentView.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        
+        separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
+        
+        registerDataBtn.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 8, paddingLeft: 24, paddingRight: 24,  height: 52)
         notifiesDataBtn.anchor(top: registerDataBtn.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingLeft: 24, paddingRight: 24, height: 52)
-        logOffBtn.anchor(left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingBottom: 32, height: 52)
+        logOffBtn.anchor(left: contentView.leftAnchor, bottom: contentView.layoutMarginsGuide.bottomAnchor, right: contentView.rightAnchor, paddingBottom: 0, height: 52)
         
         
     }

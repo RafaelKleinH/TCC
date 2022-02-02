@@ -24,10 +24,10 @@ class PersonalRegisterViewCoordinator: CoordinatorProtocol {
         let v = PersonalRegisterView()
         let vc = PersonalRegisterViewController(viewModel: viewModel, baseView: v)
         
+        //TODO weak self
         viewModel.navigationTarget
             .observe(on:  MainScheduler.instance)
-            .subscribe(onNext: { [weak self] target in
-                guard let self = self else { return }
+            .subscribe(onNext: {  target in
                 switch target {
                 case .pop:
                     self.navigationController.popViewController(animated: true)

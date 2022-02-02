@@ -32,19 +32,11 @@ class RFKButton: UIButton {
         setTitleColor(RFKolors.modeSecondary, for: .normal)
         titleLabel?.font = UIFont(name: RFontsK.QuicksandMedium, size: 20)
         
-        let borderTView: UIView = {
-            $0.backgroundColor = RFKolors.modeSecondary
-            return $0
-        }(UIView())
-        
-        let borderBView: UIView = {
-            $0.backgroundColor = RFKolors.modeSecondary
-            return $0
-        }(UIView())
-        
         if haveArrow {
+            let uiimage = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
+            
             let imageView: UIImageView = {
-                $0.image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
+                $0.image = uiimage?.withHorizontallyFlippedOrientation()
                 $0.tintColor = RFKolors.modeSecondary
                 return $0
             }(UIImageView())

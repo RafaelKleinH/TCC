@@ -92,6 +92,8 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
         let _state = PublishSubject<PersonalRegisterState>()
         state = _state.asObserver()
         
+        _state.onNext(.initial)
+        
         userImageOutput = _userImage.map { $0 }
         
         requests = _loadData.withLatestFrom(Observable.combineLatest(_nameText, _occupupationText, _userImage))

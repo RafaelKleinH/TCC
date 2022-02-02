@@ -41,6 +41,7 @@ class RFKTextField: UITextField {
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
         self.layer.cornerRadius = 4
         self.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+   
     }
     
     override init(frame: CGRect) {

@@ -44,6 +44,8 @@ class MainTabBarCoordinator: CoordinatorProtocol {
             switch target {
             case .logoff:
                 navigationController?.popViewController(animated: true)
+            case .registerHours:
+                TimeDataRegisterViewCoordinator(navC: self.navigationController).start()
             }
         }).disposed(by: configViewModel.myDisposeBag)
 
@@ -62,6 +64,7 @@ class MainTabBarCoordinator: CoordinatorProtocol {
 extension MainTabBarCoordinator {
     enum TargetC {
         case logoff
+        case registerHours
     }
     
     enum TargetH {

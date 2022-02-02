@@ -17,8 +17,19 @@ class ConfigViewController: UIViewController {
     
     override func viewDidLoad() {
         view = baseView
-        
         rxBinds()
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.topItem?.title = "CONFIGURAÇÕES"
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        super.viewWillAppear(animated)
     }
     
     init(v: ConfigView, vm: ConfigViewModelProtocol) {
@@ -33,13 +44,14 @@ class ConfigViewController: UIViewController {
     
     func rxBinds() {
         baseView.logOffBtn.rx.tap
-            .subscribe(onNext: { _ in
-                self.viewModel.didClickLogoff.onNext(())
-                print("aaaa")
-            })
+            .bind(to: viewModel.didClickLogoff)
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.logoffBack.subscribe().disposed(by: viewModel.myDisposeBag)
+        
+        baseView.registerDataBtn.rx.tap
+            .bind(to: viewModel.didClickHoursRegister)
+            .disposed(by: viewModel.myDisposeBag)
         
         viewModel.logOffText
             .bind(to: baseView.logOffBtn.rx.title())
