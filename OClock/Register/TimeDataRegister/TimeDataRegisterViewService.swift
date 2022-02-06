@@ -6,3 +6,28 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import FirebaseDatabase
+
+protocol TimeDataRegisterViewServiceProtocol {
+    func postInformations(totalH: String, hasBreak: Bool, breakTime: String, startTime: String) -> Observable<Bool>
+}
+
+class TimeDataRegisterViewService: TimeDataRegisterViewServiceProtocol {
+    func postInformations(totalH: String, hasBreak: Bool, breakTime: String, startTime: String) -> Observable<Bool> {
+        
+        return Observable.create { observer in
+            //TODO: Salvar imagem
+            RFKDatabase().userHoursDataBaseWithUID.updateChildValues(["totalHours": totalH, "hasBreak": hasBreak, "breakTime": breakTime, "sttartHour": startTime]) { (error, db) in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    observer.onNext(true)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+}
