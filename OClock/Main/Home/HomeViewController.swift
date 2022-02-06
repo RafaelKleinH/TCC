@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         
         viewModel.userData
             .subscribe(onNext: {  data in
-                if data?.name == "" {
+                if data.name == "" {
                     self.viewModel.didGoToRegisterView.onNext(())
                 }
             }, onError: { _ in
@@ -50,6 +50,9 @@ class HomeViewController: UIViewController {
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.hoursData
+            .subscribe()
+            .disposed(by: viewModel.myDisposeBag)
         
         viewModel.ableFakedRegister
             .subscribe(onNext: { value in
@@ -57,16 +60,26 @@ class HomeViewController: UIViewController {
             })
             .disposed(by: viewModel.myDisposeBag)
         
-        viewModel.fakeHours
+        viewModel.userData
+            .subscribe()
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.totalBreakHours
             .subscribe(onNext: { interger in
-                self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(interger[0]))
+                self.baseView.secondSubProgress.progress.startProgress(angle: 360, time: TimeInterval(interger))
+                self.baseView.secondSubProgress.progress.pauseProgress()
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.totalHours
+            .subscribe(onNext: { interger in
+                self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(interger))
                 self.baseView.circularProgress.pauseProgress()
                 
-                self.baseView.firstSubProgress.progress.startProgress(angle: 360, time: TimeInterval(interger[0] / 2))
+                self.baseView.firstSubProgress.progress.startProgress(angle: 360, time: TimeInterval(interger / 2))
                 self.baseView.firstSubProgress.progress.pauseProgress()
                 
-                self.baseView.secondSubProgress.progress.startProgress(angle: 360, time: interger[1])
-                self.baseView.secondSubProgress.progress.pauseProgress()
+               
             })
             .disposed(by: viewModel.myDisposeBag)
 
@@ -79,14 +92,12 @@ class HomeViewController: UIViewController {
                     self.baseView.firstSubProgress.progress.pauseProgress()
                     self.baseView.secondSubProgress.progress.resumeProgress()
                     self.viewModel.saveHours(inOrOut: "Out: ")
-                    print(self.baseView.circularProgress.circularProgress.progress)
                 } else {
                     self.viewModel.startTime(self)
                     self.baseView.circularProgress.resumeProgress()
                     self.baseView.firstSubProgress.progress.resumeProgress()
                     self.baseView.secondSubProgress.progress.pauseProgress()
                     self.viewModel.saveHours(inOrOut: "In: ")
-                    print(self.baseView.circularProgress.circularProgress.progress)
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -95,8 +106,28 @@ class HomeViewController: UIViewController {
             .bind(to: baseView.timeLabel.rx.text)
             .disposed(by: viewModel.myDisposeBag)
         
-        viewModel.fakeNameReal
+        viewModel.userName
             .bind(to: baseView.nameLabel.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.state
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .personalLoading:
+                    print("DEBUG: 1")
+                case .personalData:
+                    self.viewModel.didLoadUserData.onNext(())
+                case let .personalErro(error):
+                    print("DEBUG: 3 \(error)")
+                case .hoursLoading:
+                    print("DEBUG: 4")
+                case .hoursData:
+                    print("DEBUG: 5")
+                case let .hoursError(error):
+                    print("DEBUG: 6 \(error)")
+                }
+            })
             .disposed(by: viewModel.myDisposeBag)
     }
     

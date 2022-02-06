@@ -11,12 +11,13 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol HomeViewServiceProtocol {
-    func largato() -> Observable<PersonalData?>
+    func getPersonalData() -> Observable<PersonalData>
+    func getHoursData() -> Observable<HoursData>
 }
 
 class HomeViewService: HomeViewServiceProtocol {
     
-    func largato() -> Observable<PersonalData?> {
+    func getPersonalData() -> Observable<PersonalData> {
         
         return Observable.create { observer in
             RFKDatabase().userDataBaseWithUID.getData  { (error, document) in
@@ -25,6 +26,23 @@ class HomeViewService: HomeViewServiceProtocol {
                 } else {
                     if let data = document.value as? [String: Any] {
                         let prData = PersonalData(dictionary: data)
+                        observer.onNext(prData)
+                    }
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func getHoursData() -> Observable<HoursData> {
+    
+        return Observable.create { observer in
+            RFKDatabase().userHoursDataBaseWithUID.getData  { (error, document) in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    if let data = document.value as? [String: Any] {
+                        let prData = HoursData(dictionary: data)
                         observer.onNext(prData)
                     }
                 }

@@ -60,10 +60,10 @@ class ConfigView: UIView {
         
         separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
         
-        registerDataBtn.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 8, paddingLeft: 24, paddingRight: 24,  height: 52)
-        notifiesDataBtn.anchor(top: registerDataBtn.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingLeft: 24, paddingRight: 24, height: 52)
+        registerDataBtn.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24,  height: 52)
+        notifiesDataBtn.anchor(top: registerDataBtn.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24, height: 52)
+        
         logOffBtn.anchor(left: contentView.leftAnchor, bottom: contentView.layoutMarginsGuide.bottomAnchor, right: contentView.rightAnchor, paddingBottom: 0, height: 52)
-        
-        
     }
+    
 }

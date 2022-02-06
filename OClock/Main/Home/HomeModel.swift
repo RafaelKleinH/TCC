@@ -33,3 +33,29 @@ class PersonalData {
         
      }
 }
+
+class HoursData {
+    var startHours: String!
+    var hasBreak: Bool!
+    var totalBreakTime: String!
+    var totalHours: String!
+    
+    init(dictionary: [String: Any]) {
+        
+        if let startHours = dictionary["sttartHour"] as? String {
+            self.startHours = startHours
+        }
+        
+        if let hasBreak = dictionary["hasBreak"] as? Bool {
+            self.hasBreak = hasBreak
+        }
+        
+        if let totalBreakTime = dictionary["breakTime"] as? String {
+            self.totalBreakTime = totalBreakTime
+        }
+        
+        if let totalHours = dictionary["totalHours"] as? String {
+            self.totalHours = totalHours
+        }
+    }
+}

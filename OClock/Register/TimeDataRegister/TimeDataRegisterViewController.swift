@@ -28,11 +28,7 @@ class TimeDataRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         view = baseView
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-        title = "REGISTRO DE HORAS"
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts.withAlphaComponent(1), NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        setupNavBar()
         super.viewDidLoad()
     }
     
@@ -45,7 +41,42 @@ class TimeDataRegisterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func rxBinds() {
+    private func setupNavBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        title = viewModel.navBarTitle
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts.withAlphaComponent(1), NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+    }
+    
+    private func rxBinds() {
+        
+        baseView.totalHoursTF
+            .rx
+            .text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.totalHoursTFValue)
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.totalPauseHoursTF
+            .rx
+            .text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.pauseHoursTFValue)
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.initialHour
+            .rx
+            .text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.initialHoursTFValue)
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.confirmButton
+            .rx
+            .tap
+            .bind(to: viewModel.didTapBottomButton)
+            .disposed(by: viewModel.disposeBag)
         
         viewModel.buttonTitle
             .bind(to: baseView.confirmButton.rx.title())
@@ -69,17 +100,26 @@ class TimeDataRegisterViewController: UIViewController {
         
         baseView.setupViewBasics()
         
-        baseView.pauseSwith.rx.value
+        baseView.pauseSwith
+            .rx
+            .value
             .bind(to: viewModel.pauseSwitchValue)
             .disposed(by: viewModel.disposeBag)
         
-        viewModel.subPauseSwitchValue.subscribe(onNext: { [] a in
-             UIView.animate(withDuration: 0.3) {
-                self.baseView.totalPauseHoursView.isHidden = !a
-                self.baseView.totalPauseHoursView.alpha = !a ? 0 : 1
-            }
-        })
-        .disposed(by: viewModel.disposeBag)
+        viewModel.subPauseSwitchValue
+            .subscribe(onNext: { [weak self] a in
+                UIView.animate(withDuration: 0.3) {
+                    self?.baseView.totalPauseHoursView.isHidden = !a
+                    self?.baseView.totalPauseHoursView.alpha = !a ? 0 : 1
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
             
+        viewModel.returnedValue
+            .subscribe(onNext: { bool in
+                print(bool)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
     }
 }

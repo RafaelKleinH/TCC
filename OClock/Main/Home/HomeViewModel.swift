@@ -13,6 +13,9 @@ enum HomeState {
     case personalErro(_: String)
     case personalLoading
     case personalData
+    case hoursError(_: String)
+    case hoursLoading
+    case hoursData
 }
 
 protocol HomeViewModelProtocol {
@@ -27,8 +30,10 @@ protocol HomeViewModelProtocol {
     var didTapBackButton: AnyObserver<Void> { get }
     var didGoToRegisterView: AnyObserver<Void> { get }
     var didViewLoad: AnyObserver<Void> { get }
+    var didLoadUserData: AnyObserver<Void> { get }
     
-    var userData: Observable<PersonalData?> { get }
+    var hoursData: Observable<HoursData> { get }
+    var userData: Observable<PersonalData> { get }
     
     var timer: Timer { get }
     var timerNum: Int { get }
@@ -42,8 +47,9 @@ protocol HomeViewModelProtocol {
     var isOpen: Bool { get }
     
     
-    var fakeHours: Observable<[Double]> { get }
-    var fakeNameReal: Observable<String> { get }
+    var totalHours: Observable<Int> { get }
+    var totalBreakHours: Observable<Int> { get }
+    var userName: Observable<String> { get }
     var ableFakedRegister: BehaviorRelay<[String]> { get }
 }
 
@@ -54,8 +60,10 @@ class HomeViewModel: HomeViewModelProtocol {
     let didTapBackButton: AnyObserver<Void>
     let didGoToRegisterView: AnyObserver<Void>
     let didViewLoad: AnyObserver<Void>
+    let didLoadUserData: AnyObserver<Void>
     
-    let userData: Observable<PersonalData?>
+    let hoursData: Observable<HoursData>
+    let userData: Observable<PersonalData>
     
     let state: Observable<HomeState>
     
@@ -71,11 +79,11 @@ class HomeViewModel: HomeViewModelProtocol {
     var isOpen: Bool = false
     
     
-    //MARK:- FakeModels
-    
-    let fakeName: Observable<String>
-    var fakeNameReal: Observable<String>
-    let fakeHours: Observable<[Double]>
+    //MARK:- Models
+
+    var userName: Observable<String>
+    let totalHours: Observable<Int>
+    let totalBreakHours: Observable<Int>
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
     
     init(service: HomeViewServiceProtocol = HomeViewService()) {
@@ -85,6 +93,9 @@ class HomeViewModel: HomeViewModelProtocol {
         
         let _didViewLoad = PublishSubject<Void>()
         didViewLoad = _didViewLoad.asObserver()
+        
+        let _didLoadUserData = PublishSubject<Void>()
+        didLoadUserData = _didLoadUserData.asObserver()
         
         let _state = PublishSubject<HomeState>()
         state = _state.asObserver()
@@ -98,19 +109,10 @@ class HomeViewModel: HomeViewModelProtocol {
         let _midTime = PublishSubject<Int>()
         midTime = _midTime.asObserver()
             
-        fakeName = .just("Rafael Klein Hartmann")
         
-        fakeNameReal = fakeName.map {
-            let sepName = $0.components(separatedBy: " ")
-            if let valOne = sepName.first, let valTwo = sepName.last {
-                let dale = valOne == valTwo ? valOne : valOne + " " + valTwo
-                return dale
-            } else {
-                return "Olá :D"
-            }
-        }
         
-        fakeHours = .just([28800,  3600])
+        
+        
         
         stringTime = _midTime.map { a in
             let formatter = DateComponentsFormatter()
@@ -122,8 +124,8 @@ class HomeViewModel: HomeViewModelProtocol {
             return formattedString
         }
         
-        userData = _didViewLoad.flatMapLatest { _ in
-            service.largato()
+        userData = _didViewLoad.flatMap { _ in
+            service.getPersonalData()
                 .asObservable()
                 .observe(on: MainScheduler.instance)
                 .do(onNext: { _ in _state.onNext(.personalData) },
@@ -133,7 +135,62 @@ class HomeViewModel: HomeViewModelProtocol {
                     return Observable.empty()
                 })
         }.share()
+        
+        userName = userData.map { $0.name }.map { name in
+            guard let name = name else { return "Olá :D" }
+            let sepName = name.components(separatedBy: " ")
+            if let valOne = sepName.first, let valTwo = sepName.last {
+                let dale = valOne == valTwo ? valOne : valOne + " " + valTwo
+                return dale
+            } else {
+                return "Olá :D"
+            }
+        }
      
+        hoursData = _didLoadUserData
+            .flatMap { _ in
+                service.getHoursData()
+                    .asObservable()
+                    .observe(on: MainScheduler.instance)
+                    .do(onNext: { _ in _state.onNext(.hoursData) },
+                        onSubscribe: { _state.onNext(.hoursLoading) })
+                    .catchError({ error in
+                        _state.onNext(.hoursError(error.localizedDescription))
+                        return Observable.empty()
+                    })
+
+            }.share()
+        
+        totalHours = hoursData.map({ $0.totalHours }).map({ totalHours in
+            guard let hours = totalHours else { return 0 }
+            let sepHours = hours.components(separatedBy: ":")
+            if let valOne = sepHours.first, let valTwo = sepHours.last {
+                if let valOne = Int(valOne), let valTwo = Int(valTwo) {
+                    return (valOne * 3600) + (valTwo * 60)
+                } else {
+                    return 0
+                }
+            } else {
+                return 0
+            }
+        })
+        
+        totalBreakHours = hoursData.map({ $0.totalBreakTime }).map({ totalBreakHours in
+            guard let hours = totalBreakHours else { return 0 }
+            let sepHours = hours.components(separatedBy: ":")
+            if let valOne = sepHours.first, let valTwo = sepHours.last {
+                if let valOne = Int(valOne), let valTwo = Int(valTwo) {
+                    return (valOne * 3600) + (valTwo * 60)
+                } else {
+                    return 0
+                }
+            } else {
+                return 0
+            }
+        })
+        
+        
+        
         navigationTarget = Observable.merge(
             _didGoToRegisterView.map { .registerBaseData }
         )
