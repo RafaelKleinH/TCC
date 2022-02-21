@@ -38,16 +38,16 @@
 		9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4C92784EF27009FA50F /* RFKolors.swift */; };
 		9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4CE2784F107009FA50F /* RegisterViewService.swift */; };
 		9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */; };
+		9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46DBDF27C2FFAB00EA0A44 /* CustomImages.swift */; };
 		9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */; };
 		9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */; };
 		9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */; };
 		9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */; };
 		9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */; };
-		9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */; };
+		9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* Extensions.swift */; };
 		9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCD9927938E53000CA720 /* RFKProgress.swift */; };
 		9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D918027A257E9004FB869 /* ConfigViewService.swift */; };
 		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
-		9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F762278A8CBE0036CBAB /* Extensions.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
 		9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7417692786520A007BCF6A /* HomeViewController.swift */; };
 		9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */; };
@@ -104,7 +104,7 @@
 		2D4A291902B93705CA4318C3 /* Pods-OClock-OClockUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock-OClockUITests.debug.xcconfig"; path = "Target Support Files/Pods-OClock-OClockUITests/Pods-OClock-OClockUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D3FDD809C87958DA008105F /* Pods-OClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OClock.release.xcconfig"; path = "Target Support Files/Pods-OClock/Pods-OClock.release.xcconfig"; sourceTree = "<group>"; };
 		9C8D777E0F2F4BDCF4B734E9 /* Pods_OClockTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OClockTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D068640278A328C0009A6B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D068640278A328C0009A6B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D06866A278A3FB20009A6B9 /* LoginViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewService.swift; sourceTree = "<group>"; };
 		9D068675278A45630009A6B9 /* PersonalRegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewCoordinator.swift; sourceTree = "<group>"; };
 		9D06867D278A45850009A6B9 /* PersonalRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRegisterViewController.swift; sourceTree = "<group>"; };
@@ -139,16 +139,16 @@
 		9D46A4C92784EF27009FA50F /* RFKolors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKolors.swift; sourceTree = "<group>"; };
 		9D46A4CE2784F107009FA50F /* RegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewService.swift; sourceTree = "<group>"; };
 		9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitRoundedImageView.swift; sourceTree = "<group>"; };
+		9D46DBDF27C2FFAB00EA0A44 /* CustomImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
 		9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9D4F3DAF274570AD004D7FD8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		9D4F3DBA274570BE004D7FD8 /* RegisterViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewCoordinator.swift; sourceTree = "<group>"; };
-		9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
+		9D4F3DCC2745897A004D7FD8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9D5CCD9927938E53000CA720 /* RFKProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKProgress.swift; sourceTree = "<group>"; };
 		9D5D918027A257E9004FB869 /* ConfigViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewService.swift; sourceTree = "<group>"; };
 		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
-		9D68F762278A8CBE0036CBAB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../../../Downloads/Extensions.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
 		9D7417692786520A007BCF6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
@@ -156,11 +156,11 @@
 		9D7417782786522A007BCF6A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9D765BBE2741786400AF5884 /* RFKGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKGradient.swift; sourceTree = "<group>"; };
 		9D765BC3274184B600AF5884 /* RFKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitTextField.swift; sourceTree = "<group>"; };
-		9D765BCC2741982B00AF5884 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-SemiBold.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
-		9D765BCD2741982B00AF5884 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Medium.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
-		9D765BCE2741982B00AF5884 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Light.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Light.ttf"; sourceTree = "<group>"; };
-		9D765BCF2741982B00AF5884 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
-		9D765BD02741982B00AF5884 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Regular.ttf"; path = "../../../../../Downloads/Quicksand/static/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		9D765BCC2741982B00AF5884 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		9D765BCD2741982B00AF5884 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		9D765BCE2741982B00AF5884 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		9D765BCF2741982B00AF5884 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		9D765BD02741982B00AF5884 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		9D765BD9274198FA00AF5884 /* RFontsK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFontsK.swift; sourceTree = "<group>"; };
 		9D765BDE27419A4800AF5884 /* RFKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitButton.swift; sourceTree = "<group>"; };
 		9D76A2E5278BA47C0092C3D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -276,7 +276,6 @@
 		9D231BFC2797872A00DCCB25 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9D40AA96279A1537009C493E /* New Group */,
 				9DD9170A279797380015947E /* Config */,
 				9D741768278651EA007BCF6A /* Home */,
 				9D231BFD2797875000DCCB25 /* tabBarController.swift */,
@@ -353,8 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				9D765BD9274198FA00AF5884 /* RFontsK.swift */,
-				9D68F762278A8CBE0036CBAB /* Extensions.swift */,
-				9D4F3DCC2745897A004D7FD8 /* CustomImages.swift */,
+				9D46DBDF27C2FFAB00EA0A44 /* CustomImages.swift */,
+				9D4F3DCC2745897A004D7FD8 /* Extensions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -380,13 +379,6 @@
 				9D231BF72797818700DCCB25 /* LoginModel.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		9D40AA96279A1537009C493E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		9D4F3DA32745707B004D7FD8 /* Register */ = {
@@ -739,7 +731,6 @@
 				9DD91711279797660015947E /* ConfigViewController.swift in Sources */,
 				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
 				9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */,
-				9D68F763278A8CBE0036CBAB /* Extensions.swift in Sources */,
 				9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */,
 				9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */,
 				9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */,
@@ -762,7 +753,7 @@
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
 				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
 				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
-				9D4F3DCD2745897A004D7FD8 /* CustomImages.swift in Sources */,
+				9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */,
 				9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */,
 				9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */,
 				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,
@@ -771,6 +762,7 @@
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
 				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,
 				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
+				9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */,
 				9DEF4D0B279616A300750AF2 /* UserDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
