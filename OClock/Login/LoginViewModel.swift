@@ -106,7 +106,7 @@ class LoginViewModel: LoginViewModelProtocol {
         getUserDefaults = _getUserDefaults.asObserver()
         
         login = _didTapLoginButton
-            .withLatestFrom(Observable.combineLatest(_emailText, _passwordText, _toggleDefault))
+            .withLatestFrom(Observable.combineLatest(_emailText, _passwordText, _toggleDefault.startWith(false)))
             .flatMapLatest { email, password, toggle in
                 service.LoginUser(email: email, password: password, saveUser: toggle)
                     .asObservable()

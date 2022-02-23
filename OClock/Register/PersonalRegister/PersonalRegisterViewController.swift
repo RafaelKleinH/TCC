@@ -124,7 +124,6 @@ class PersonalRegisterViewController: UIViewController {
                     print("loading")
                 case .success:
                     print("success")
-                    self.viewModel.didGoToNextView.onNext(())
                 case let .error(error):
                     print(error)
                 }

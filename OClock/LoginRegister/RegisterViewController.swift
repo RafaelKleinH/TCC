@@ -33,7 +33,6 @@ class RegisterViewController: UIViewController {
         baseView.emailTextField.delegate = self
         baseView.passwordTextField.delegate = self
         baseView.confirmPasswordTextField.delegate = self
-        navigationBarConfig()
         rxBindings()
         
 
@@ -43,7 +42,7 @@ class RegisterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationBarConfig()
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,13 +50,13 @@ class RegisterViewController: UIViewController {
     }
     
     func navigationBarConfig() {
+        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.tintColor = RFKolors.whiteTexts
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent =  true
-        navigationController?.navigationItem.leftBarButtonItem?.image = UIImage(named: "arrow")
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.topItem?.title = "REGISTRO"
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts.withAlphaComponent(1), NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         navigationController?.navigationItem.leftBarButtonItem?.rx.tap
             .bind(to: viewModel.didTapNavigationBackButtom)
             .disposed(by: viewModel.myDisposeBag)

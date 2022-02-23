@@ -151,13 +151,13 @@ class LoginView: UIView {
     private func installConstraints(){
         
 
-        contentView.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
+        contentView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
         iconImageView.centerX(inView: self)
         iconImageView.setDimensions(height: RFKSize.xxhigh, width: RFKSize.xxhigh)
         iconImageView.anchor(top: contentView.safeAreaLayoutGuide.topAnchor, paddingTop: RFKSize.high)
         
-        stack.anchor(top: iconImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.high, paddingRight: RFKSize.high)
+        stack.anchor(top: iconImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.xhigh, paddingLeft: RFKSize.high, paddingRight: RFKSize.high)
         secondaryStack.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.high, paddingBottom: RFKSize.high, paddingRight: RFKSize.high)
         
         emailTextField.setHeight(height: RFKSize.xhigh)

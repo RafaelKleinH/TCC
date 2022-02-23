@@ -29,6 +29,7 @@ class HomeViewService: HomeViewServiceProtocol {
                         observer.onNext(prData)
                     }
                 }
+                observer.onCompleted()
             }
             return Disposables.create()
         }

@@ -25,11 +25,10 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         homeViewController.tabBarItem = homeTabBarItem
         
         homeViewModel.navigationTarget
-            .observe(on:  MainScheduler.instance)
-            .subscribe(onNext: { [navigationController] target in
+            .subscribe(onNext: { [weak navigationController] target in
                 switch target {
                 case .registerBaseData:
-                    PersonalRegisterViewCoordinator(navigationController: navigationController).start()
+                    PersonalRegisterViewCoordinator(navigationController: self.navigationController).start()
                 }
             }).disposed(by: homeViewModel.myDisposeBag)
         
@@ -40,14 +39,15 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         let configView = ConfigView()
         let configViewController = ConfigViewController(v: configView, vm: configViewModel)
         
-        configViewModel.navigationTarget.subscribe(onNext: { [weak navigationController] target in
-            switch target {
-            case .logoff:
-                navigationController?.popViewController(animated: true)
-            case .registerHours:
-                TimeDataRegisterViewCoordinator(navC: self.navigationController).start()
-            }
-        }).disposed(by: configViewModel.myDisposeBag)
+        configViewModel.navigationTarget
+            .subscribe(onNext: { [weak navigationController] target in
+                switch target {
+                case .logoff:
+                    navigationController?.popViewController(animated: true)
+                case .registerHours:
+                    TimeDataRegisterViewCoordinator(navC: self.navigationController).start()
+                }
+            }).disposed(by: configViewModel.myDisposeBag)
 
         
         let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 1)

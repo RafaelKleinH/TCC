@@ -24,7 +24,14 @@ class RegisterView: UIView {
    // let scrollView = UIScrollView()
     var scrollBottomConstraint: NSLayoutConstraint?
     
+    let scrollView = UIScrollView()
+    
     let contentView = UIView()
+    
+    let separatorNav: UIView = {
+        $0.backgroundColor = RFKolors.whiteTexts
+        return $0
+    }(UIView())
     
     let emailTextField = RFKTextField()
     
@@ -63,17 +70,33 @@ class RegisterView: UIView {
     }
     
     private func addSubviews() {
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
-        addSubview(confirmPasswordTextField)
-        addSubview(registerButton)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(separatorNav)
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(passwordTextField)
+        contentView.addSubview(confirmPasswordTextField)
+        contentView.addSubview(registerButton)
        
     }
     
     private func installConstraints() {
-        emailTextField.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.xxhigh, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
-        passwordTextField.anchor(top: emailTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
-        confirmPasswordTextField.anchor(top: passwordTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.medium, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
-        registerButton.anchor(top: confirmPasswordTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        scrollView.centerX(inView: self)
+        scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        scrollView.anchor(top: layoutMarginsGuide.topAnchor, bottom: layoutMarginsGuide.bottomAnchor)
+     
+        contentView.centerX(inView: scrollView)
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
+        
+        separatorNav.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
+        
+        emailTextField.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
+        
+        passwordTextField.anchor(top: emailTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        
+        confirmPasswordTextField.anchor(top: passwordTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        
+        registerButton.anchor(top: confirmPasswordTextField.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingBottom: RFKSize.xsmall, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     }
 }

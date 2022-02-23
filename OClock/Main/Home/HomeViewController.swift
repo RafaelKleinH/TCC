@@ -42,11 +42,12 @@ class HomeViewController: UIViewController {
         
         viewModel.userData
             .subscribe(onNext: {  data in
+                print("foi")
                 if data.name == "" {
                     self.viewModel.didGoToRegisterView.onNext(())
+                } else {
+                    self.viewModel.didLoadUserData.onNext(())
                 }
-            }, onError: { _ in
-                print("HOME:erro")
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -73,6 +74,7 @@ class HomeViewController: UIViewController {
         
         viewModel.totalHours
             .subscribe(onNext: { interger in
+                print("DEBUGS:\(interger)")
                 self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(interger))
                 self.baseView.circularProgress.pauseProgress()
                 

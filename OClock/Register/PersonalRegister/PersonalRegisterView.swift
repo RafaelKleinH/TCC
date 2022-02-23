@@ -63,18 +63,16 @@ class PersonalRegisterView: UIView {
     }
 
     func setupConstraints() {
-        imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 20).isActive = true
-
-        imageView.anchor(top: layoutMarginsGuide.topAnchor, paddingTop: RFKSize.high)
+        imageView.anchor(top: layoutMarginsGuide.topAnchor, paddingTop: RFKSize.xhigh)
         imageView.centerX(inView: self)
         imageView.setDimensions(height: 120, width: 120)
         
         imageExplicationLabel.anchor(top: imageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
         
-        nameTextField.anchor(top: imageExplicationLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
-        occupationTextField.anchor(top: nameTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        nameTextField.anchor(top: imageExplicationLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
+        occupationTextField.anchor(top: nameTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     
-        registerButton.anchor(top: occupationTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        registerButton.anchor(top: occupationTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     }
     
 }

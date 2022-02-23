@@ -39,6 +39,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationBarConfig()
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
         baseView.layoutIfNeeded()
