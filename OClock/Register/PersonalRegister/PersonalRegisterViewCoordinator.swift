@@ -13,14 +13,16 @@ import RxSwift
 class PersonalRegisterViewCoordinator: CoordinatorProtocol {
    
     var navigationController: UINavigationController
+    var isFirstRegister: Bool
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, isFirstRegister: Bool = false) {
         self.navigationController = navigationController
+        self.isFirstRegister = isFirstRegister
     }
     
     func start() {
         let service = PersonalRegisterViewService()
-        let viewModel = PersonalRegisterViewModel(service: service)
+        let viewModel = PersonalRegisterViewModel(service: service, isFirstRegister: isFirstRegister)
         let v = PersonalRegisterView()
         let vc = PersonalRegisterViewController(viewModel: viewModel, baseView: v)
         

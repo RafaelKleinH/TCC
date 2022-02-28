@@ -8,10 +8,18 @@
 import Foundation
 import RxSwift
 
+enum TimeDataRegisterState {
+    case loading
+    case success
+    case error(_: String)
+}
+
 protocol TimeDataRegisterViewModelProtocol {
  
     typealias Target = TimeDataRegisterViewCoordinator.Target
  
+    var state: Observable<TimeDataRegisterState> { get }
+    
     var disposeBag: DisposeBag { get }
     
     var totalHoursTextPH: Observable<String> { get }
@@ -30,6 +38,7 @@ protocol TimeDataRegisterViewModelProtocol {
    
     var returnedValue: Observable<Bool> { get }
     
+    var didReturnHome: AnyObserver<Void> { get }
     var didTapBackButton: AnyObserver<Void> { get }
     var didTapBottomButton: AnyObserver<Void> { get }
 }
@@ -50,7 +59,9 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
     let disposeBag = DisposeBag()
     
     let navigationTarget: Observable<Target>
+    let state: Observable<TimeDataRegisterState>
     
+    let didReturnHome: AnyObserver<Void>
     let didTapBackButton: AnyObserver<Void>
     let didTapBottomButton: AnyObserver<Void>
     
@@ -60,6 +71,9 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
     let initialHoursTFValue: AnyObserver<String>
     
     init(service: TimeDataRegisterViewServiceProtocol = TimeDataRegisterViewService()) {
+        
+        let _didReturnHome = PublishSubject<Void>()
+        didReturnHome = _didReturnHome.asObserver()
         
         let _didTapBackButton = PublishSubject<Void>()
         didTapBackButton = _didTapBackButton.asObserver()
@@ -79,13 +93,16 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
         let _initialHoursTFValue = PublishSubject<String>()
         initialHoursTFValue = _initialHoursTFValue.asObserver()
         
+        let _state = PublishSubject<TimeDataRegisterState>()
+        state = _state.asObserver()
+        
         totalHoursTextPH = .just("Tempo total de horas de trabalho")
         pauseLabelTextPH = .just("Faz alguma pausa?")
         totalPauseHoursTextPH = .just("Tempo da pausa")
         initialHoursPH = .just("Hora de começo")
         buttonTitle = .just("Registrar")
         
-        subPauseSwitchValue = _pauseSwitchValue.map {
+        subPauseSwitchValue = _pauseSwitchValue.startWith(false).map {
             if !$0 {
                 _pauseHoursTFValue.onNext("0")
             }
@@ -102,16 +119,17 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
                     .postInformations(totalH: totalHours, hasBreak: hasBreak, breakTime: totalBreakHours, startTime: initHours)
                     .asObservable()
                     .observe(on: MainScheduler.instance)
-                    .do(onNext: { _ in },
-                        onSubscribe: {  })
+                    .do(onNext: { _ in _state.onNext(.success) },
+                        onSubscribe: { _state.onNext(.loading) })
                     .catchError { error in
-                        
+                        _state.onNext(.error(error.localizedDescription))
                         return Observable.empty()
                     }
             }.share()
         
         navigationTarget = Observable.merge(
-            _didTapBackButton.map { .pop }
+            _didTapBackButton.map { .pop },
+            _didReturnHome.map { .returnHome }
         )
     }
 }

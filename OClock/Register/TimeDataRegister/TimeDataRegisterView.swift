@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import JGProgressHUD
 
 class TimeDataRegisterView: UIView {
     
@@ -18,6 +19,7 @@ class TimeDataRegisterView: UIView {
         setupSubviews()
         setupAnchor()
         setupViewBasics()
+        
     }
     
     //totalDeHoras
@@ -27,6 +29,8 @@ class TimeDataRegisterView: UIView {
     
     let scrollView = UIScrollView()
     let contentView = UIView()
+    
+    var activityIndicator = RFKIndicatorView()
     
     let separatorNav: UIView = {
         $0.backgroundColor = RFKolors.whiteTexts
@@ -80,17 +84,19 @@ class TimeDataRegisterView: UIView {
         totalPauseHoursTF.styleTextField()
         initialHour.styleTextField()
         
-        totalHoursTF.placeholderColor = RFKolors.whiteTexts
-        totalPauseHoursTF.placeholderColor = RFKolors.whiteTexts
-        initialHour.placeholderColor = RFKolors.whiteTexts
+        totalHoursTF.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
+        totalPauseHoursTF.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
+        initialHour.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
+        
         
     }
     
     func setupSubviews() {
         addSubview(UIView(frame: .zero))
+        addSubview(activityIndicator)
         addSubview(scrollView)
+        addSubview(separatorNav)
         scrollView.addSubview(contentView)
-        contentView.addSubview(separatorNav)
         contentView.addSubview(totalHoursTF)
         contentView.addSubview(mainPauseStack)
         mainPauseStack.addArrangedSubview(pauseStack)
@@ -107,17 +113,21 @@ class TimeDataRegisterView: UIView {
     }
     
     func setupAnchor() {
+        activityIndicator.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        
+        separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
+        
         scrollView.centerX(inView: self)
         scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        scrollView.anchor(top: topAnchor, bottom: bottomAnchor)
+        scrollView.anchor(top: separatorNav.bottomAnchor, bottom: bottomAnchor)
      
         contentView.centerX(inView: self)
         contentView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
         
-        separatorNav.anchor(top: contentView.layoutMarginsGuide.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
         
-        totalHoursTF.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 36, paddingLeft: 24, paddingRight: 24, height: 52)
+        
+        totalHoursTF.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 36, paddingLeft: 24, paddingRight: 24, height: RFKSize.xhigh)
         
         mainPauseStack.anchor(top: totalHoursTF.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingRight: 24)
         
@@ -127,9 +137,9 @@ class TimeDataRegisterView: UIView {
         
         totalPauseHoursView.anchor(top: pauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingRight: 24, height: 52)
         
-        totalPauseHoursTF.anchor(top: totalPauseHoursView.topAnchor, left: totalPauseHoursView.leftAnchor, bottom: totalPauseHoursView.bottomAnchor, right: totalPauseHoursView.rightAnchor, height: 52)
+        totalPauseHoursTF.anchor(top: totalPauseHoursView.topAnchor, left: totalPauseHoursView.leftAnchor, bottom: totalPauseHoursView.bottomAnchor, right: totalPauseHoursView.rightAnchor, height: RFKSize.xhigh)
         
-        initialHour.anchor(top: mainPauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 32, paddingLeft: 24, paddingRight: 24, height: 52)
+        initialHour.anchor(top: mainPauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 32, paddingLeft: 24, paddingRight: 24, height: RFKSize.xhigh)
         
 
         confirmButton.anchor(top: initialHour.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 16, paddingRight: 24, height: 52)

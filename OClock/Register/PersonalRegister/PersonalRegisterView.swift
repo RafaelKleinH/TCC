@@ -25,6 +25,14 @@ class PersonalRegisterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let scrollView = UIScrollView()
+    
+    let contentView = UIView()
+    
+    let separatorNav: UIView = {
+        $0.backgroundColor = RFKolors.whiteTexts
+        return $0
+    }(UIView())
     
     let imageView = RFKitRoundedImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
@@ -46,33 +54,49 @@ class PersonalRegisterView: UIView {
         imageView.image = UIImage(named: CustomImages.defaultImageCircle)
         
         nameTextField.styleTextField()
-        nameTextField.placeholderColor = RFKolors.whiteTexts
+        nameTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
         
         occupationTextField.styleTextField()
-        occupationTextField.placeholderColor = RFKolors.whiteTexts
+        occupationTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
    
         registerButton.addPrimaryStyle()
     }
     
     func setupSubviews() {
-        addSubview(imageView)
-        addSubview(imageExplicationLabel)
-        addSubview(nameTextField)
-        addSubview(occupationTextField)
-        addSubview(registerButton)
+        addSubview(UIView(frame: .zero))
+        addSubview(scrollView)
+        addSubview(separatorNav)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(imageView)
+        contentView.addSubview(imageExplicationLabel)
+        contentView.addSubview(nameTextField)
+        contentView.addSubview(occupationTextField)
+        contentView.addSubview(registerButton)
     }
 
     func setupConstraints() {
-        imageView.anchor(top: layoutMarginsGuide.topAnchor, paddingTop: RFKSize.xhigh)
+        
+        separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
+        
+        scrollView.centerX(inView: self)
+        scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        scrollView.anchor(top: separatorNav.bottomAnchor, bottom: bottomAnchor)
+     
+        contentView.centerX(inView: scrollView)
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.anchor(top: scrollView.layoutMarginsGuide.topAnchor, bottom: scrollView.layoutMarginsGuide.bottomAnchor)
+        
+        
+        imageView.anchor(top: contentView.topAnchor, paddingTop: RFKSize.small)
         imageView.centerX(inView: self)
         imageView.setDimensions(height: 120, width: 120)
         
-        imageExplicationLabel.anchor(top: imageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
+        imageExplicationLabel.anchor(top: imageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
         
-        nameTextField.anchor(top: imageExplicationLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
-        occupationTextField.anchor(top: nameTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        nameTextField.anchor(top: imageExplicationLabel.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
+        occupationTextField.anchor(top: nameTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     
-        registerButton.anchor(top: occupationTextField.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        registerButton.anchor(top: occupationTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     }
     
 }

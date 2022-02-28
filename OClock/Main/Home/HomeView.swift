@@ -44,6 +44,8 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let indicatorView = UIActivityIndicatorView()
+    
     let scrollView: UIScrollView = {
         $0.showsVerticalScrollIndicator = false
         return $0
@@ -103,6 +105,7 @@ class HomeView: UIView {
     
     func setupSubview() {
         addSubview(UIView(frame: .zero))
+        addSubview(indicatorView)
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(horizontalStackView)
@@ -120,6 +123,8 @@ class HomeView: UIView {
     }
     
     func setupAnchors() {
+        indicatorView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        
         
         scrollView.centerX(inView: self)
         scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true

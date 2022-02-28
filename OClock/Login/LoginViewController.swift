@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .subscribe(onNext: { [weak baseView] a in
             
                 baseView?.emailTextField.placeholder = a
-                baseView?.emailTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.emailTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .subscribe(onNext: { [weak baseView] a in
             
                 baseView?.passwordTextField.placeholder = a
-                baseView?.passwordTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.passwordTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
                 
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -162,19 +162,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 switch state {
                 case let .error(error):
                     print("DEBUG: Error")
-                    self.baseView.activityIndicator.textLabel.rx.text.onNext(error)
-                    self.baseView.activityIndicator.indicatorView = JGProgressHUDErrorIndicatorView.init()
-                    self.baseView.activityIndicator.dismiss(afterDelay: 2.0)
+                  //  self.baseView.activityIndicator.textLabel.rx.text.onNext(error)
+                  //  self.baseView.activityIndicator.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                  //  self.baseView.activityIndicator.dismiss(afterDelay: 2.0)
                 case .loading:
-                    self.baseView.emailTextField.resignFirstResponder()
-                    self.baseView.passwordTextField.resignFirstResponder()
-                    self.baseView.activityIndicator.textLabel.rx.text.onNext("Loading")
-                    self.baseView.activityIndicator.show(in: self.baseView)
-                    print("DEBUG: Load")
+                    self.baseView.contentView.isHidden = true
+                    self.baseView.activityIndicator.isHidden = false
+                    self.baseView.activityIndicator.activityIndicator.startAnimating()
                 case .success:
+                    self.baseView.activityIndicator.activityIndicator.stopAnimating()
                     self.baseView.activityIndicator.isHidden = true
                     self.viewModel.didGoToLoginButton.onNext(())
-                    print("DEBUG: Success")
                 case .initial:
                     self.baseView.activityIndicator.isHidden = true
                     self.baseView.contentView.isHidden = false

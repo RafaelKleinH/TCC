@@ -78,21 +78,21 @@ class RegisterViewController: UIViewController {
         viewModel.emailTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] text in
                 baseView?.emailTextField.placeholder = text
-                baseView?.emailTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.emailTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
 
         viewModel.passwordTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] text in
                 baseView?.passwordTextField.placeholder = text
-                baseView?.passwordTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.passwordTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.confirmPasswordTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] text in
                 baseView?.confirmPasswordTextField.placeholder = text
-                baseView?.confirmPasswordTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.confirmPasswordTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
         

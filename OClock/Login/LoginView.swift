@@ -7,8 +7,7 @@
 
 import Foundation
 import UIKit
-import JGProgressHUD
-
+import NVActivityIndicatorView
 
 
 class LoginView: UIView {
@@ -16,6 +15,7 @@ class LoginView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+       
         addSubViews()
         setupViewBasics()
         installConstraints()
@@ -81,10 +81,7 @@ class LoginView: UIView {
         return iv
     }()
     
-    let activityIndicator: JGProgressHUD = {
-        let ld = JGProgressHUD()
-        return ld
-    }()
+    let activityIndicator = RFKIndicatorView()
     
     let secondaryStack: UIStackView = {
         $0.axis = .vertical

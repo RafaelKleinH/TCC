@@ -48,7 +48,13 @@
 		9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCD9927938E53000CA720 /* RFKProgress.swift */; };
 		9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D918027A257E9004FB869 /* ConfigViewService.swift */; };
 		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
+		9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C127CC37010067A254 /* RFKIndicatorView.swift */; };
+		9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C327CC3DF40067A254 /* RFKErrorView.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
+		9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */; };
+		9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AC27C6F38500C3849E /* PreRegisterView.swift */; };
+		9D7192AF27C6F39300C3849E /* PreRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AE27C6F39300C3849E /* PreRegisterViewModel.swift */; };
+		9D7192B127C6F3A200C3849E /* PreRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192B027C6F3A200C3849E /* PreRegisterViewController.swift */; };
 		9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7417692786520A007BCF6A /* HomeViewController.swift */; };
 		9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */; };
 		9D74177427865221007BCF6A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74177327865221007BCF6A /* HomeView.swift */; };
@@ -149,7 +155,13 @@
 		9D5CCD9927938E53000CA720 /* RFKProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKProgress.swift; sourceTree = "<group>"; };
 		9D5D918027A257E9004FB869 /* ConfigViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewService.swift; sourceTree = "<group>"; };
 		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		9D6091C127CC37010067A254 /* RFKIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKIndicatorView.swift; sourceTree = "<group>"; };
+		9D6091C327CC3DF40067A254 /* RFKErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKErrorView.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
+		9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterCoordinator.swift; sourceTree = "<group>"; };
+		9D7192AC27C6F38500C3849E /* PreRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterView.swift; sourceTree = "<group>"; };
+		9D7192AE27C6F39300C3849E /* PreRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterViewModel.swift; sourceTree = "<group>"; };
+		9D7192B027C6F3A200C3849E /* PreRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterViewController.swift; sourceTree = "<group>"; };
 		9D7417692786520A007BCF6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D74176E27865218007BCF6A /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		9D74177327865221007BCF6A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -384,10 +396,22 @@
 		9D4F3DA32745707B004D7FD8 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				9D7192A927C6F2DC00C3849E /* PreRegister */,
 				9D068670278A44880009A6B9 /* PersonalRegister */,
 				9D068674278A44AE0009A6B9 /* TimeDataRegister */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		9D7192A927C6F2DC00C3849E /* PreRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */,
+				9D7192B027C6F3A200C3849E /* PreRegisterViewController.swift */,
+				9D7192AC27C6F38500C3849E /* PreRegisterView.swift */,
+				9D7192AE27C6F39300C3849E /* PreRegisterViewModel.swift */,
+			);
+			path = PreRegister;
 			sourceTree = "<group>";
 		};
 		9D741768278651EA007BCF6A /* Home */ = {
@@ -427,6 +451,8 @@
 				9D68F78A278A9D970036CBAB /* RFKDividerView.swift */,
 				9D5CCD9927938E53000CA720 /* RFKProgress.swift */,
 				9D40AA97279A156D009C493E /* RFKMiniLoader.swift */,
+				9D6091C127CC37010067A254 /* RFKIndicatorView.swift */,
+				9D6091C327CC3DF40067A254 /* RFKErrorView.swift */,
 			);
 			path = RFK;
 			sourceTree = "<group>";
@@ -713,6 +739,7 @@
 				9DD91716279797810015947E /* ConfigView.swift in Sources */,
 				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
 				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
+				9D7192B127C6F3A200C3849E /* PreRegisterViewController.swift in Sources */,
 				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
 				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
 				9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */,
@@ -728,6 +755,7 @@
 				9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */,
 				9D068683278A45950009A6B9 /* PersonalRegisterView.swift in Sources */,
 				9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */,
+				9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */,
 				9DD91711279797660015947E /* ConfigViewController.swift in Sources */,
 				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
 				9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */,
@@ -754,16 +782,20 @@
 				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
 				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
 				9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */,
+				9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */,
 				9D7417792786522A007BCF6A /* HomeViewModel.swift in Sources */,
 				9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */,
 				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,
+				9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */,
 				9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
+				9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */,
 				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,
 				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
 				9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */,
 				9DEF4D0B279616A300750AF2 /* UserDataViewModel.swift in Sources */,
+				9D7192AF27C6F39300C3849E /* PreRegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -951,7 +983,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.OClock.OClock;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.oclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -971,7 +1003,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.OClock.OClock;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.oclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

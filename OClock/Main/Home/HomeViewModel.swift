@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 enum HomeState {
-    case personalErro(_: String)
+    case personalError(_: String)
     case personalLoading
     case personalData
     case hoursError(_: String)
@@ -131,7 +131,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 .do(onNext: { _ in _state.onNext(.personalData) },
                     onSubscribe: { _state.onNext(.personalLoading) })
                 .catchError({ error in
-                    _state.onNext(.personalErro(error.localizedDescription))
+                    _state.onNext(.personalError(error.localizedDescription))
                     return Observable.empty()
                 })
         }.share()

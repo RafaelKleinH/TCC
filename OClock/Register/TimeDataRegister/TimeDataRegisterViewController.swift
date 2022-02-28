@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TimeDataRegisterViewController: UIViewController {
     
@@ -121,5 +123,23 @@ class TimeDataRegisterViewController: UIViewController {
             })
             .disposed(by: viewModel.disposeBag)
         
+        viewModel.state
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .loading:
+                    self.baseView.scrollView.isHidden = true
+                    self.baseView.activityIndicator.isHidden = false
+                    self.baseView.activityIndicator.activityIndicator.startAnimating()
+                case let .error(error):
+                    print("error")
+                case .success:
+                    self.baseView.scrollView.isHidden = false
+                    self.baseView.activityIndicator.activityIndicator.stopAnimating()
+                    self.baseView.activityIndicator.isHidden = true
+                    self.viewModel.didReturnHome.onNext(())
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
     }
 }

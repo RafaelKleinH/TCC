@@ -25,14 +25,15 @@ class TimeDataRegisterViewCoordinator: CoordinatorProtocol {
         //TODO weak
         viewModel.navigationTarget
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { target in
+            .subscribe(onNext: { [weak navigationController] target in
             switch target {
             case .pop:
-                print("pop")
+                navigationController?.popViewController(animated: true)
             case .returnHome:
-                print("returnHome")
+                for _ in 0...3 {
+                    navigationController?.popViewController(animated: true)
+                }
             }
-            
         }).disposed(by: viewModel.disposeBag)
         
         navigationController.pushViewController(viewController, animated: true)

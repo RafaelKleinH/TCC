@@ -36,7 +36,7 @@ class PersonalRegisterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navConfig()
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
     }
     
@@ -48,6 +48,17 @@ class PersonalRegisterViewController: UIViewController {
             self.present(baseView.imagePicker, animated: true)
             
         }
+    }
+    
+    private func navConfig() {
+        navigationItem.hidesBackButton = false
+        navigationItem.setHidesBackButton(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        title = "REGISTRO PESSOAL"
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
     }
     
     private func rxBinds() {
@@ -73,14 +84,14 @@ class PersonalRegisterViewController: UIViewController {
         viewModel.nameTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] text in
                 baseView?.nameTextField.placeholder = text
-                baseView?.nameTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.nameTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.occupationTextFieldPlaceholder
             .subscribe(onNext: { [weak baseView] text in
                 baseView?.occupationTextField.placeholder = text
-                baseView?.occupationTextField.placeholderColor = RFKolors.whiteTexts
+                baseView?.occupationTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -92,11 +103,7 @@ class PersonalRegisterViewController: UIViewController {
         
         //TODO MEMORY LEAK AQUI
         viewModel.requests
-            .subscribe(onNext: { requestSuccess in
-                if requestSuccess {
-                    self.viewModel.didGoToNextView.onNext(())
-                }
-        })
+            .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
         baseView.nameTextField.rx.text
@@ -113,17 +120,20 @@ class PersonalRegisterViewController: UIViewController {
             .bind(to: viewModel.loadData)
             .disposed(by: viewModel.myDisposeBag)
         
-        
-        //TODO weak
         viewModel.state
-            .subscribe(onNext: { state in
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
                 switch state {
                 case .initial:
                     print("init")
                 case .loading:
                     print("loading")
                 case .success:
-                    print("success")
+                    if self.viewModel.isFirstRegister {
+                        self.viewModel.didGoToNextView.onNext(())
+                    } else {
+                        //TODO
+                    }
                 case let .error(error):
                     print(error)
                 }

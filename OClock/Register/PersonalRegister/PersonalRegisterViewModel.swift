@@ -20,6 +20,7 @@ protocol PersonalRegisterViewModelProtocol {
     typealias Target = PersonalRegisterViewCoordinator.Target
     
     var state: Observable<PersonalRegisterState> { get }
+    var isFirstRegister: Bool { get }
     
     var nameTextFieldPlaceholder: Observable<String> { get }
     var occupationTextFieldPlaceholder: Observable<String> { get }
@@ -46,6 +47,8 @@ protocol PersonalRegisterViewModelProtocol {
 
 class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     
+    var isFirstRegister: Bool
+    
     let myDisposeBag = DisposeBag()
     
     let nameTextFieldPlaceholder: Observable<String> = .just("PersonalRegisterName".localized())
@@ -69,7 +72,9 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     
     let requests: Observable<Bool>
     
-    init(service: PersonalRegisterViewServiceProtocol = PersonalRegisterViewService()) {
+    init(service: PersonalRegisterViewServiceProtocol = PersonalRegisterViewService(), isFirstRegister: Bool = false) {
+        
+        self.isFirstRegister = isFirstRegister
         
         let _didTapBackButton = PublishSubject<Void>()
         didTapBackButton = _didTapBackButton.asObserver()

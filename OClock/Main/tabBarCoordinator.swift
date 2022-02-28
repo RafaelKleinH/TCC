@@ -18,44 +18,43 @@ class MainTabBarCoordinator: CoordinatorProtocol {
     }
     
     func start() {
+        
         let homeViewModel = HomeViewModel()
         let homeBaseView = HomeView()
         let homeViewController = HomeViewController(vm: homeViewModel, v: homeBaseView)
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage.add, tag: 0)
         homeViewController.tabBarItem = homeTabBarItem
         
-        homeViewModel.navigationTarget
-            .subscribe(onNext: { [weak navigationController] target in
-                switch target {
-                case .registerBaseData:
-                    PersonalRegisterViewCoordinator(navigationController: self.navigationController).start()
-                }
-            }).disposed(by: homeViewModel.myDisposeBag)
-        
-        
         let configViewModel = ConfigViewModel()
         let configCoordinator = ConfigCoordinator(navC: navigationController, vm: configViewModel)
         configCoordinator.start()
         let configView = ConfigView()
         let configViewController = ConfigViewController(v: configView, vm: configViewModel)
+
+        let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 1)
+        configViewController.tabBarItem = configTabBarItem
+        
+        let tabBarController = MainTabBarController(HomeVC: homeViewController, ConfigVC: configViewController)
+        
+        homeViewModel.navigationTarget
+            .subscribe(onNext: { target in
+                guard let nav = tabBarController.navigationController else { return }
+                switch target {
+                case .registerBaseData:
+                    PreRegisterCoordinator(navC: nav).start()
+                }
+            }).disposed(by: homeViewModel.myDisposeBag)
         
         configViewModel.navigationTarget
             .subscribe(onNext: { [weak navigationController] target in
+                guard let nav = tabBarController.navigationController else { return }
                 switch target {
                 case .logoff:
                     navigationController?.popViewController(animated: true)
                 case .registerHours:
-                    TimeDataRegisterViewCoordinator(navC: self.navigationController).start()
+                    TimeDataRegisterViewCoordinator(navC: nav).start()
                 }
             }).disposed(by: configViewModel.myDisposeBag)
-
-        
-        let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 1)
-        configViewController.tabBarItem = configTabBarItem
-        
-        
-        
-        let tabBarController = MainTabBarController(HomeVC: homeViewController, ConfigVC: configViewController)
         
         navigationController.pushViewController(tabBarController, animated: true)
     }

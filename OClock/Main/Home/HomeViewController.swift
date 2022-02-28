@@ -42,8 +42,7 @@ class HomeViewController: UIViewController {
         
         viewModel.userData
             .subscribe(onNext: {  data in
-                print("foi")
-                if data.name == "" {
+                if data.name != "" {
                     self.viewModel.didGoToRegisterView.onNext(())
                 } else {
                     self.viewModel.didLoadUserData.onNext(())
@@ -117,15 +116,17 @@ class HomeViewController: UIViewController {
                 guard let self = self else { return }
                 switch state {
                 case .personalLoading:
-                    print("DEBUG: 1")
+                    self.baseView.scrollView.isHidden = true
+                    self.baseView.indicatorView.startAnimating()
                 case .personalData:
-                    self.viewModel.didLoadUserData.onNext(())
-                case let .personalErro(error):
+                    print("laland")
+                case let .personalError(error):
                     print("DEBUG: 3 \(error)")
                 case .hoursLoading:
                     print("DEBUG: 4")
                 case .hoursData:
-                    print("DEBUG: 5")
+                    self.baseView.indicatorView.stopAnimating()
+                    self.baseView.scrollView.isHidden = false
                 case let .hoursError(error):
                     print("DEBUG: 6 \(error)")
                 }

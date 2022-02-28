@@ -490,6 +490,9 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.0.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
@@ -505,17 +508,18 @@ PODS:
   - RxSwift (6.2.0)
 
 DEPENDENCIES:
-  - Firebase
-  - Firebase/Auth
-  - Firebase/Database
-  - Firebase/Firestore
+  - Firebase (= 8.8.0)
+  - Firebase/Auth (= 8.8.0)
+  - Firebase/Database (= 8.8.0)
+  - Firebase/Firestore (= 8.8.0)
   - IQKeyboardManagerSwift (= 6.1.1)
-  - JGProgressHUD
-  - KDCircularProgress
-  - RxCocoa
-  - RxGesture
-  - RxKeyboard
-  - RxSwift
+  - JGProgressHUD (= 2.2)
+  - KDCircularProgress (= 1.5.4)
+  - NVActivityIndicatorView (= 5.1.1)
+  - RxCocoa (= 6.2.0)
+  - RxGesture (= 4.0.3)
+  - RxKeyboard (= 2.0.0)
+  - RxSwift (= 6.2.0)
 
 SPEC REPOS:
   trunk:
@@ -540,6 +544,7 @@ SPEC REPOS:
     - KDCircularProgress
     - leveldb-library
     - nanopb
+    - NVActivityIndicatorView
     - PromisesObjC
     - RxCocoa
     - RxGesture
@@ -569,6 +574,7 @@ SPEC CHECKSUMS:
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
@@ -576,6 +582,6 @@ SPEC CHECKSUMS:
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 4e7f2b397e0984572f159f80d90e9edcc076cfcc
+PODFILE CHECKSUM: 241907775bb248a0fd3613742912f2df8920925e
 
 COCOAPODS: 1.11.2

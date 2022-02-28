@@ -52,15 +52,15 @@ class RegisterView: UIView {
     private func setupViewBasics(){
         
         emailTextField.styleTextField()
-        emailTextField.placeholderColor = RFKolors.whiteTexts
+        emailTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
         
         passwordTextField.styleTextField()
-        passwordTextField.placeholderColor = RFKolors.whiteTexts
+        passwordTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
         passwordTextField.setTrailingImageView(isHidden: false, image: UIImage(named: CustomImages.securityEnterDisabled) ?? .strokedCheckmark)
         passwordTextField.isSecureTextEntry = true
       
         confirmPasswordTextField.styleTextField()
-        confirmPasswordTextField.placeholderColor = RFKolors.whiteTexts
+        confirmPasswordTextField.placeholderColor = RFKolors.whiteTexts.withAlphaComponent(0.6)
         confirmPasswordTextField.setTrailingImageView(isHidden: false, image: UIImage(named: CustomImages.securityEnterDisabled) ?? .strokedCheckmark)
         confirmPasswordTextField.isSecureTextEntry = true
         
