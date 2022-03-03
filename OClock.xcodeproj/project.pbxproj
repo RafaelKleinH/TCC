@@ -50,6 +50,7 @@
 		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
 		9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C127CC37010067A254 /* RFKIndicatorView.swift */; };
 		9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C327CC3DF40067A254 /* RFKErrorView.swift */; };
+		9D6324FA27D0692300C122A3 /* TimeDataRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6324F927D0692300C122A3 /* TimeDataRegisterModel.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
 		9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */; };
 		9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AC27C6F38500C3849E /* PreRegisterView.swift */; };
@@ -157,6 +158,7 @@
 		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		9D6091C127CC37010067A254 /* RFKIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKIndicatorView.swift; sourceTree = "<group>"; };
 		9D6091C327CC3DF40067A254 /* RFKErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKErrorView.swift; sourceTree = "<group>"; };
+		9D6324F927D0692300C122A3 /* TimeDataRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterModel.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
 		9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterCoordinator.swift; sourceTree = "<group>"; };
 		9D7192AC27C6F38500C3849E /* PreRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				9D06869B278A45E90009A6B9 /* TimeDataRegisterView.swift */,
 				9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */,
 				9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */,
+				9D6324F927D0692300C122A3 /* TimeDataRegisterModel.swift */,
 			);
 			path = TimeDataRegister;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */,
 				9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
+				9D6324FA27D0692300C122A3 /* TimeDataRegisterModel.swift in Sources */,
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
 				9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */,
 				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,

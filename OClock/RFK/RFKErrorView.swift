@@ -11,17 +11,29 @@ import UIKit
 class RFKErrorView: UIView {
     
     var errorLabel: UILabel = {
+        $0.textColor = RFKolors.whiteTexts
+        $0.textAlignment = .center
+        $0.font = UIFont(name: RFontsK.QuicksandSemiBold, size: 21)
+        $0.text =
+        
+"""
+Ops, Ocorreu um erro.
+  Tente novamente.
+"""
         
         return $0
     }(UILabel())
     
     var errorButton: RFKButton = {
         $0.addSecondaryStyle()
+        $0.setTitle("Recarregar", for: .normal)
         return $0
     }(RFKButton())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupSubviews()
+        setupAnchors()
     }
     
     required init?(coder: NSCoder) {
@@ -34,8 +46,8 @@ class RFKErrorView: UIView {
     }
     
     func setupAnchors() {
-        errorLabel.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 32, paddingLeft: 12, paddingRight: 12)
-        errorButton.anchor(top: errorLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 32, paddingLeft: 12, paddingRight: 12)
+        errorLabel.anchor(top: layoutMarginsGuide.centerYAnchor, left: leftAnchor, right: rightAnchor, paddingTop: -32, paddingLeft: RFKSize.small, paddingRight: RFKSize.small)
+        errorButton.anchor(top: errorLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.xsmall, paddingLeft: RFKSize.small, paddingRight: RFKSize.small, height: RFKSize.xhigh)
     }
     
 }

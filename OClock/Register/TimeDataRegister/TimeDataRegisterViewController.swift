@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class TimeDataRegisterViewController: UIViewController {
     
@@ -31,6 +32,9 @@ class TimeDataRegisterViewController: UIViewController {
     override func viewDidLoad() {
         view = baseView
         setupNavBar()
+//        baseView.initialHourPickerView.rx.setDelegate(self).disposed(by: viewModel.disposeBag)
+//        baseView.totalPausePickerView.rx.setDelegate(self).disposed(by: viewModel.disposeBag)
+//        baseView.totalHoursPickerView.rx.setDelegate(self).disposed(by: viewModel.disposeBag)
         super.viewDidLoad()
     }
     
@@ -53,26 +57,26 @@ class TimeDataRegisterViewController: UIViewController {
     
     private func rxBinds() {
         
-        baseView.totalHoursTF
-            .rx
-            .text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.totalHoursTFValue)
-            .disposed(by: viewModel.disposeBag)
-        
-        baseView.totalPauseHoursTF
-            .rx
-            .text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.pauseHoursTFValue)
-            .disposed(by: viewModel.disposeBag)
-        
-        baseView.initialHour
-            .rx
-            .text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.initialHoursTFValue)
-            .disposed(by: viewModel.disposeBag)
+//        baseView.totalHoursTF
+//            .rx
+//            .text
+//            .map { $0 ?? "" }
+//            .bind(to: viewModel.totalHoursTFValue)
+//            .disposed(by: viewModel.disposeBag)
+//
+//        baseView.totalPauseHoursTF
+//            .rx
+//            .text
+//            .map { $0 ?? "" }
+//            .bind(to: viewModel.pauseHoursTFValue)
+//            .disposed(by: viewModel.disposeBag)
+//
+//        baseView.initialHour
+//            .rx
+//            .text
+//            .map { $0 ?? "" }
+//            .bind(to: viewModel.initialHoursTFValue)
+//            .disposed(by: viewModel.disposeBag)
         
         baseView.confirmButton
             .rx
@@ -105,22 +109,72 @@ class TimeDataRegisterViewController: UIViewController {
         baseView.pauseSwith
             .rx
             .value
-            .bind(to: viewModel.pauseSwitchValue)
-            .disposed(by: viewModel.disposeBag)
-        
-        viewModel.subPauseSwitchValue
             .subscribe(onNext: { [weak self] a in
                 UIView.animate(withDuration: 0.3) {
                     self?.baseView.totalPauseHoursView.isHidden = !a
                     self?.baseView.totalPauseHoursView.alpha = !a ? 0 : 1
                 }
+                self?.viewModel.pauseSwitchValue.onNext(a)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.initialHoursPickerValue
+            .map { [$0.hours, $0.minute] }
+            .bind(to: baseView.initialHourPickerView.rx.items(adapter: viewModel.initPickerAdapter))
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.initialHourPickerView
+            .rx
+            .itemSelected
+            .bind(to: viewModel.selectedInit)
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.initText
+            .subscribe(onNext: { text in
+                self.baseView.initialHour.text = text
+                self.baseView.initialHour.test()
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        
+        viewModel.totalPauseHoursPickerValue
+            .map { [$0.hours, $0.minute] }
+            .bind(to: baseView.totalPausePickerView.rx.items(adapter: viewModel.pausePickerAdapter))
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.totalPausePickerView
+            .rx
+            .itemSelected
+            .bind(to: viewModel.selectedPause)
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.pauseText
+            .subscribe(onNext: { text in
+                self.baseView.totalPauseHoursTF.text = text
+                self.baseView.totalPauseHoursTF.test()
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.totalHoursPickerValue
+            .map { [$0.hours, $0.minute] }
+            .bind(to: baseView.totalHoursPickerView.rx.items(adapter: viewModel.totalPickerAdapter))
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.totalHoursPickerView
+            .rx
+            .itemSelected
+            .bind(to: viewModel.selectedTotal)
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.totalText
+            .subscribe(onNext: { text in
+                self.baseView.totalHoursTF.text = text
+                self.baseView.totalHoursTF.test()
             })
             .disposed(by: viewModel.disposeBag)
             
         viewModel.returnedValue
-            .subscribe(onNext: { bool in
-                print(bool)
-            })
+            .subscribe()
             .disposed(by: viewModel.disposeBag)
         
         viewModel.state
@@ -142,4 +196,8 @@ class TimeDataRegisterViewController: UIViewController {
             })
             .disposed(by: viewModel.disposeBag)
     }
+}
+
+extension TimeDataRegisterViewController: UIPickerViewDelegate {
+  
 }

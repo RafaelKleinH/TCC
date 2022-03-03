@@ -18,7 +18,7 @@ class HomeView: UIView {
         setupAnchors()
         
         firstSubProgress.titleLabel.text = "1 turno"
-        secondSubProgress.titleLabel.text = "Almoço"
+        secondSubProgress.titleLabel.text = "Intervalo"
         thirdSubProgress.titleLabel.text = "2 turno"
         fourthSubProgress.titleLabel.text = "Hora Extra"
         
@@ -44,7 +44,9 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let indicatorView = UIActivityIndicatorView()
+    let loaderView = RFKIndicatorView()
+    
+    let errorView = RFKErrorView()
     
     let scrollView: UIScrollView = {
         $0.showsVerticalScrollIndicator = false
@@ -105,7 +107,8 @@ class HomeView: UIView {
     
     func setupSubview() {
         addSubview(UIView(frame: .zero))
-        addSubview(indicatorView)
+        addSubview(loaderView)
+        addSubview(errorView)
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(horizontalStackView)
@@ -116,15 +119,12 @@ class HomeView: UIView {
         contentView.addSubview(cronoImgView)
         contentView.addSubview(timeButton)
         contentView.addSubview(timeLabel)
-        contentView.addSubview(firstSubProgress)
-        contentView.addSubview(secondSubProgress)
-        contentView.addSubview(thirdSubProgress)
-        contentView.addSubview(fourthSubProgress)
+       
     }
     
     func setupAnchors() {
-        indicatorView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        
+        loaderView.fillSuperview()
+        errorView.fillSuperview()
         
         scrollView.centerX(inView: self)
         scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
@@ -150,14 +150,97 @@ class HomeView: UIView {
         cronoImgView.centerX(inView: circularProgress.circularProgress)
         cronoImgView.anchor(bottom: timeLabel.topAnchor, paddingBottom: RFKSize.xsmall, width: RFKSize.medium, height: RFKSize.medium)
         
-        firstSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
-        secondSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
-        thirdSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
-        fourthSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+       
         
-        firstSubProgress.anchor(top: circularProgress.bottomAnchor, left: contentView.leftAnchor, right: contentView.centerXAnchor, paddingTop: RFKSize.xsmall, paddingLeft: RFKSize.xsmall, paddingRight: RFKSize.xxsmall)
-        secondSubProgress.anchor(top: firstSubProgress.topAnchor, left: contentView.centerXAnchor, right: contentView.rightAnchor, paddingLeft: RFKSize.xxsmall, paddingRight: RFKSize.xsmall)
-        thirdSubProgress.anchor(top: firstSubProgress.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.centerXAnchor, paddingTop: RFKSize.xsmall, paddingLeft: RFKSize.xsmall, paddingBottom: RFKSize.xsmall, paddingRight: RFKSize.xxsmall)
-        fourthSubProgress.anchor(top: secondSubProgress.bottomAnchor, left: contentView.centerXAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.xsmall, paddingLeft: RFKSize.xxsmall, paddingBottom: RFKSize.xsmall, paddingRight: RFKSize.xsmall)
+
+    }
+    
+    func addSubProgress(hasBreak: Bool) {
+        
+        if hasBreak {
+            
+            contentView.addSubview(firstSubProgress)
+            contentView.addSubview(secondSubProgress)
+            contentView.addSubview(thirdSubProgress)
+            contentView.addSubview(fourthSubProgress)
+            
+            firstSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            secondSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            thirdSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            fourthSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            
+            firstSubProgress.anchor(top: circularProgress.bottomAnchor,
+                                    left: contentView.leftAnchor,
+                                    right: contentView.centerXAnchor,
+                                    paddingTop: RFKSize.xsmall,
+                                    paddingLeft: RFKSize.xsmall,
+                                    paddingRight: RFKSize.xxsmall)
+            
+            secondSubProgress.anchor(top: firstSubProgress.topAnchor,
+                                     left: contentView.centerXAnchor,
+                                     right: contentView.rightAnchor,
+                                     paddingLeft: RFKSize.xxsmall,
+                                     paddingRight: RFKSize.xsmall)
+            
+            thirdSubProgress.anchor(top: firstSubProgress.bottomAnchor,
+                                    left: contentView.leftAnchor,
+                                    bottom: contentView.bottomAnchor,
+                                    right: contentView.centerXAnchor,
+                                    paddingTop: RFKSize.xsmall,
+                                    paddingLeft: RFKSize.xsmall,
+                                    paddingBottom: RFKSize.xsmall,
+                                    paddingRight: RFKSize.xxsmall)
+           
+            fourthSubProgress.anchor(top: secondSubProgress.bottomAnchor,
+                                     left: contentView.centerXAnchor, bottom: contentView.bottomAnchor,
+                                     right: contentView.rightAnchor, paddingTop: RFKSize.xsmall,
+                                     paddingLeft: RFKSize.xxsmall, paddingBottom: RFKSize.xsmall,
+                                     paddingRight: RFKSize.xsmall)
+            
+        } else {
+            
+            contentView.addSubview(thirdSubProgress)
+            contentView.addSubview(fourthSubProgress)
+            
+        
+            thirdSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            fourthSubProgress.progress.setHeight(height: RFKSize.xxxhigh)
+            
+            thirdSubProgress.anchor(top: circularProgress.bottomAnchor,
+                                    left: contentView.leftAnchor,
+                                    bottom: contentView.bottomAnchor,
+                                    right: contentView.centerXAnchor,
+                                    paddingTop: RFKSize.xsmall,
+                                    paddingLeft: RFKSize.xsmall,
+                                    paddingBottom: RFKSize.xsmall,
+                                    paddingRight: RFKSize.xxsmall)
+            
+            fourthSubProgress.anchor(top: thirdSubProgress.topAnchor,
+                                     left: contentView.centerXAnchor,
+                                     right: contentView.rightAnchor,
+                                     paddingLeft: RFKSize.xxsmall,
+                                     paddingRight: RFKSize.xsmall)
+        }
+    }
+    
+    func viewState(hstate: HomeState) {
+        
+        if hstate == .personalLoading || hstate == .hoursLoading {
+            scrollView.isHidden = true
+            errorView.isHidden = true
+            loaderView.isHidden = false
+            loaderView.activityIndicator.startAnimating()
+        } else if hstate == .personalError("") || hstate == .hoursError("") {
+            loaderView.activityIndicator.stopAnimating()
+            loaderView.isHidden = true
+            scrollView.isHidden = true
+            errorView.isHidden = false
+        } else if hstate == .personalData ||
+                    hstate == .hoursData {
+            errorView.isHidden = true
+            loaderView.activityIndicator.stopAnimating()
+            loaderView.isHidden = true
+            scrollView.isHidden = false
+        }
     }
 }

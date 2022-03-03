@@ -38,10 +38,12 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         
         homeViewModel.navigationTarget
             .subscribe(onNext: { target in
-                guard let nav = tabBarController.navigationController else { return }
+                guard let nav = homeViewController.navigationController else { return }
                 switch target {
                 case .registerBaseData:
                     PreRegisterCoordinator(navC: nav).start()
+                case let .personalRegister(userData: user):
+                    PersonalRegisterViewCoordinator(navigationController: nav, personalData: user).start()
                 }
             }).disposed(by: homeViewModel.myDisposeBag)
         
@@ -68,5 +70,6 @@ extension MainTabBarCoordinator {
     
     enum TargetH {
         case registerBaseData
+        case personalRegister(userData: PersonalData)
     }
 }

@@ -120,6 +120,15 @@ class PersonalRegisterViewController: UIViewController {
             .bind(to: viewModel.loadData)
             .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.personalDataObs
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                guard let data = data else { return }
+                self?.baseView.nameTextField.rx.text.onNext(data.name)
+                self?.baseView.occupationTextField.rx.text.onNext(data.occupation)
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
         viewModel.state
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }

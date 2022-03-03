@@ -25,6 +25,7 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let errorView = RFKErrorView()
 
     let contentView: UIView = {
         var view = UIView()
@@ -142,11 +143,12 @@ class LoginView: UIView {
         
         addSubview(activityIndicator)
 
- 
+        addSubview(errorView)
     }
     
     private func installConstraints(){
-        
+        activityIndicator.isHidden = true
+        errorView.isHidden = true
 
         contentView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
@@ -169,6 +171,8 @@ class LoginView: UIView {
         registerButton.setHeight(height: RFKSize.xhigh)
         
         activityIndicator.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
+        
+        errorView.fillSuperview()
         
         appleImage.centerY(inView: appleLogin)
         appleImage.anchor(right: appleLogin.titleLabel?.leftAnchor, paddingRight: RFKSize.small, width: RFKSize.medium, height: RFKSize.medium)

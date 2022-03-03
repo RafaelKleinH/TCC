@@ -32,6 +32,8 @@ protocol PersonalRegisterViewModelProtocol {
     
     var navigationTarget: Observable<Target> { get }
     
+    var personalDataObs: Observable<PersonalData?> { get }
+    
     var loadData: AnyObserver<Void> { get }
     
     var userImageInput: AnyObserver<UIImage> { get }
@@ -72,7 +74,9 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     
     let requests: Observable<Bool>
     
-    init(service: PersonalRegisterViewServiceProtocol = PersonalRegisterViewService(), isFirstRegister: Bool = false) {
+    let personalDataObs: Observable<PersonalData?>
+    
+    init(service: PersonalRegisterViewServiceProtocol = PersonalRegisterViewService(), isFirstRegister: Bool = false, personalData: PersonalData?) {
         
         self.isFirstRegister = isFirstRegister
         
@@ -96,6 +100,8 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
         
         let _state = PublishSubject<PersonalRegisterState>()
         state = _state.asObserver()
+        
+        personalDataObs = .just(personalData)
         
         _state.onNext(.initial)
         

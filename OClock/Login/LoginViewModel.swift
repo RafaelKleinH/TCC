@@ -105,6 +105,8 @@ class LoginViewModel: LoginViewModelProtocol {
         let _getUserDefaults = PublishSubject<Void>()
         getUserDefaults = _getUserDefaults.asObserver()
         
+        _state.onNext(.initial)
+        
         login = _didTapLoginButton
             .withLatestFrom(Observable.combineLatest(_emailText, _passwordText, _toggleDefault.startWith(false)))
             .flatMapLatest { email, password, toggle in

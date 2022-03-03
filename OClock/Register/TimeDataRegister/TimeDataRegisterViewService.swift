@@ -18,7 +18,6 @@ class TimeDataRegisterViewService: TimeDataRegisterViewServiceProtocol {
     func postInformations(totalH: String, hasBreak: Bool, breakTime: String, startTime: String) -> Observable<Bool> {
         
         return Observable.create { observer in
-            //TODO: Salvar imagem
             RFKDatabase().userHoursDataBaseWithUID.updateChildValues(["totalHours": totalH, "hasBreak": hasBreak, "breakTime": breakTime, "sttartHour": startTime]) { (error, db) in
                 if let error = error {
                     observer.onError(error)

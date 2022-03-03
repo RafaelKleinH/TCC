@@ -89,7 +89,7 @@ class PersonalRegisterView: UIView {
         
         imageView.anchor(top: contentView.topAnchor, paddingTop: RFKSize.small)
         imageView.centerX(inView: self)
-        imageView.setDimensions(height: 120, width: 120)
+        imageView.setDimensions(height: RFKSize.xxhigh, width: RFKSize.xxhigh)
         
         imageExplicationLabel.anchor(top: imageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
         

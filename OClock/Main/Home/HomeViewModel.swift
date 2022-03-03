@@ -9,13 +9,14 @@ import Foundation
 import RxSwift
 import RxRelay
 
-enum HomeState {
+enum HomeState: Equatable {
     case personalError(_: String)
     case personalLoading
     case personalData
     case hoursError(_: String)
     case hoursLoading
     case hoursData
+    case registerData
 }
 
 protocol HomeViewModelProtocol {
@@ -27,6 +28,7 @@ protocol HomeViewModelProtocol {
     
     var navigationTarget: Observable<Target> { get }
     
+    var didGoToPersonalRegister: AnyObserver<Void> { get }
     var didTapBackButton: AnyObserver<Void> { get }
     var didGoToRegisterView: AnyObserver<Void> { get }
     var didViewLoad: AnyObserver<Void> { get }
@@ -46,6 +48,7 @@ protocol HomeViewModelProtocol {
     
     var isOpen: Bool { get }
     
+    var usableHoursData: Observable<(Int, Int, Bool?)> { get }
     
     var totalHours: Observable<Int> { get }
     var totalBreakHours: Observable<Int> { get }
@@ -57,6 +60,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let navigationTarget: Observable<Target>
     
+    let didGoToPersonalRegister: AnyObserver<Void>
     let didTapBackButton: AnyObserver<Void>
     let didGoToRegisterView: AnyObserver<Void>
     let didViewLoad: AnyObserver<Void>
@@ -78,7 +82,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     var isOpen: Bool = false
     
-    
+    let usableHoursData: Observable<(Int, Int, Bool?)>
     //MARK:- Models
 
     var userName: Observable<String>
@@ -87,6 +91,9 @@ class HomeViewModel: HomeViewModelProtocol {
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
     
     init(service: HomeViewServiceProtocol = HomeViewService()) {
+        
+        let _didGoToPersonalRegister = PublishSubject<Void>()
+        didGoToPersonalRegister = _didGoToPersonalRegister.asObserver()
         
         let _didTapBackButton = PublishSubject<Void>()
         didTapBackButton = _didTapBackButton.asObserver()
@@ -128,7 +135,14 @@ class HomeViewModel: HomeViewModelProtocol {
             service.getPersonalData()
                 .asObservable()
                 .observe(on: MainScheduler.instance)
-                .do(onNext: { _ in _state.onNext(.personalData) },
+                .do(onNext: { usrdata in
+                    //TODO extendion que valida tudo
+                    if usrdata.name == nil || usrdata.name == ""{
+                        _state.onNext(.registerData)
+                    } else {
+                        _state.onNext(.personalData)
+                    }
+                },
                     onSubscribe: { _state.onNext(.personalLoading) })
                 .catchError({ error in
                     _state.onNext(.personalError(error.localizedDescription))
@@ -152,7 +166,14 @@ class HomeViewModel: HomeViewModelProtocol {
                 service.getHoursData()
                     .asObservable()
                     .observe(on: MainScheduler.instance)
-                    .do(onNext: { _ in _state.onNext(.hoursData) },
+                    .do(onNext: { hrsData in
+                        //TODO funcao que valida isso
+                        if hrsData.startHours == nil {
+                            _state.onNext(.registerData)
+                        } else {
+                            _state.onNext(.hoursData)
+                        }
+                    },
                         onSubscribe: { _state.onNext(.hoursLoading) })
                     .catchError({ error in
                         _state.onNext(.hoursError(error.localizedDescription))
@@ -189,10 +210,11 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         })
         
-        
-        
+        usableHoursData = Observable.combineLatest(totalBreakHours, totalHours, hoursData.map { $0.hasBreak })
+
         navigationTarget = Observable.merge(
-            _didGoToRegisterView.map { .registerBaseData }
+            _didGoToRegisterView.map { .registerBaseData },
+            _didGoToPersonalRegister.withLatestFrom(userData).map { .personalRegister(userData:$0) }
         )
     }
     

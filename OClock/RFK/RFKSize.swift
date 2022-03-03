@@ -9,13 +9,31 @@ import Foundation
 import UIKit
 
 struct RFKSize {
-    static let xxsmall = CGFloat(4)
-    static let xsmall = CGFloat(8)
-    static let small = CGFloat(16)
-    static let medium = CGFloat(24)
-    static let high = CGFloat(32)
-    static let xhigh = CGFloat(56)
-    static let xxhigh = CGFloat(124)
-    static let xxxhigh = CGFloat(156)
-    static let bigger = CGFloat(320)
+    
+    /// xxsmall-4
+    public static let xxsmall = CGFloat(4)
+    
+    /// xsmall-8
+    public static let xsmall = CGFloat(8)
+    
+    /// small-16
+    public static let small = CGFloat(16)
+    
+    /// medium 24
+    public static let medium = CGFloat(24)
+    
+    /// high 32
+    public static let high = CGFloat(32)
+    
+    /// xhigh 56
+    public static let xhigh = CGFloat(56)
+    
+    /// xxhigh 124
+    public static let xxhigh = CGFloat(124)
+    
+    /// xxxhigh 156
+    public static let xxxhigh = CGFloat(156)
+    
+    /// bigger 320
+    public static let bigger = CGFloat(320)
 }

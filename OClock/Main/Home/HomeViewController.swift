@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class HomeViewController: UIViewController {
 
@@ -41,13 +42,7 @@ class HomeViewController: UIViewController {
     func rxBinds() {
         
         viewModel.userData
-            .subscribe(onNext: {  data in
-                if data.name != "" {
-                    self.viewModel.didGoToRegisterView.onNext(())
-                } else {
-                    self.viewModel.didLoadUserData.onNext(())
-                }
-            })
+            .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.hoursData
@@ -64,6 +59,20 @@ class HomeViewController: UIViewController {
             .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.usableHoursData
+            .subscribe(onNext: { [weak self] totalBreak, totalHours, hasBreak in
+                if let hasBreak = hasBreak {
+                    self?.baseView.addSubProgress(hasBreak: hasBreak)
+                    if hasBreak {
+    
+                    } else {
+                        self?.baseView.thirdSubProgress.titleLabel.text = "Total"
+    
+                    }
+                }
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
         viewModel.totalBreakHours
             .subscribe(onNext: { interger in
                 self.baseView.secondSubProgress.progress.startProgress(angle: 360, time: TimeInterval(interger))
@@ -73,7 +82,6 @@ class HomeViewController: UIViewController {
         
         viewModel.totalHours
             .subscribe(onNext: { interger in
-                print("DEBUGS:\(interger)")
                 self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(interger))
                 self.baseView.circularProgress.pauseProgress()
                 
@@ -111,24 +119,42 @@ class HomeViewController: UIViewController {
             .bind(to: baseView.nameLabel.rx.text)
             .disposed(by: viewModel.myDisposeBag)
         
+        baseView.errorView
+            .errorButton
+            .rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.didViewLoad.onNext(())
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.personalImageView
+            .rx
+            .tapGesture()
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.didGoToPersonalRegister.onNext(())
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
         viewModel.state
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
                 switch state {
                 case .personalLoading:
-                    self.baseView.scrollView.isHidden = true
-                    self.baseView.indicatorView.startAnimating()
+                    self.baseView.viewState(hstate: .personalLoading)
                 case .personalData:
-                    print("laland")
-                case let .personalError(error):
-                    print("DEBUG: 3 \(error)")
+                    self.viewModel.didLoadUserData.onNext(())
+                case .personalError:
+                    self.baseView.viewState(hstate: .personalError(""))
                 case .hoursLoading:
-                    print("DEBUG: 4")
+                    self.baseView.viewState(hstate: .hoursLoading)
                 case .hoursData:
-                    self.baseView.indicatorView.stopAnimating()
+                    self.baseView.viewState(hstate: .hoursData)
                     self.baseView.scrollView.isHidden = false
-                case let .hoursError(error):
-                    print("DEBUG: 6 \(error)")
+                case .hoursError:
+                    self.baseView.viewState(hstate: .hoursError(""))
+                case .registerData:
+                    self.viewModel.didGoToRegisterView.onNext(())
                 }
             })
             .disposed(by: viewModel.myDisposeBag)

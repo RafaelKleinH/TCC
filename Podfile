@@ -4,7 +4,8 @@
 target 'OClock' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  inhibit_all_warnings!
+  
   # Pods for OClock
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
@@ -18,6 +19,7 @@ target 'OClock' do
   pod 'KDCircularProgress', '1.5.4'
   pod 'NVActivityIndicatorView', '5.1.1'
   pod 'JGProgressHUD', '2.2'
+  pod 'RxDataSources', '5.0.0'
  
   target 'OClockTests' do
     inherit! :search_paths

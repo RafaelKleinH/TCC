@@ -30,9 +30,7 @@ class TimeDataRegisterViewCoordinator: CoordinatorProtocol {
             case .pop:
                 navigationController?.popViewController(animated: true)
             case .returnHome:
-                for _ in 0...3 {
-                    navigationController?.popViewController(animated: true)
-                }
+                navigationController?.popToViewController(navigationController!.viewControllers[1], animated: true)
             }
         }).disposed(by: viewModel.disposeBag)
         

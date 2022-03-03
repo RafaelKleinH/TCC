@@ -19,7 +19,10 @@ class TimeDataRegisterView: UIView {
         setupSubviews()
         setupAnchor()
         setupViewBasics()
-        
+        initialHour.inputView = initialHourPickerView
+        totalHoursTF.inputView = totalHoursPickerView
+        totalPauseHoursTF.inputView = totalPausePickerView
+        setPicker()
     }
     
     //totalDeHoras
@@ -38,6 +41,7 @@ class TimeDataRegisterView: UIView {
     }(UIView())
     
     let totalHoursTF = RFKTextField()
+    
     let totalHoursPickerView: UIPickerView = {
         
         return $0
@@ -46,6 +50,7 @@ class TimeDataRegisterView: UIView {
     let pauseStack: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .fillProportionally
+        $0.alignment = .center
         return $0
     }(UIStackView())
     
@@ -65,10 +70,20 @@ class TimeDataRegisterView: UIView {
         $0.clipsToBounds = true
         return $0
     }(UIStackView())
+    
     let totalPauseHoursView = UIView()
+    
     let totalPauseHoursTF = RFKTextField()
     
+    let totalPausePickerView: UIPickerView = {
+        return $0
+    }(UIPickerView())
+    
     let initialHour = RFKTextField()
+    
+    let initialHourPickerView: UIPickerView = {
+        return $0
+    }(UIPickerView())
     
     let confirmButton: RFKButton = {
         $0.addPrimaryStyle()
@@ -134,14 +149,20 @@ class TimeDataRegisterView: UIView {
         //TODO deixar essa caceta reta
         pauseStack.setHeight(height: 52)
     
+        pauseSwith.anchor(top: pauseLabel.topAnchor)
         
         totalPauseHoursView.anchor(top: pauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingRight: 24, height: 52)
         
         totalPauseHoursTF.anchor(top: totalPauseHoursView.topAnchor, left: totalPauseHoursView.leftAnchor, bottom: totalPauseHoursView.bottomAnchor, right: totalPauseHoursView.rightAnchor, height: RFKSize.xhigh)
+    
         
         initialHour.anchor(top: mainPauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 32, paddingLeft: 24, paddingRight: 24, height: RFKSize.xhigh)
         
 
         confirmButton.anchor(top: initialHour.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 16, paddingRight: 24, height: 52)
+    }
+    
+    func setPicker() {
+
     }
 }

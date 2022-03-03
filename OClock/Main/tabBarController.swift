@@ -10,12 +10,9 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tabBar.isTranslucent = false
-        tabBar.barTintColor = RFKolors.primaryBlue
+        tabBar.barTintColor = .black
         setViewControllers([homeVC, configVC], animated: true)
-        
-        
     }
     
     init(HomeVC: HomeViewController, ConfigVC: ConfigViewController) {

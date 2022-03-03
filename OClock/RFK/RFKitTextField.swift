@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RFKTextField: UITextField {
     
@@ -52,6 +54,20 @@ class RFKTextField: UITextField {
         addTarget(self, action: #selector(self.removeFloatingLabel), for: .editingChanged)
         _placeholder = (_placeholder != nil) ? _placeholder : placeholder
         placeholder = _placeholder
+        rxBind()
+    }
+    
+    func test() {
+        self.removeFloatingLabel()
+        self.labelInit()
+    }
+    
+    func rxBind() {
+        let disposeBag = DisposeBag()
+        rx.text.subscribe(onNext: { _ in
+            self.removeFloatingLabel()
+            self.labelInit()
+        }).disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {

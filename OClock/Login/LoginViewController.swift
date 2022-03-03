@@ -156,31 +156,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        baseView.errorView
+            .errorButton
+            .rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.didTapLoginButton.onNext(())
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
         viewModel.state
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
                 switch state {
-                case let .error(error):
-                    print("DEBUG: Error")
-                  //  self.baseView.activityIndicator.textLabel.rx.text.onNext(error)
-                  //  self.baseView.activityIndicator.indicatorView = JGProgressHUDErrorIndicatorView.init()
-                  //  self.baseView.activityIndicator.dismiss(afterDelay: 2.0)
+                case .error:
+                    self.baseView.contentView.isHidden = true
+                    self.baseView.activityIndicator.activityIndicator.stopAnimating()
+                    self.baseView.activityIndicator.isHidden = true
+                    self.baseView.errorView.isHidden = false
                 case .loading:
+                    self.baseView.errorView.isHidden = true
                     self.baseView.contentView.isHidden = true
                     self.baseView.activityIndicator.isHidden = false
                     self.baseView.activityIndicator.activityIndicator.startAnimating()
                 case .success:
                     self.baseView.activityIndicator.activityIndicator.stopAnimating()
                     self.baseView.activityIndicator.isHidden = true
+                    self.baseView.contentView.isHidden = false
                     self.viewModel.didGoToLoginButton.onNext(())
                 case .initial:
                     self.baseView.activityIndicator.isHidden = true
                     self.baseView.contentView.isHidden = false
                 }
-                
             })
             .disposed(by: viewModel.myDisposeBag)
-            
     }
     
     func isUserLogged() {

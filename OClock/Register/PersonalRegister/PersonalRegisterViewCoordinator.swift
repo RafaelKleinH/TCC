@@ -14,15 +14,17 @@ class PersonalRegisterViewCoordinator: CoordinatorProtocol {
    
     var navigationController: UINavigationController
     var isFirstRegister: Bool
+    var personalData: PersonalData?
     
-    init(navigationController: UINavigationController, isFirstRegister: Bool = false) {
+    init(navigationController: UINavigationController, isFirstRegister: Bool = false, personalData: PersonalData? = nil) {
         self.navigationController = navigationController
         self.isFirstRegister = isFirstRegister
+        self.personalData = personalData
     }
     
     func start() {
         let service = PersonalRegisterViewService()
-        let viewModel = PersonalRegisterViewModel(service: service, isFirstRegister: isFirstRegister)
+        let viewModel = PersonalRegisterViewModel(service: service, isFirstRegister: isFirstRegister, personalData: personalData)
         let v = PersonalRegisterView()
         let vc = PersonalRegisterViewController(viewModel: viewModel, baseView: v)
         
