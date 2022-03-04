@@ -522,7 +522,7 @@ DEPENDENCIES:
   - KDCircularProgress (= 1.5.4)
   - NVActivityIndicatorView (= 5.1.1)
   - RxCocoa (= 6.2.0)
-  - RxDataSources
+  - RxDataSources (= 5.0.0)
   - RxGesture (= 4.0.3)
   - RxKeyboard (= 2.0.0)
   - RxSwift (= 6.2.0)
@@ -592,6 +592,6 @@ SPEC CHECKSUMS:
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 14299503f0fe1dfda5cea818dff528ca8ac3d0b7
+PODFILE CHECKSUM: 4c5c5efa3bf69444f7d8b11c700805ae159c1344
 
 COCOAPODS: 1.11.2

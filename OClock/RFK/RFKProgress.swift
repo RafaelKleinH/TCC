@@ -94,5 +94,6 @@ class RFKProgress: UIView {
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
+        
     }
 }

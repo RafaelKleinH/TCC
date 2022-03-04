@@ -28,18 +28,20 @@ protocol HomeViewModelProtocol {
     
     var navigationTarget: Observable<Target> { get }
     
+    var didTapButton: AnyObserver<Void> { get }
     var didGoToPersonalRegister: AnyObserver<Void> { get }
     var didTapBackButton: AnyObserver<Void> { get }
     var didGoToRegisterView: AnyObserver<Void> { get }
     var didViewLoad: AnyObserver<Void> { get }
     var didLoadUserData: AnyObserver<Void> { get }
     
+    var buttonBack: Observable<Bool?> { get }
     var hoursData: Observable<HoursData> { get }
     var userData: Observable<PersonalData> { get }
     
     var timer: Timer { get }
     var timerNum: Int { get }
-    var stringTime: Observable<String> { get }
+    var stringTime: Observable<(String, Double)> { get }
     var midTime: AnyObserver<Int> { get }
     
     var state: Observable<HomeState> { get }
@@ -47,6 +49,11 @@ protocol HomeViewModelProtocol {
     var myDisposeBag: DisposeBag { get }
     
     var isOpen: Bool { get }
+    var hasBreak: Bool { get set }
+    var isFirstFinished: Bool { get set }
+    var isSecondFinished: Bool { get set }
+    var isThirdFinished: Bool { get set }
+    var isFourthFinished: Bool { get set }
     
     var usableHoursData: Observable<(Int, Int, Bool?)> { get }
     
@@ -60,12 +67,14 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let navigationTarget: Observable<Target>
     
+    let didTapButton: AnyObserver<Void>
     let didGoToPersonalRegister: AnyObserver<Void>
     let didTapBackButton: AnyObserver<Void>
     let didGoToRegisterView: AnyObserver<Void>
     let didViewLoad: AnyObserver<Void>
     let didLoadUserData: AnyObserver<Void>
     
+    let buttonBack: Observable<Bool?>
     let hoursData: Observable<HoursData>
     let userData: Observable<PersonalData>
     
@@ -73,7 +82,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     var timer = Timer()
     var timerNum: Int = 0
-    var stringTime: Observable<String>
+    var stringTime: Observable<(String, Double)>
     var midTime: AnyObserver<Int>
     
     let isRunning: AnyObserver<Bool>
@@ -81,6 +90,11 @@ class HomeViewModel: HomeViewModelProtocol {
     let myDisposeBag = DisposeBag()
     
     var isOpen: Bool = false
+    var hasBreak: Bool = false
+    var isFirstFinished: Bool = false
+    var isSecondFinished: Bool = false
+    var isThirdFinished: Bool = false
+    var isFourthFinished: Bool = false
     
     let usableHoursData: Observable<(Int, Int, Bool?)>
     //MARK:- Models
@@ -91,6 +105,9 @@ class HomeViewModel: HomeViewModelProtocol {
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
     
     init(service: HomeViewServiceProtocol = HomeViewService()) {
+        
+        let _didTapButton = PublishSubject<Void>()
+        didTapButton = _didTapButton.asObserver()
         
         let _didGoToPersonalRegister = PublishSubject<Void>()
         didGoToPersonalRegister = _didGoToPersonalRegister.asObserver()
@@ -128,7 +145,7 @@ class HomeViewModel: HomeViewModelProtocol {
             formatter.zeroFormattingBehavior = .pad
             
             let formattedString = formatter.string(from: TimeInterval(a)) ?? ""
-            return formattedString
+            return (formattedString, Double(a))
         }
         
         userData = _didViewLoad.flatMap { _ in
@@ -212,6 +229,8 @@ class HomeViewModel: HomeViewModelProtocol {
         
         usableHoursData = Observable.combineLatest(totalBreakHours, totalHours, hoursData.map { $0.hasBreak })
 
+        buttonBack = _didTapButton.withLatestFrom(hoursData.map { $0.hasBreak })
+        
         navigationTarget = Observable.merge(
             _didGoToRegisterView.map { .registerBaseData },
             _didGoToPersonalRegister.withLatestFrom(userData).map { .personalRegister(userData:$0) }
