@@ -22,11 +22,11 @@ enum HomeState: Equatable {
 protocol HomeViewModelProtocol {
     typealias Target = MainTabBarCoordinator.TargetH
     
-    func saveHours(inOrOut: String)
-    func pauseTimer()
-    func startTime(_ sender: Any)
-    
     var navigationTarget: Observable<Target> { get }
+    
+    var timerCentral: TimerCentral { get }
+    
+    var afterReturnBackGround: Bool { get set }
     
     var didTapButton: AnyObserver<Void> { get }
     var didGoToPersonalRegister: AnyObserver<Void> { get }
@@ -39,16 +39,12 @@ protocol HomeViewModelProtocol {
     var hoursData: Observable<HoursData> { get }
     var userData: Observable<PersonalData> { get }
     
-    var timer: Timer { get }
-    var timerNum: Int { get }
     var stringTime: Observable<(String, Double)> { get }
-    var midTime: AnyObserver<Int> { get }
     
     var state: Observable<HomeState> { get }
     
     var myDisposeBag: DisposeBag { get }
     
-    var isOpen: Bool { get }
     var hasBreak: Bool { get set }
     var isFirstFinished: Bool { get set }
     var isSecondFinished: Bool { get set }
@@ -80,10 +76,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let state: Observable<HomeState>
     
-    var timer = Timer()
-    var timerNum: Int = 0
     var stringTime: Observable<(String, Double)>
-    var midTime: AnyObserver<Int>
     
     let isRunning: AnyObserver<Bool>
     
@@ -95,6 +88,7 @@ class HomeViewModel: HomeViewModelProtocol {
     var isSecondFinished: Bool = false
     var isThirdFinished: Bool = false
     var isFourthFinished: Bool = false
+    var afterReturnBackGround: Bool = false
     
     let usableHoursData: Observable<(Int, Int, Bool?)>
     //MARK:- Models
@@ -103,6 +97,8 @@ class HomeViewModel: HomeViewModelProtocol {
     let totalHours: Observable<Int>
     let totalBreakHours: Observable<Int>
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
+    
+    var timerCentral = TimerCentral()
     
     init(service: HomeViewServiceProtocol = HomeViewService()) {
         
@@ -129,16 +125,14 @@ class HomeViewModel: HomeViewModelProtocol {
         
         let _isRunning = PublishSubject<Bool>()
         isRunning = _isRunning.asObserver()
-        
-        let _midTime = PublishSubject<Int>()
-        midTime = _midTime.asObserver()
+
             
         
         
         
         
         
-        stringTime = _midTime.map { a in
+        stringTime = timerCentral.midTime.map { a in
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute, .second]
             formatter.unitsStyle = .positional
@@ -235,21 +229,6 @@ class HomeViewModel: HomeViewModelProtocol {
             _didGoToRegisterView.map { .registerBaseData },
             _didGoToPersonalRegister.withLatestFrom(userData).map { .personalRegister(userData:$0) }
         )
-    }
-    
-    func startTime(_ sender: Any) {
-        isOpen = true
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(action), userInfo: nil, repeats: true)
-    }
-    
-    func pauseTimer() {
-        isOpen = false
-        timer.invalidate()
-    }
-    
-    @objc func action() {
-        timerNum += 1
-        midTime.onNext(timerNum)
     }
     
     func saveHours(inOrOut: String) {
