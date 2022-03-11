@@ -70,20 +70,25 @@ class RFKProgress: UIView {
     }
     
     func resumeProgress() {
-        let layer = circularProgress.layer
-        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-        layer.speed = 1.0
-        layer.timeOffset = 0.0
-        layer.beginTime = 0.0
-        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-        layer.beginTime = timeSincePause
+        DispatchQueue.main.async {
+            let layer = self.circularProgress.layer
+            let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+            layer.speed = 1.0
+            layer.timeOffset = 0.0
+            layer.beginTime = 0.0
+            let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+            layer.beginTime = timeSincePause
+        }
     }
     
     func pauseProgress() {
-        let layer = circularProgress.layer
-        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-        layer.speed = 0.0
-        layer.timeOffset = pausedTime
+        DispatchQueue.main.async {
+            let layer = self.circularProgress.layer
+            let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+            layer.speed = 0.0
+            layer.timeOffset = pausedTime
+        }
+       
     }
     
     func setupProgress(startAngle: Double = -235, animateToAngle: Double = 290) {

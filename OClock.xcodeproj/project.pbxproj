@@ -39,6 +39,7 @@
 		9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4CE2784F107009FA50F /* RegisterViewService.swift */; };
 		9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */; };
 		9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46DBDF27C2FFAB00EA0A44 /* CustomImages.swift */; };
+		9D4EF1D327DAD206003A4583 /* TimerCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4EF1D227DAD206003A4583 /* TimerCentral.swift */; };
 		9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */; };
 		9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */; };
 		9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */; };
@@ -148,6 +149,7 @@
 		9D46A4CE2784F107009FA50F /* RegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewService.swift; sourceTree = "<group>"; };
 		9D46A4EB27850BD5009FA50F /* RFKitRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKitRoundedImageView.swift; sourceTree = "<group>"; };
 		9D46DBDF27C2FFAB00EA0A44 /* CustomImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
+		9D4EF1D227DAD206003A4583 /* TimerCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCentral.swift; sourceTree = "<group>"; };
 		9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		9D4F3DA427457092004D7FD8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D4F3DA92745709F004D7FD8 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				9D6037B72795FE6B006B991C /* DataBase.swift */,
 				9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */,
 				9DA2D1C227DA69180045171E /* NotificationCentral.swift */,
+				9D4EF1D227DAD206003A4583 /* TimerCentral.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
 				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
+				9D4EF1D327DAD206003A4583 /* TimerCentral.swift in Sources */,
 				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
 				9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */,
 				9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */,

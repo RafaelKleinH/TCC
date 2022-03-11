@@ -30,12 +30,29 @@ class HomeViewController: UIViewController {
         self.view = baseView
         rxBinds()
         viewModel.didViewLoad.onNext(())
-        viewModel.timer.fire()
+        viewModel.timerCentral.startTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.START_TIME_KEY) as? Date
+        viewModel.timerCentral.stopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.STOP_TIME_KEY) as? Date
+        viewModel.timerCentral.isOpen =  viewModel.timerCentral.userDefaults.bool(forKey:  viewModel.timerCentral.COUNTING_KEY)
+       
+        if  viewModel.timerCentral.isOpen {
+            viewModel.timerCentral.startHelper()
+        } else {
+            viewModel.timerCentral.stopTimer()
+            if let startTime =  viewModel.timerCentral.startTime {
+                if let stopTime =  viewModel.timerCentral.stopTime {
+                    let time =  viewModel.timerCentral.calcRestartTime(start: startTime, stop: stopTime)
+                    let diff = Date().timeIntervalSince(time)
+                    viewModel.timerCentral.midTime.onNext(Int(diff))
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+      
     }
     
     func rxBinds() {
@@ -56,19 +73,18 @@ class HomeViewController: UIViewController {
             })
             .disposed(by: viewModel.myDisposeBag)
         
-        viewModel.userData
-            .subscribe()
-            .disposed(by: viewModel.myDisposeBag)
         
         viewModel.usableHoursData
             .subscribe(onNext: { totalBreak, totalHours, hasBreak in
+                self.viewModel.timerCentral.totalHours = totalHours
+                self.viewModel.timerCentral.hasBreak = hasBreak
                 
                 self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(totalHours))
                 self.baseView.circularProgress.pauseProgress()
                 if let hasBreak = hasBreak {
                     self.baseView.addSubProgress(hasBreak: hasBreak)
                     if hasBreak {
-                        self.baseView.firstSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
+                        self.baseView.firstSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(totalHours / 2)) { [weak self] _ in
                             guard let self = self else { return }
                             self.viewModel.isFirstFinished = true
                         }
@@ -80,7 +96,7 @@ class HomeViewController: UIViewController {
                         }
                         self.baseView.secondSubProgress.progress.pauseProgress()
                         
-                        self.baseView.thirdSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
+                        self.baseView.thirdSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(totalHours / 2)) { [weak self] _ in
                             guard let self = self else { return }
                             self.viewModel.isThirdFinished = true
                         }
@@ -125,8 +141,8 @@ class HomeViewController: UIViewController {
                 guard let hasBreak = hasBrk else { return }
                 
                 if hasBreak {
-                    if self.viewModel.isOpen {
-                        self.viewModel.pauseTimer()
+                    if self.viewModel.timerCentral.isOpen {
+                        self.viewModel.timerCentral.pauseTimer()
                         self.baseView.circularProgress.pauseProgress()
                         if self.viewModel.isFirstFinished == false {
                             self.baseView.firstSubProgress.progress.pauseProgress()
@@ -142,28 +158,28 @@ class HomeViewController: UIViewController {
                             self.baseView.secondSubProgress.progress.resumeProgress()
                         }
                      
-                        self.viewModel.saveHours(inOrOut: "Out: ")
+                        //self.viewModel.saveHours(inOrOut: "Out: ")
                     } else {
-                        self.viewModel.startTime(self)
+                        self.viewModel.timerCentral.startTimer()
                         self.baseView.circularProgress.resumeProgress()
                         self.baseView.firstSubProgress.progress.resumeProgress()
                         self.baseView.secondSubProgress.progress.pauseProgress()
-                        self.viewModel.saveHours(inOrOut: "In: ")
+                        //self.viewModel.saveHours(inOrOut: "In: ")
                     }
                 } else {
-                    if self.viewModel.isOpen {
-                        self.viewModel.pauseTimer()
+                    if self.viewModel.timerCentral.isOpen {
+                        self.viewModel.timerCentral.pauseTimer()
                         if self.viewModel.isThirdFinished == false {
                             
                         }
                         self.baseView.circularProgress.pauseProgress()
                         self.baseView.thirdSubProgress.progress.pauseProgress()
-                        self.viewModel.saveHours(inOrOut: "Out: ")
+                       // self.viewModel.timerCentral.saveHours(inOrOut: "Out: ")
                     } else {
-                        self.viewModel.startTime(self)
+                        self.viewModel.timerCentral.startTimer()
                         self.baseView.circularProgress.resumeProgress()
                         self.baseView.thirdSubProgress.progress.resumeProgress()
-                        self.viewModel.saveHours(inOrOut: "In: ")
+                        //self.viewModel.timerCentral.saveHours(inOrOut: "In: ")
                     }
                 }
             })
@@ -178,10 +194,9 @@ class HomeViewController: UIViewController {
                 self.baseView.timeLabel.rx.text.onNext(a)
                 let hasBreak = self.viewModel.hasBreak
                 if hasBreak {
-                    if self.viewModel.isOpen {
+                    if self.viewModel.timerCentral.isOpen {
                         if self.viewModel.isFirstFinished && self.viewModel.isThirdFinished == false {
                             self.baseView.firstSubProgress.progress.pauseProgress()
-                            NotificationsCentral.normalNotification()
                             self.baseView.thirdSubProgress.progress.resumeProgress()
                         }
                         if self.viewModel.isSecondFinished && self.viewModel.isThirdFinished == false {
@@ -195,7 +210,7 @@ class HomeViewController: UIViewController {
                         }
                     }
                 } else {
-                    if self.viewModel.isOpen {
+                    if self.viewModel.timerCentral.isOpen {
                         if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished == false {
                             self.baseView.thirdSubProgress.progress.pauseProgress()
                             self.baseView.fourthSubProgress.progress.resumeProgress()
