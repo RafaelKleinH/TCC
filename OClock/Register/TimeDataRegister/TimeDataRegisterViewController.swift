@@ -177,6 +177,14 @@ class TimeDataRegisterViewController: UIViewController {
             .subscribe()
             .disposed(by: viewModel.disposeBag)
         
+        viewModel.notTrigger
+            .subscribe(onNext: {  initialHrs in
+                NotificationsCentral.eliminateOthers()
+                NotificationsCentral.initialHourNotification(initHours: initialHrs)
+                self.viewModel.didReturnHome.onNext(())
+            })
+            .disposed(by: viewModel.disposeBag)
+        
         viewModel.state
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
@@ -191,7 +199,6 @@ class TimeDataRegisterViewController: UIViewController {
                     self.baseView.scrollView.isHidden = false
                     self.baseView.activityIndicator.activityIndicator.stopAnimating()
                     self.baseView.activityIndicator.isHidden = true
-                    self.viewModel.didReturnHome.onNext(())
                 }
             })
             .disposed(by: viewModel.disposeBag)

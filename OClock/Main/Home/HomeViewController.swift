@@ -31,7 +31,6 @@ class HomeViewController: UIViewController {
         rxBinds()
         viewModel.didViewLoad.onNext(())
         viewModel.timer.fire()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -182,6 +181,7 @@ class HomeViewController: UIViewController {
                     if self.viewModel.isOpen {
                         if self.viewModel.isFirstFinished && self.viewModel.isThirdFinished == false {
                             self.baseView.firstSubProgress.progress.pauseProgress()
+                            NotificationsCentral.normalNotification()
                             self.baseView.thirdSubProgress.progress.resumeProgress()
                         }
                         if self.viewModel.isSecondFinished && self.viewModel.isThirdFinished == false {
@@ -200,7 +200,7 @@ class HomeViewController: UIViewController {
                             self.baseView.thirdSubProgress.progress.pauseProgress()
                             self.baseView.fourthSubProgress.progress.resumeProgress()
                         } else if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished {
-                            self.baseView.fourthSubProgress.progress.pauseProgress()
+                                self.baseView.fourthSubProgress.progress.pauseProgress()
                         }
                     }
                 }

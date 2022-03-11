@@ -12,12 +12,10 @@ import RxCocoa
 import RxKeyboard
 import JGProgressHUD
 
-
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var baseView: LoginView
     var viewModel: LoginViewModelProtocol
-
     
     init(baseView: LoginView, viewModel: LoginViewModel) {
         self.baseView = baseView
@@ -37,6 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         reactiveBinds()
         isUserLogged()
         super.viewDidLoad()
+        NotificationsCentral.requestAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {

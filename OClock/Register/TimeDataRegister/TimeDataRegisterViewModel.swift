@@ -54,6 +54,9 @@ protocol TimeDataRegisterViewModelProtocol {
     var initText: Observable<String> { get }
     var totalText: Observable<String> { get }
     var pauseText: Observable<String> { get }
+    
+    var notTrigger: Observable<[Int]> { get }
+    
 }
 
 class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
@@ -89,6 +92,8 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
     let initText: Observable<String>
     let totalText: Observable<String>
     let pauseText: Observable<String>
+    
+    let notTrigger: Observable<[Int]>
     
     let initPickerAdapter = RxPickerViewStringAdapter<[[String]]>(
         components: [],
@@ -286,6 +291,19 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
                         return Observable.empty()
                     }
             }.share()
+        
+        notTrigger = returnedValue.withLatestFrom(initText.asObservable()).map({ hours in
+            let sepHours = hours.components(separatedBy: ":")
+            if let valOne = sepHours.first, let valTwo = sepHours.last {
+                if let valOne = Int(valOne), let valTwo = Int(valTwo) {
+                    return [valOne, valTwo]
+                } else {
+                    return [0, 0]
+                }
+            } else {
+                return [0, 0]
+            }
+        })
         
         navigationTarget = Observable.merge(
             _didTapBackButton.map { .pop },

@@ -74,6 +74,7 @@
 		9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E7CD027922C7C00336E2B /* HomeModel.swift */; };
 		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
 		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
+		9DA2D1C327DA69180045171E /* NotificationCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2D1C227DA69180045171E /* NotificationCentral.swift */; };
 		9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91705279792FC0015947E /* tabBarCoordinator.swift */; };
 		9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9170B2797974A0015947E /* ConfigCoordinator.swift */; };
 		9DD91711279797660015947E /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91710279797660015947E /* ConfigViewController.swift */; };
@@ -184,6 +185,7 @@
 		9D9B8FDC278F983D00680D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9D9B9040278FACA500680D4A /* RFKSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKSize.swift; sourceTree = "<group>"; };
+		9DA2D1C227DA69180045171E /* NotificationCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCentral.swift; sourceTree = "<group>"; };
 		9DD91705279792FC0015947E /* tabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarCoordinator.swift; sourceTree = "<group>"; };
 		9DD9170B2797974A0015947E /* ConfigCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCoordinator.swift; sourceTree = "<group>"; };
 		9DD91710279797660015947E /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				9D4F3D9227456DD7004D7FD8 /* CoordinatorProtocol.swift */,
 				9D6037B72795FE6B006B991C /* DataBase.swift */,
 				9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */,
+				9DA2D1C227DA69180045171E /* NotificationCentral.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */,
 				9D39977F273C140000600544 /* LognViewCoordinator.swift in Sources */,
 				9D399754273C136E00600544 /* AppDelegate.swift in Sources */,
+				9DA2D1C327DA69180045171E /* NotificationCentral.swift in Sources */,
 				9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */,
 				9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */,
 				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
