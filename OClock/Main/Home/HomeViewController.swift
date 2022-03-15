@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         self.view = baseView
         rxBinds()
@@ -51,8 +52,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-      
     }
     
     func rxBinds() {
@@ -68,9 +67,7 @@ class HomeViewController: UIViewController {
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.ableFakedRegister
-            .subscribe(onNext: { value in
-                print(value)
-            })
+            .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
         
@@ -83,48 +80,49 @@ class HomeViewController: UIViewController {
                 self.baseView.circularProgress.pauseProgress()
                 if let hasBreak = hasBreak {
                     self.baseView.addSubProgress(hasBreak: hasBreak)
-                    if hasBreak {
-                        self.baseView.firstSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(totalHours / 2)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isFirstFinished = true
-                        }
-                        self.baseView.firstSubProgress.progress.pauseProgress()
-                        
-                        self.baseView.secondSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isSecondFinished = true
-                        }
-                        self.baseView.secondSubProgress.progress.pauseProgress()
-                        
-                        self.baseView.thirdSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(totalHours / 2)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isThirdFinished = true
-                        }
-                        self.baseView.thirdSubProgress.progress.pauseProgress()
-                        
-                        self.baseView.fourthSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isFourthFinished = true
-                        }
-                        self.baseView.fourthSubProgress.progress.pauseProgress()
-                   
-                    
-                    } else {
-                        
-                        self.baseView.thirdSubProgress.titleLabel.text = "Total"
-                        self.baseView.thirdSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isThirdFinished = true
-                        }
-                        self.baseView.thirdSubProgress.progress.pauseProgress()
-                        
-                        self.baseView.fourthSubProgress.progress.circularProgress.animate(toAngle: 360, duration: TimeInterval(5)) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.viewModel.isFourthFinished = true
-                        }
-                        self.baseView.fourthSubProgress.progress.pauseProgress()
-                    }
                 }
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        var mainProgressValue: Double = 0.0
+        
+        viewModel.timerCentral
+            .midTime
+            .subscribe(onNext: { [weak self] time in
+                guard let self = self, let totalHours = self.viewModel.timerCentral.totalHours else { return }
+                let num = Double(time)
+                let halfHours = totalHours / 2
+                let hasBreak = self.viewModel.hasBreak
+                
+                if mainProgressValue == 0 {
+                    self.baseView.circularProgress.circularProgress.progress = 0.0
+                } else if mainProgressValue < 0.81 {
+                    let mainProgress = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(totalHours))
+                    self.baseView.circularProgress.circularProgress.progress = mainProgress / 125
+                    mainProgressValue = mainProgress / 125
+                } else {
+                    self.baseView.circularProgress.circularProgress.progress = 0.81
+                }
+                    
+                if hasBreak == true {
+                    let firstSub = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(halfHours))
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.firstSubProgress.progress.circularProgress.progress = firstSub / 100
+                    }, completion: nil)
+                        
+                    let thirdSub = self.viewModel.calculatePercentage(value: num, min: Double(halfHours), max: Double(totalHours))
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.thirdSubProgress.progress.circularProgress.progress = thirdSub / 100
+                    }, completion: nil)
+                    
+                } else {
+                  
+                }
+                let fourthMax = totalHours + 5
+                let fourthSub = self.viewModel.calculatePercentage(value: num, min: Double(totalHours), max: Double(fourthMax))
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                    self.baseView.fourthSubProgress.progress.circularProgress.progress = fourthSub / 100
+                }, completion: nil)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -143,82 +141,67 @@ class HomeViewController: UIViewController {
                 if hasBreak {
                     if self.viewModel.timerCentral.isOpen {
                         self.viewModel.timerCentral.pauseTimer()
-                        self.baseView.circularProgress.pauseProgress()
-                        if self.viewModel.isFirstFinished == false {
-                            self.baseView.firstSubProgress.progress.pauseProgress()
-                        }
-                        else if self.viewModel.isThirdFinished == false {
-                            self.baseView.thirdSubProgress.progress.pauseProgress()
-                        }
-                        else if self.viewModel.isFourthFinished == false {
-                            self.baseView.fourthSubProgress.progress.pauseProgress()
-                        }
-                        
-                        if self.viewModel.isSecondFinished == false {
-                            self.baseView.secondSubProgress.progress.resumeProgress()
-                        }
+                       
                      
                         //self.viewModel.saveHours(inOrOut: "Out: ")
                     } else {
                         self.viewModel.timerCentral.startTimer()
-                        self.baseView.circularProgress.resumeProgress()
-                        self.baseView.firstSubProgress.progress.resumeProgress()
-                        self.baseView.secondSubProgress.progress.pauseProgress()
+                        
                         //self.viewModel.saveHours(inOrOut: "In: ")
                     }
                 } else {
                     if self.viewModel.timerCentral.isOpen {
                         self.viewModel.timerCentral.pauseTimer()
-                        if self.viewModel.isThirdFinished == false {
-                            
-                        }
-                        self.baseView.circularProgress.pauseProgress()
-                        self.baseView.thirdSubProgress.progress.pauseProgress()
+                      
                        // self.viewModel.timerCentral.saveHours(inOrOut: "Out: ")
                     } else {
                         self.viewModel.timerCentral.startTimer()
-                        self.baseView.circularProgress.resumeProgress()
-                        self.baseView.thirdSubProgress.progress.resumeProgress()
+                      
                         //self.viewModel.timerCentral.saveHours(inOrOut: "In: ")
                     }
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
         
-        baseView.timeButton.rx.tap
+        baseView.timeButton
+            .rx
+            .tap
             .bind(to: viewModel.didTapButton)
             .disposed(by: viewModel.myDisposeBag)
         
-        viewModel.stringTime
-            .subscribe(onNext: { (a,b) in
-                self.baseView.timeLabel.rx.text.onNext(a)
-                let hasBreak = self.viewModel.hasBreak
-                if hasBreak {
-                    if self.viewModel.timerCentral.isOpen {
-                        if self.viewModel.isFirstFinished && self.viewModel.isThirdFinished == false {
-                            self.baseView.firstSubProgress.progress.pauseProgress()
-                            self.baseView.thirdSubProgress.progress.resumeProgress()
-                        }
-                        if self.viewModel.isSecondFinished && self.viewModel.isThirdFinished == false {
-                            self.baseView.secondSubProgress.progress.pauseProgress()
-                        }
-                        if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished == false {
-                            self.baseView.thirdSubProgress.progress.pauseProgress()
-                            self.baseView.fourthSubProgress.progress.resumeProgress()
-                        } else if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished {
-                            self.baseView.fourthSubProgress.progress.pauseProgress()
-                        }
-                    }
-                } else {
-                    if self.viewModel.timerCentral.isOpen {
-                        if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished == false {
-                            self.baseView.thirdSubProgress.progress.pauseProgress()
-                            self.baseView.fourthSubProgress.progress.resumeProgress()
-                        } else if self.viewModel.isThirdFinished && self.viewModel.isFourthFinished {
-                                self.baseView.fourthSubProgress.progress.pauseProgress()
-                        }
-                    }
+       // var valsue = 0
+        
+        baseView.timeButton
+            .rx
+            .longPressGesture(configuration: .none)
+            .skip(1)
+            //.throttle(RxTimeInterval.seconds(2), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {  value in
+                if value.state == .began {
+                    self.viewModel.didLongPressButton.onNext(())
                 }
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        
+        
+        baseView.alert
+            .addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
+        
+        baseView.alert
+            .addAction(UIAlertAction(title: "Encerrar", style: .default, handler: { _ in
+                self.viewModel.timerCentral.resetAction()
+            }))
+        
+        viewModel.didReturnLongPress
+            .subscribe(onNext: {
+                self.present(self.baseView.alert, animated: true, completion: nil)
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.stringTime
+            .subscribe(onNext: { (text, num) in
+                self.baseView.timeLabel.rx.text.onNext(text)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -274,3 +257,7 @@ class HomeViewController: UIViewController {
         baseView.fourthSubProgress.updateColor()
     }
 }
+
+
+
+    

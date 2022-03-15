@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KDCircularProgress
 
 class RFKMiniLoader: UIView {
     
@@ -54,6 +55,12 @@ class RFKMiniLoader: UIView {
         titleLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
         progress.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 12, paddingRight: 8)
     }
-    
-    
+}
+
+
+import RxCocoa
+import RxSwift
+
+public extension Reactive where Base: KDCircularProgress {
+   var progress: Binder<Double> { progress }
 }

@@ -9,16 +9,20 @@ import Foundation
 import RxSwift
 
 class TimerCentral {
+ 
+    //MARK: Common Vars
     
+    let userDefaults = UserDefaults.standard
+    var hasBreak: Bool?
+    
+    //MARK: Main Timer Vars
     var isOpen: Bool = false
     var timer: Timer?
     var timerNum: Int?
     var midTime = PublishSubject<Int>()
-    
-    var hasBreak: Bool?
+
     var totalHours: Int?
     
-    let userDefaults = UserDefaults.standard
     var startTime: Date?
     var stopTime: Date?
     
@@ -26,6 +30,22 @@ class TimerCentral {
     let STOP_TIME_KEY = "stopTime"
     let COUNTING_KEY = "countingKey"
     
+    //MARK: Interval Timer Vars
+    
+    var intervalTimer: Timer?
+    var intervalIsOpen: Bool = false
+    var intervalTotalHours: Int?
+    var intervalTimerNum: Int?
+    
+    var intervalStartTime: Date?
+    var intervalStopTime: Date?
+    
+    let INTERVAL_START_TIME_KEY = "intervalStartTime"
+    let INTERVAL_STOP_TIME_KEY = "intervalStopTime"
+    let INTERVAL_COUNTING_KEY = "intervalCountingKey"
+    
+    
+    //MARK: Main Timer Functions
     func startTimer() {
         if let stop = stopTime {
             let restartTime = calcRestartTime(start: startTime!, stop: stop)
@@ -71,7 +91,6 @@ class TimerCentral {
     
     @objc func action() {
         if let start = startTime {
-            print(start)
             let diff = Date().timeIntervalSince(start)
             midTime.onNext(Int(diff))
             timerNum = Int(diff)
@@ -98,4 +117,73 @@ class TimerCentral {
         userDefaults.set(isOpen, forKey: COUNTING_KEY)
     }
     
+    func resetAction() {
+        setStopTime(date: nil)
+        setStartTime(date: nil)
+        midTime.onNext(0)
+        stopTimer()
+    }
+    
+    //MARK: Interval Timer Functions
+    
+    func intervalStartTimer() {
+        if let stop = intervalStopTime {
+            let restartTime = calcRestartTime(start: intervalStartTime!, stop: stop)
+            intervalSetStopTime(date: nil)
+            intervalSetStartTime(date: restartTime)
+        } else {
+            intervalSetStartTime(date: Date())
+        }
+        intervalStartHelper()
+    }
+    
+    func intervalStartHelper() {
+        intervalTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(intervalAction), userInfo: nil, repeats: true)
+        intervalSetTimerCounting(true)
+        guard let time = intervalTotalHours else { return }
+        let less = Double(intervalTimerNum ?? 0)
+        NotificationsCentral.intervalCalcNotifications(intervalIsOpen: true, time: Double(time), less: less)
+    }
+    
+    func intervalPauseTimer() {
+        intervalSetStopTime(date: Date())
+        intervalStopTimer()
+    }
+    
+    func intervalStopTimer() {
+        if let timer = intervalTimer {
+            timer.invalidate()
+        }
+        intervalSetTimerCounting(false)
+        guard let time = intervalTotalHours else { return }
+        let less = Double(intervalTimerNum ?? 0)
+        NotificationsCentral.intervalCalcNotifications(intervalIsOpen: false, time: Double(time), less: less)
+    }
+    
+    @objc func intervalAction() {
+        if let start = intervalStartTime {
+            let diff = Date().timeIntervalSince(start)
+            //midTime.onNext(Int(diff))
+            intervalTimerNum = Int(diff)
+        }
+        else {
+            intervalPauseTimer()
+            //midTime.onNext(0)
+        }
+    }
+    
+    func intervalSetStartTime(date: Date?) {
+        intervalStartTime = date
+        userDefaults.set(intervalStartTime, forKey: INTERVAL_START_TIME_KEY)
+    }
+    
+    func intervalSetStopTime(date: Date?) {
+        intervalStopTime = date
+        userDefaults.set(intervalStopTime, forKey: INTERVAL_STOP_TIME_KEY)
+    }
+    
+    func intervalSetTimerCounting(_ val: Bool) {
+        intervalIsOpen = val
+        userDefaults.set(intervalIsOpen, forKey: INTERVAL_COUNTING_KEY)
+    }
 }

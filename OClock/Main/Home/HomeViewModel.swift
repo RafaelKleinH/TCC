@@ -22,6 +22,8 @@ enum HomeState: Equatable {
 protocol HomeViewModelProtocol {
     typealias Target = MainTabBarCoordinator.TargetH
     
+    func calculatePercentage(value: Double ,min: Double, max: Double) -> Double
+    
     var navigationTarget: Observable<Target> { get }
     
     var timerCentral: TimerCentral { get }
@@ -54,9 +56,12 @@ protocol HomeViewModelProtocol {
     var usableHoursData: Observable<(Int, Int, Bool?)> { get }
     
     var totalHours: Observable<Int> { get }
+    var ableFakedRegister: BehaviorRelay<[String]> { get }
     var totalBreakHours: Observable<Int> { get }
     var userName: Observable<String> { get }
-    var ableFakedRegister: BehaviorRelay<[String]> { get }
+    
+    var didLongPressButton: AnyObserver<Void> { get }
+    var didReturnLongPress: Observable<Void> { get }
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -76,7 +81,7 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let state: Observable<HomeState>
     
-    var stringTime: Observable<(String, Double)>
+    let stringTime: Observable<(String, Double)>
     
     let isRunning: AnyObserver<Bool>
     
@@ -91,12 +96,15 @@ class HomeViewModel: HomeViewModelProtocol {
     var afterReturnBackGround: Bool = false
     
     let usableHoursData: Observable<(Int, Int, Bool?)>
-    //MARK:- Models
+    //MARK: Models
 
-    var userName: Observable<String>
+    let userName: Observable<String>
     let totalHours: Observable<Int>
     let totalBreakHours: Observable<Int>
     let ableFakedRegister: BehaviorRelay<[String]> = .init(value: [])
+    
+    let didLongPressButton: AnyObserver<Void>
+    let didReturnLongPress: Observable<Void>
     
     var timerCentral = TimerCentral()
     
@@ -126,11 +134,10 @@ class HomeViewModel: HomeViewModelProtocol {
         let _isRunning = PublishSubject<Bool>()
         isRunning = _isRunning.asObserver()
 
-            
+        let _didLongPressButton = PublishSubject<Void>()
+        didLongPressButton = _didLongPressButton.asObserver()
         
-        
-        
-        
+        didReturnLongPress = _didLongPressButton.map { $0 }
         
         stringTime = timerCentral.midTime.map { a in
             let formatter = DateComponentsFormatter()
@@ -141,6 +148,8 @@ class HomeViewModel: HomeViewModelProtocol {
             let formattedString = formatter.string(from: TimeInterval(a)) ?? ""
             return (formattedString, Double(a))
         }
+        
+        
         
         userData = _didViewLoad.flatMap { _ in
             service.getPersonalData()
@@ -225,6 +234,9 @@ class HomeViewModel: HomeViewModelProtocol {
 
         buttonBack = _didTapButton.withLatestFrom(hoursData.map { $0.hasBreak })
         
+        
+        
+        
         navigationTarget = Observable.merge(
             _didGoToRegisterView.map { .registerBaseData },
             _didGoToPersonalRegister.withLatestFrom(userData).map { .personalRegister(userData:$0) }
@@ -240,6 +252,10 @@ class HomeViewModel: HomeViewModelProtocol {
         
         let date = dateFormatter.string(from: Date())
         ableFakedRegister.accept(ableFakedRegister.value + [inOrOut + date])
+    }
+    
+    func calculatePercentage(value: Double ,min: Double, max: Double) -> Double{
+        return ((value - min) * 100 ) / (max - min)
     }
 }
 

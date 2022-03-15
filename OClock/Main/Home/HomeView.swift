@@ -75,6 +75,7 @@ class HomeView: UIView {
     let personalImageView = RFKitRoundedImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     let circularProgress: RFKProgress = {
+        $0.circularProgress.startAngle = -235
         return $0
     }(RFKProgress())
     
@@ -102,7 +103,9 @@ class HomeView: UIView {
         $0.alpha = 1
         return $0
     }(UIButton())
-
+    
+    let alert = UIAlertController(title: "Encerrar dia?", message: "Com isto fechamos o dados do dia de hoje para relatorios futuros.", preferredStyle: .alert)
+    
     var clockImageView = UIImageView()
     
     func setupSubview() {
@@ -149,10 +152,7 @@ class HomeView: UIView {
         
         cronoImgView.centerX(inView: circularProgress.circularProgress)
         cronoImgView.anchor(bottom: timeLabel.topAnchor, paddingBottom: RFKSize.xsmall, width: RFKSize.medium, height: RFKSize.medium)
-        
        
-        
-
     }
     
     func addSubProgress(hasBreak: Bool) {
