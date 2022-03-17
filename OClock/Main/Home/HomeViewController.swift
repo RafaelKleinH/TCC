@@ -34,19 +34,6 @@ class HomeViewController: UIViewController {
         viewModel.timerCentral.startTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.START_TIME_KEY) as? Date
         viewModel.timerCentral.stopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.STOP_TIME_KEY) as? Date
         viewModel.timerCentral.isOpen =  viewModel.timerCentral.userDefaults.bool(forKey:  viewModel.timerCentral.COUNTING_KEY)
-       
-        if  viewModel.timerCentral.isOpen {
-            viewModel.timerCentral.startHelper()
-        } else {
-            viewModel.timerCentral.stopTimer()
-            if let startTime =  viewModel.timerCentral.startTime {
-                if let stopTime =  viewModel.timerCentral.stopTime {
-                    let time =  viewModel.timerCentral.calcRestartTime(start: startTime, stop: stopTime)
-                    let diff = Date().timeIntervalSince(time)
-                    viewModel.timerCentral.midTime.onNext(Int(diff))
-                }
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,14 +59,24 @@ class HomeViewController: UIViewController {
         
         
         viewModel.usableHoursData
-            .subscribe(onNext: { totalBreak, totalHours, hasBreak in
+            .subscribe(onNext: { [weak self] totalBreak, totalHours, hasBreak in
+                guard let self = self else { return }
                 self.viewModel.timerCentral.totalHours = totalHours
                 self.viewModel.timerCentral.hasBreak = hasBreak
-                
-                self.baseView.circularProgress.startProgress(angle: 290, time: TimeInterval(totalHours))
-                self.baseView.circularProgress.pauseProgress()
                 if let hasBreak = hasBreak {
                     self.baseView.addSubProgress(hasBreak: hasBreak)
+                }
+                if  self.viewModel.timerCentral.isOpen {
+                    self.viewModel.timerCentral.startHelper()
+                } else {
+                    self.viewModel.timerCentral.stopTimer()
+                    if let startTime = self.viewModel.timerCentral.startTime {
+                        if let stopTime = self.viewModel.timerCentral.stopTime {
+                            let time = self.viewModel.timerCentral.calcRestartTime(start: startTime, stop: stopTime)
+                            let diff = Date().timeIntervalSince(time)
+                            self.viewModel.timerCentral.midTime.onNext(Int(diff))
+                        }
+                    }
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -93,36 +90,68 @@ class HomeViewController: UIViewController {
                 let num = Double(time)
                 let halfHours = totalHours / 2
                 let hasBreak = self.viewModel.hasBreak
-                
+               
+                let mainProgress = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(totalHours))
+                mainProgressValue = mainProgress / 125
                 if mainProgressValue == 0 {
                     self.baseView.circularProgress.circularProgress.progress = 0.0
                 } else if mainProgressValue < 0.81 {
-                    let mainProgress = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(totalHours))
                     self.baseView.circularProgress.circularProgress.progress = mainProgress / 125
-                    mainProgressValue = mainProgress / 125
                 } else {
                     self.baseView.circularProgress.circularProgress.progress = 0.81
                 }
                     
                 if hasBreak == true {
                     let firstSub = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(halfHours))
-                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
-                        self.baseView.firstSubProgress.progress.circularProgress.progress = firstSub / 100
-                    }, completion: nil)
-                        
+                    if firstSub < 100.0 {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.firstSubProgress.progressLabel.rx.text.onNext("\(firstSub.rounded(toPlaces: 1))%")
+                            self.baseView.firstSubProgress.progress.circularProgress.progress = firstSub / 100
+                        }, completion: nil)
+                    } else {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.firstSubProgress.progressLabel.rx.text.onNext("100.0%")
+                            self.baseView.firstSubProgress.progress.circularProgress.progress = 1.0
+                        }, completion: nil)
+                    }
                     let thirdSub = self.viewModel.calculatePercentage(value: num, min: Double(halfHours), max: Double(totalHours))
-                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
-                        self.baseView.thirdSubProgress.progress.circularProgress.progress = thirdSub / 100
-                    }, completion: nil)
-                    
+                    if thirdSub < 0.0 {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("0.0%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = 0.0
+                        }, completion: nil)
+                    } else if thirdSub < 100.0 {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("\(thirdSub.rounded(toPlaces: 1))%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = thirdSub / 100
+                        }, completion: nil)
+                    } else {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("100.0%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = 1.0
+                        }, completion: nil)
+                    }
                 } else {
                   
                 }
                 let fourthMax = totalHours + 5
                 let fourthSub = self.viewModel.calculatePercentage(value: num, min: Double(totalHours), max: Double(fourthMax))
-                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
-                    self.baseView.fourthSubProgress.progress.circularProgress.progress = fourthSub / 100
-                }, completion: nil)
+                if fourthSub < 0.0 {
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.fourthSubProgress.progressLabel.rx.text.onNext("0.0%")
+                        self.baseView.fourthSubProgress.progress.circularProgress.progress = 0.0
+                    }, completion: nil)
+                } else if fourthSub < 100.0 {
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.fourthSubProgress.progressLabel.rx.text.onNext("\(fourthSub.rounded(toPlaces: 1))%")
+                        self.baseView.fourthSubProgress.progress.circularProgress.progress = fourthSub / 100
+                    }, completion: nil)
+                } else {
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.fourthSubProgress.progressLabel.rx.text.onNext("100.0%")
+                        self.baseView.fourthSubProgress.progress.circularProgress.progress = 1.0
+                    }, completion: nil)
+                }
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -259,5 +288,11 @@ class HomeViewController: UIViewController {
 }
 
 
-
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
     

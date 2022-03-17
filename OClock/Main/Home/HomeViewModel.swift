@@ -106,9 +106,11 @@ class HomeViewModel: HomeViewModelProtocol {
     let didLongPressButton: AnyObserver<Void>
     let didReturnLongPress: Observable<Void>
     
-    var timerCentral = TimerCentral()
+    var timerCentral: TimerCentral
     
-    init(service: HomeViewServiceProtocol = HomeViewService()) {
+    init(timerCentral: TimerCentral, service: HomeViewServiceProtocol = HomeViewService()) {
+        
+        self.timerCentral = timerCentral
         
         let _didTapButton = PublishSubject<Void>()
         didTapButton = _didTapButton.asObserver()

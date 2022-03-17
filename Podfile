@@ -20,6 +20,8 @@ target 'OClock' do
   pod 'NVActivityIndicatorView', '5.1.1'
   pod 'JGProgressHUD', '2.2'
   pod 'RxDataSources', '5.0.0'
+  pod 'CBFlashyTabBarController'
+
  
   target 'OClockTests' do
     inherit! :search_paths

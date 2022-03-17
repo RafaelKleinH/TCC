@@ -121,6 +121,7 @@ class TimerCentral {
         setStopTime(date: nil)
         setStartTime(date: nil)
         midTime.onNext(0)
+        timerNum = 0
         stopTimer()
     }
     

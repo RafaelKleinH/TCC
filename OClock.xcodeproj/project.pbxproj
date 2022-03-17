@@ -52,6 +52,10 @@
 		9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C127CC37010067A254 /* RFKIndicatorView.swift */; };
 		9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C327CC3DF40067A254 /* RFKErrorView.swift */; };
 		9D6324FA27D0692300C122A3 /* TimeDataRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6324F927D0692300C122A3 /* TimeDataRegisterModel.swift */; };
+		9D646FC827E11AB000375ED0 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D646FC727E11AB000375ED0 /* HealthViewController.swift */; };
+		9D646FCA27E11AC100375ED0 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D646FC927E11AC100375ED0 /* HealthView.swift */; };
+		9D646FCC27E11AD600375ED0 /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D646FCB27E11AD600375ED0 /* HealthViewModel.swift */; };
+		9D646FCE27E11AF500375ED0 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D646FCD27E11AF500375ED0 /* HealthService.swift */; };
 		9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D68F78A278A9D970036CBAB /* RFKDividerView.swift */; };
 		9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */; };
 		9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7192AC27C6F38500C3849E /* PreRegisterView.swift */; };
@@ -81,6 +85,10 @@
 		9DD91711279797660015947E /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91710279797660015947E /* ConfigViewController.swift */; };
 		9DD91716279797810015947E /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91715279797810015947E /* ConfigView.swift */; };
 		9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9171A2797978C0015947E /* ConfigViewModel.swift */; };
+		9DEBDC2027E2A9660003F579 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBDC1F27E2A9660003F579 /* ReportView.swift */; };
+		9DEBDC2227E2A97C0003F579 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBDC2127E2A97C0003F579 /* ReportViewController.swift */; };
+		9DEBDC2427E2A98C0003F579 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBDC2327E2A98C0003F579 /* ReportViewModel.swift */; };
+		9DEBDC2627E2AAAA0003F579 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBDC2527E2AAAA0003F579 /* ReportService.swift */; };
 		9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4CF8279615AE00750AF2 /* UserDataCoordinator.swift */; };
 		9DEF4D012796162C00750AF2 /* UserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4D002796162C00750AF2 /* UserDataViewController.swift */; };
 		9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF4D052796166C00750AF2 /* UserDataView.swift */; };
@@ -162,6 +170,10 @@
 		9D6091C127CC37010067A254 /* RFKIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKIndicatorView.swift; sourceTree = "<group>"; };
 		9D6091C327CC3DF40067A254 /* RFKErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKErrorView.swift; sourceTree = "<group>"; };
 		9D6324F927D0692300C122A3 /* TimeDataRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterModel.swift; sourceTree = "<group>"; };
+		9D646FC727E11AB000375ED0 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
+		9D646FC927E11AC100375ED0 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		9D646FCB27E11AD600375ED0 /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
+		9D646FCD27E11AF500375ED0 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		9D68F78A278A9D970036CBAB /* RFKDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKDividerView.swift; sourceTree = "<group>"; };
 		9D7192AA27C6F37300C3849E /* PreRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterCoordinator.swift; sourceTree = "<group>"; };
 		9D7192AC27C6F38500C3849E /* PreRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterView.swift; sourceTree = "<group>"; };
@@ -193,6 +205,10 @@
 		9DD91710279797660015947E /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		9DD91715279797810015947E /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		9DD9171A2797978C0015947E /* ConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewModel.swift; sourceTree = "<group>"; };
+		9DEBDC1F27E2A9660003F579 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		9DEBDC2127E2A97C0003F579 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		9DEBDC2327E2A98C0003F579 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
+		9DEBDC2527E2AAAA0003F579 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		9DEF4CF8279615AE00750AF2 /* UserDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCoordinator.swift; sourceTree = "<group>"; };
 		9DEF4D002796162C00750AF2 /* UserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewController.swift; sourceTree = "<group>"; };
 		9DEF4D052796166C00750AF2 /* UserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataView.swift; sourceTree = "<group>"; };
@@ -295,6 +311,8 @@
 		9D231BFC2797872A00DCCB25 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9DEBDC1E27E2A9530003F579 /* Report */,
+				9D646FC627E11A5500375ED0 /* Health */,
 				9DD9170A279797380015947E /* Config */,
 				9D741768278651EA007BCF6A /* Home */,
 				9D231BFD2797875000DCCB25 /* tabBarController.swift */,
@@ -412,6 +430,17 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		9D646FC627E11A5500375ED0 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				9D646FC727E11AB000375ED0 /* HealthViewController.swift */,
+				9D646FC927E11AC100375ED0 /* HealthView.swift */,
+				9D646FCB27E11AD600375ED0 /* HealthViewModel.swift */,
+				9D646FCD27E11AF500375ED0 /* HealthService.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
 		9D7192A927C6F2DC00C3849E /* PreRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +505,17 @@
 				9D5D918027A257E9004FB869 /* ConfigViewService.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		9DEBDC1E27E2A9530003F579 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				9DEBDC2127E2A97C0003F579 /* ReportViewController.swift */,
+				9DEBDC1F27E2A9660003F579 /* ReportView.swift */,
+				9DEBDC2327E2A98C0003F579 /* ReportViewModel.swift */,
+				9DEBDC2527E2AAAA0003F579 /* ReportService.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		9DEF4CF72796157E00750AF2 /* userDataRegister */ = {
@@ -743,11 +783,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DEBDC2427E2A98C0003F579 /* ReportViewModel.swift in Sources */,
 				9D399777273C13FB00600544 /* LoginView.swift in Sources */,
 				9D46A4CF2784F107009FA50F /* RegisterViewService.swift in Sources */,
 				9DD91716279797810015947E /* ConfigView.swift in Sources */,
 				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
 				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
+				9D646FCE27E11AF500375ED0 /* HealthService.swift in Sources */,
 				9D7192B127C6F3A200C3849E /* PreRegisterViewController.swift in Sources */,
 				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
 				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
@@ -760,11 +802,14 @@
 				9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */,
 				9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */,
 				9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */,
+				9DEBDC2027E2A9660003F579 /* ReportView.swift in Sources */,
 				9D06866B278A3FB20009A6B9 /* LoginViewService.swift in Sources */,
 				9D4F3DA527457092004D7FD8 /* RegisterViewController.swift in Sources */,
 				9D068683278A45950009A6B9 /* PersonalRegisterView.swift in Sources */,
 				9D46A4CA2784EF27009FA50F /* RFKolors.swift in Sources */,
 				9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */,
+				9DEBDC2627E2AAAA0003F579 /* ReportService.swift in Sources */,
+				9D646FCC27E11AD600375ED0 /* HealthViewModel.swift in Sources */,
 				9DD91711279797660015947E /* ConfigViewController.swift in Sources */,
 				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
 				9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */,
@@ -783,8 +828,10 @@
 				9D4F3D9627456DF0004D7FD8 /* CoordinatorProtocol.swift in Sources */,
 				9D4F3DAA2745709F004D7FD8 /* RegisterViewModel.swift in Sources */,
 				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
+				9D646FC827E11AB000375ED0 /* HealthViewController.swift in Sources */,
 				9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */,
 				9DEF4D012796162C00750AF2 /* UserDataViewController.swift in Sources */,
+				9DEBDC2227E2A97C0003F579 /* ReportViewController.swift in Sources */,
 				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
 				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
 				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
@@ -807,6 +854,7 @@
 				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
 				9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */,
 				9DEF4D0B279616A300750AF2 /* UserDataViewModel.swift in Sources */,
+				9D646FCA27E11AC100375ED0 /* HealthView.swift in Sources */,
 				9D7192AF27C6F39300C3849E /* PreRegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

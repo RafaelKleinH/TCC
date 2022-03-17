@@ -41,8 +41,12 @@ class ConfigViewModel: ConfigViewModelProtocol {
     let hourRegister: Observable<String>
     let notifiesRegister: Observable<String>
     
-    init(service: ConfigViewService = ConfigViewService()) {
+    var timerCentral: TimerCentral
     
+    init(timerCentral: TimerCentral, service: ConfigViewService = ConfigViewService()) {
+    
+        self.timerCentral = timerCentral
+        
         let _didPop = PublishSubject<Void>()
         didPop = _didPop.asObserver()
         
@@ -58,7 +62,7 @@ class ConfigViewModel: ConfigViewModelProtocol {
         
         logoffBack = _didClickLogoff
             .flatMapLatest {
-                service.logoff()
+                service.logoff(timerCentral: timerCentral)
                     .asObservable()
                     .observe(on: MainScheduler.instance)
                     .do(onNext: { _didPop.onNext(()) },

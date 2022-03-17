@@ -20,6 +20,13 @@ class RFKMiniLoader: UIView {
     
     let progress = RFKProgress()
     
+    let progressLabel: UILabel = {
+        $0.textColor = RFKolors.primaryBlue
+        $0.font = UIFont(name: RFontsK.QuicksandSemiBold, size: 21)
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 6
@@ -44,6 +51,7 @@ class RFKMiniLoader: UIView {
     func setupSubviews() {
         addSubview(titleLabel)
         addSubview(progress)
+        addSubview(progressLabel)
     }
     
     func updateColor() {
@@ -54,6 +62,7 @@ class RFKMiniLoader: UIView {
     func setupAnchors() {
         titleLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
         progress.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 12, paddingRight: 8)
+        progressLabel.anchor(top: progress.circularProgress.topAnchor, left: progress.circularProgress.leftAnchor, bottom: progress.circularProgress.bottomAnchor, right: progress.circularProgress.rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 8)
     }
 }
 

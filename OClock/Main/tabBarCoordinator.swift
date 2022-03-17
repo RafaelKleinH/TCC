@@ -18,23 +18,36 @@ class MainTabBarCoordinator: CoordinatorProtocol {
     }
     
     func start() {
+        let timerCentral = TimerCentral()
         
-        let homeViewModel = HomeViewModel()
+        let homeViewModel = HomeViewModel(timerCentral: timerCentral)
         let homeBaseView = HomeView()
         let homeViewController = HomeViewController(vm: homeViewModel, v: homeBaseView)
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage.add, tag: 0)
         homeViewController.tabBarItem = homeTabBarItem
         
-        let configViewModel = ConfigViewModel()
+        let reportViewModel = ReportViewModel()
+        let reportBaseView = ReportView()
+        let reportViewController = ReportViewController(v: reportBaseView, vm: reportViewModel)
+        let reportTabBarItem = UITabBarItem(title: "Report", image: UIImage.checkmark, tag: 1)
+        reportViewController.tabBarItem = reportTabBarItem
+        
+        let healthViewModel = HealthViewModel(timerCentral: timerCentral)
+        let healthView = HealthView()
+        let healthViewController = HealthViewController(v: healthView, vm: healthViewModel)
+        let healthTabBarItem = UITabBarItem(title: "Health", image: UIImage.remove, tag: 2)
+        healthViewController.tabBarItem = healthTabBarItem
+        
+        let configViewModel = ConfigViewModel(timerCentral: timerCentral)
         let configCoordinator = ConfigCoordinator(navC: navigationController, vm: configViewModel)
         configCoordinator.start()
         let configView = ConfigView()
         let configViewController = ConfigViewController(v: configView, vm: configViewModel)
 
-        let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 1)
+        let configTabBarItem = UITabBarItem(title: "Config", image: UIImage.actions, tag: 3)
         configViewController.tabBarItem = configTabBarItem
         
-        let tabBarController = MainTabBarController(HomeVC: homeViewController, ConfigVC: configViewController)
+        let tabBarController = MainTabBarController(HomeVC: homeViewController, ReportVC: reportViewController, HealthVC: healthViewController, ConfigVC: configViewController)
         
         homeViewModel.navigationTarget
             .subscribe(onNext: { target in
