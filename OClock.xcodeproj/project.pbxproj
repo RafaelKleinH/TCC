@@ -80,6 +80,12 @@
 		9D9B8FDB278F983D00680D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D9B8FDD278F983D00680D4A /* Localizable.strings */; };
 		9D9B9041278FACA500680D4A /* RFKSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9B9040278FACA500680D4A /* RFKSize.swift */; };
 		9DA2D1C327DA69180045171E /* NotificationCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2D1C227DA69180045171E /* NotificationCentral.swift */; };
+		9DC334B927E5B03300741E14 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334B827E5B03300741E14 /* ReportTableViewCell.swift */; };
+		9DC334BC27E5BF0200741E14 /* secReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334BB27E5BF0200741E14 /* secReportView.swift */; };
+		9DC334BE27E5BF1300741E14 /* secReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334BD27E5BF1200741E14 /* secReportViewController.swift */; };
+		9DC334C027E5BF2100741E14 /* secReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334BF27E5BF2100741E14 /* secReportViewModel.swift */; };
+		9DC334C227E5BF2A00741E14 /* secReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334C127E5BF2A00741E14 /* secReportModel.swift */; };
+		9DC334C427E5BF3700741E14 /* secReportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC334C327E5BF3700741E14 /* secReportCoordinator.swift */; };
 		9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91705279792FC0015947E /* tabBarCoordinator.swift */; };
 		9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9170B2797974A0015947E /* ConfigCoordinator.swift */; };
 		9DD91711279797660015947E /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD91710279797660015947E /* ConfigViewController.swift */; };
@@ -200,6 +206,12 @@
 		9D9B8FE1278F984500680D4A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9D9B9040278FACA500680D4A /* RFKSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKSize.swift; sourceTree = "<group>"; };
 		9DA2D1C227DA69180045171E /* NotificationCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCentral.swift; sourceTree = "<group>"; };
+		9DC334B827E5B03300741E14 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		9DC334BB27E5BF0200741E14 /* secReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportView.swift; sourceTree = "<group>"; };
+		9DC334BD27E5BF1200741E14 /* secReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportViewController.swift; sourceTree = "<group>"; };
+		9DC334BF27E5BF2100741E14 /* secReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportViewModel.swift; sourceTree = "<group>"; };
+		9DC334C127E5BF2A00741E14 /* secReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportModel.swift; sourceTree = "<group>"; };
+		9DC334C327E5BF3700741E14 /* secReportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportCoordinator.swift; sourceTree = "<group>"; };
 		9DD91705279792FC0015947E /* tabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarCoordinator.swift; sourceTree = "<group>"; };
 		9DD9170B2797974A0015947E /* ConfigCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCoordinator.swift; sourceTree = "<group>"; };
 		9DD91710279797660015947E /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -495,6 +507,18 @@
 			path = RFK;
 			sourceTree = "<group>";
 		};
+		9DC334BA27E5BEEE00741E14 /* secReport */ = {
+			isa = PBXGroup;
+			children = (
+				9DC334C327E5BF3700741E14 /* secReportCoordinator.swift */,
+				9DC334BD27E5BF1200741E14 /* secReportViewController.swift */,
+				9DC334BB27E5BF0200741E14 /* secReportView.swift */,
+				9DC334BF27E5BF2100741E14 /* secReportViewModel.swift */,
+				9DC334C127E5BF2A00741E14 /* secReportModel.swift */,
+			);
+			path = secReport;
+			sourceTree = "<group>";
+		};
 		9DD9170A279797380015947E /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,10 +534,12 @@
 		9DEBDC1E27E2A9530003F579 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				9DC334BA27E5BEEE00741E14 /* secReport */,
 				9DEBDC2127E2A97C0003F579 /* ReportViewController.swift */,
 				9DEBDC1F27E2A9660003F579 /* ReportView.swift */,
 				9DEBDC2327E2A98C0003F579 /* ReportViewModel.swift */,
 				9DEBDC2527E2AAAA0003F579 /* ReportService.swift */,
+				9DC334B827E5B03300741E14 /* ReportTableViewCell.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -792,6 +818,7 @@
 				9D646FCE27E11AF500375ED0 /* HealthService.swift in Sources */,
 				9D7192B127C6F3A200C3849E /* PreRegisterViewController.swift in Sources */,
 				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
+				9DC334BC27E5BF0200741E14 /* secReportView.swift in Sources */,
 				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
 				9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */,
 				9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */,
@@ -799,6 +826,7 @@
 				9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */,
 				9DD9170C2797974A0015947E /* ConfigCoordinator.swift in Sources */,
 				9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */,
+				9DC334B927E5B03300741E14 /* ReportTableViewCell.swift in Sources */,
 				9DD91706279792FC0015947E /* tabBarCoordinator.swift in Sources */,
 				9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */,
 				9DEF4D062796166C00750AF2 /* UserDataView.swift in Sources */,
@@ -811,8 +839,10 @@
 				9DEBDC2627E2AAAA0003F579 /* ReportService.swift in Sources */,
 				9D646FCC27E11AD600375ED0 /* HealthViewModel.swift in Sources */,
 				9DD91711279797660015947E /* ConfigViewController.swift in Sources */,
+				9DC334BE27E5BF1300741E14 /* secReportViewController.swift in Sources */,
 				9D068692278A45C00009A6B9 /* TimeDataRegisterViewCoordinator.swift in Sources */,
 				9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */,
+				9DC334C227E5BF2A00741E14 /* secReportModel.swift in Sources */,
 				9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */,
 				9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */,
 				9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */,
@@ -835,6 +865,7 @@
 				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
 				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
 				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
+				9DC334C427E5BF3700741E14 /* secReportCoordinator.swift in Sources */,
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
 				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
 				9D4EF1D327DAD206003A4583 /* TimerCentral.swift in Sources */,
@@ -846,6 +877,7 @@
 				9D46A4EC27850BD5009FA50F /* RFKitRoundedImageView.swift in Sources */,
 				9D7192AD27C6F38600C3849E /* PreRegisterView.swift in Sources */,
 				9DD9171B2797978C0015947E /* ConfigViewModel.swift in Sources */,
+				9DC334C027E5BF2100741E14 /* secReportViewModel.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
 				9D6324FA27D0692300C122A3 /* TimeDataRegisterModel.swift in Sources */,
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,

@@ -152,9 +152,9 @@ class NotificationsCentral {
     
     class func intervalCalcNotifications(intervalIsOpen: Bool, time: Double, less: Double) {
         if intervalIsOpen {
-            halfTimeNotification(time: time, less: less)
-            totalTimeNotification(time: time, less: less)
-            extraHoursNotifications(time: time, less: less)
+            intervalFirstNotification(intervalTime: time, less: less)
+            intervalSecondNotification(intervalTime: time, less: less)
+            intervalThirdNotification(intervalTime: time, less: less)
         } else {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationNames.firstInterval.rawValue, NotificationNames.secondInterval.rawValue, NotificationNames.thirdInterval.rawValue])
         }

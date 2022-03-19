@@ -32,8 +32,16 @@ class HomeViewController: UIViewController {
         rxBinds()
         viewModel.didViewLoad.onNext(())
         viewModel.timerCentral.startTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.START_TIME_KEY) as? Date
+        
         viewModel.timerCentral.stopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.STOP_TIME_KEY) as? Date
+        
         viewModel.timerCentral.isOpen =  viewModel.timerCentral.userDefaults.bool(forKey:  viewModel.timerCentral.COUNTING_KEY)
+        
+        viewModel.timerCentral.intervalStartTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_START_TIME_KEY) as? Date
+        
+        viewModel.timerCentral.intervalStopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_STOP_TIME_KEY) as? Date
+        
+        viewModel.timerCentral.intervalIsOpen = viewModel.timerCentral.userDefaults.bool(forKey: viewModel.timerCentral.INTERVAL_COUNTING_KEY)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,12 +71,31 @@ class HomeViewController: UIViewController {
                 guard let self = self else { return }
                 self.viewModel.timerCentral.totalHours = totalHours
                 self.viewModel.timerCentral.hasBreak = hasBreak
+                self.viewModel.timerCentral.intervalTotalHours = totalBreak
                 if let hasBreak = hasBreak {
                     self.baseView.addSubProgress(hasBreak: hasBreak)
                 }
+                
+                if self.viewModel.timerCentral.intervalIsOpen {
+                    //MARK: Interval
+                    self.viewModel.timerCentral.intervalStartHelper()
+                   
+                } else {
+                    self.viewModel.timerCentral.intervalStopTimer()
+                    if let startTime = self.viewModel.timerCentral.intervalStartTime {
+                        if let stopTime = self.viewModel.timerCentral.intervalStopTime {
+                            let time = self.viewModel.timerCentral.calcRestartTime(start: startTime, stop: stopTime)
+                            let diff = Date().timeIntervalSince(time)
+                            self.viewModel.timerCentral.intervalMidTime.onNext(Int(diff))
+                            
+                        }
+                    }
+                }
+                
                 if  self.viewModel.timerCentral.isOpen {
                     self.viewModel.timerCentral.startHelper()
                 } else {
+                    //MARK: NormalTimer
                     self.viewModel.timerCentral.stopTimer()
                     if let startTime = self.viewModel.timerCentral.startTime {
                         if let stopTime = self.viewModel.timerCentral.stopTime {
@@ -77,6 +104,32 @@ class HomeViewController: UIViewController {
                             self.viewModel.timerCentral.midTime.onNext(Int(diff))
                         }
                     }
+                    
+                    
+                }
+                
+                
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        
+        
+        viewModel.timerCentral
+            .intervalMidTime
+            .subscribe(onNext: { [weak self] time in
+                guard let self = self, let totalHours = self.viewModel.timerCentral.intervalTotalHours else { return }
+                let num = Double(time)
+                let secondSub = self.viewModel.calculatePercentage(value: num, min: 0.0, max: Double(totalHours))
+                if secondSub < 100.0 {
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.secondSubProgress.progressLabel.rx.text.onNext("\(secondSub.rounded(toPlaces: 1))%")
+                        self.baseView.secondSubProgress.progress.circularProgress.progress = secondSub / 100
+                    }, completion: nil)
+                } else {
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                        self.baseView.secondSubProgress.progressLabel.rx.text.onNext("100.0%")
+                        self.baseView.secondSubProgress.progress.circularProgress.progress = 1.0
+                    }, completion: nil)
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -164,30 +217,15 @@ class HomeViewController: UIViewController {
             .disposed(by: viewModel.myDisposeBag)
 
         viewModel.buttonBack
-            .subscribe(onNext: { hasBrk in
-                guard let hasBreak = hasBrk else { return }
-                
-                if hasBreak {
-                    if self.viewModel.timerCentral.isOpen {
-                        self.viewModel.timerCentral.pauseTimer()
-                       
-                     
-                        //self.viewModel.saveHours(inOrOut: "Out: ")
-                    } else {
-                        self.viewModel.timerCentral.startTimer()
-                        
-                        //self.viewModel.saveHours(inOrOut: "In: ")
-                    }
+            .subscribe(onNext: { _ in
+                if self.viewModel.timerCentral.isOpen {
+                    self.viewModel.timerCentral.pauseTimer()
+                    self.viewModel.timerCentral.intervalStartTimer()
+                    //self.viewModel.saveHours(inOrOut: "Out: ")
                 } else {
-                    if self.viewModel.timerCentral.isOpen {
-                        self.viewModel.timerCentral.pauseTimer()
-                      
-                       // self.viewModel.timerCentral.saveHours(inOrOut: "Out: ")
-                    } else {
-                        self.viewModel.timerCentral.startTimer()
-                      
-                        //self.viewModel.timerCentral.saveHours(inOrOut: "In: ")
-                    }
+                    self.viewModel.timerCentral.startTimer()
+                    self.viewModel.timerCentral.intervalPauseTimer()
+                    //self.viewModel.saveHours(inOrOut: "In: ")
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -219,6 +257,7 @@ class HomeViewController: UIViewController {
         
         baseView.alert
             .addAction(UIAlertAction(title: "Encerrar", style: .default, handler: { _ in
+                self.viewModel.timerCentral.saveDate()
                 self.viewModel.timerCentral.resetAction()
             }))
         
@@ -288,11 +327,3 @@ class HomeViewController: UIViewController {
 }
 
 
-extension Double {
-    /// Rounds the double to decimal places value
-    func rounded(toPlaces places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-}
-    

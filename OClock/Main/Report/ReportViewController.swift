@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ReportViewController: UIViewController {
     
@@ -26,6 +28,9 @@ class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = baseView
+        baseView.tableView.rx.setDelegate(self).disposed(by: viewModel.disposeBag)
+        viewModel.viewDidLoad.onNext(())
+        rxFuncs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,4 +43,16 @@ class ReportViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         super.viewWillAppear(animated)
     }
+    
+    private func rxFuncs() {
+        
+        viewModel.dataSource
+            .bind(to: baseView.tableView.rx.items(cellIdentifier: ReportTableViewCell.description(), cellType: ReportTableViewCell.self)) { index, element, cell in
+                cell.monthLabel.text = element
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+    }
 }
+
+extension ReportViewController: UITableViewDelegate {}

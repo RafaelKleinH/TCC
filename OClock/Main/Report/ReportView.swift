@@ -15,6 +15,7 @@ class ReportView: UIView {
         backgroundColor = RFKolors.bgColor
         setupSubview()
         setupConstraints()
+        tableView.separatorStyle = .singleLine
     }
     
     required init?(coder: NSCoder) {
@@ -26,27 +27,25 @@ class ReportView: UIView {
         return $0
     }(UIView())
     
-    let scrollView = UIScrollView()
     
-    let contentView = UIView()
+    let tableView: UITableView = {
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 82
+        $0.backgroundColor = .clear
+        $0.register(ReportTableViewCell.self, forCellReuseIdentifier: ReportTableViewCell.description())
+        return $0
+    }(UITableView())
     
     func setupSubview() {
         addSubview(UIView(frame: .zero))
         addSubview(separatorNav)
-        addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        addSubview(tableView)
     }
     
     func setupConstraints() {
         separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
         
-        scrollView.centerX(inView: self)
-        scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        scrollView.anchor(top: separatorNav.bottomAnchor, bottom: bottomAnchor)
-
-        contentView.centerX(inView: scrollView)
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
+        tableView.anchor(top: separatorNav.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
     }
     

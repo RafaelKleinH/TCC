@@ -36,6 +36,12 @@ class HomeView: UIView {
         fourthSubProgress.progress.setupProgress(startAngle: 180, animateToAngle: 360)
         circularProgress.setupProgress(startAngle: -235, animateToAngle: 290)
         
+        firstSubProgress.progressLabel.text = "0.0%"
+        secondSubProgress.progressLabel.text = "0.0%"
+        thirdSubProgress.progressLabel.text = "0.0%"
+        fourthSubProgress.progressLabel.text = "0.0%"
+        
+        
         personalImageView.image = UIImage(named: "userCircle")?.withRenderingMode(.alwaysTemplate)
         personalImageView.tintColor = RFKolors.modeSecondary
     }

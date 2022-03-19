@@ -7,6 +7,8 @@
 
 import Foundation
 import RxSwift
+import Firebase
+import FirebaseCore
 
 class TimerCentral {
  
@@ -15,6 +17,8 @@ class TimerCentral {
     let userDefaults = UserDefaults.standard
     var hasBreak: Bool?
     
+    var initialTime: String?
+       
     //MARK: Main Timer Vars
     var isOpen: Bool = false
     var timer: Timer?
@@ -30,12 +34,14 @@ class TimerCentral {
     let STOP_TIME_KEY = "stopTime"
     let COUNTING_KEY = "countingKey"
     
+    var pauseFirstTime = true
     //MARK: Interval Timer Vars
     
     var intervalTimer: Timer?
     var intervalIsOpen: Bool = false
     var intervalTotalHours: Int?
     var intervalTimerNum: Int?
+    var intervalMidTime = PublishSubject<Int>()
     
     var intervalStartTime: Date?
     var intervalStopTime: Date?
@@ -47,6 +53,12 @@ class TimerCentral {
     
     //MARK: Main Timer Functions
     func startTimer() {
+        if isOpen == false && timerNum == 0{
+            let date = Date()
+            let component = Calendar.current.dateComponents([.month, .weekday, .hour, .day, .minute, .second], from: date)
+            initialTime = "\(component)"
+            print(initialTime)
+        }
         if let stop = stopTime {
             let restartTime = calcRestartTime(start: startTime!, stop: stop)
             setStopTime(date: nil)
@@ -54,6 +66,7 @@ class TimerCentral {
         } else {
             setStartTime(date: Date())
         }
+        
         startHelper()
         
     }
@@ -65,12 +78,10 @@ class TimerCentral {
         let less = Double(timerNum ?? 0)
         NotificationsCentral.calcNotifications(isOpen: true, time: Double(time), less: less)
     }
-    
+
     func pauseTimer() {
         setStopTime(date: Date())
         stopTimer()
-            
-        
     }
     
     func stopTimer() {
@@ -123,6 +134,12 @@ class TimerCentral {
         midTime.onNext(0)
         timerNum = 0
         stopTimer()
+        
+        intervalSetStopTime(date: nil)
+        intervalSetStartTime(date: nil)
+        intervalMidTime.onNext(0)
+        intervalTimerNum = 0
+        intervalStopTimer()
     }
     
     //MARK: Interval Timer Functions
@@ -147,8 +164,10 @@ class TimerCentral {
     }
     
     func intervalPauseTimer() {
-        intervalSetStopTime(date: Date())
-        intervalStopTimer()
+        if intervalTimerNum != nil && intervalTimerNum != 0 {
+            intervalSetStopTime(date: Date())
+            intervalStopTimer()
+        }
     }
     
     func intervalStopTimer() {
@@ -164,12 +183,13 @@ class TimerCentral {
     @objc func intervalAction() {
         if let start = intervalStartTime {
             let diff = Date().timeIntervalSince(start)
-            //midTime.onNext(Int(diff))
+            intervalMidTime.onNext(Int(diff))
             intervalTimerNum = Int(diff)
+            print(diff)
         }
         else {
             intervalPauseTimer()
-            //midTime.onNext(0)
+            intervalMidTime.onNext(0)
         }
     }
     
@@ -187,4 +207,43 @@ class TimerCentral {
         intervalIsOpen = val
         userDefaults.set(intervalIsOpen, forKey: INTERVAL_COUNTING_KEY)
     }
+    
+    func saveDate() {
+        
+        let dbref = RFKDatabase()
+        let date = Date()
+        let component = Calendar.current.dateComponents([.month, .weekday, .hour, .day, .minute, .second], from: date)
+        if let timerNum = timerNum, let initialTime = initialTime  {
+            dbref.userReportDataBase.childByAutoId().updateChildValues(["totalHours": timerNum, "initialDate": initialTime.removeCalendar(), "interValTime": intervalTimerNum ?? 0, "endTime": "\(component)".removeCalendar()]) {  _, _  in
+                
+            }
+        }
+        //pegar isso na tela principal fazer um filter pra qual vai mandar.
+        //la passar por um array de items que geram um array de stackView que adicionam cada um na tela
+        //fazer uma var que pega o tempo total e joga em qualquer canto
+        //Vapo no corona
+        //
+        dbref.userReportDataBaseWithoutID.queryOrdered(byChild: dbref.uid ?? "").observe(.value) { data in
+            print(data)
+        }
+       
+    }
 }
+
+
+extension String {
+    func removeCalendar() -> String{
+        var valueA = self.replacingOccurrences(of: "month: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: "day: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: "hour: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: "minute: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: "second: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: "week:", with: ":")
+        valueA = valueA.replacingOccurrences(of: "weekday: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: " isLeapMonth: ", with: ":")
+        valueA = valueA.replacingOccurrences(of: " ", with: "")
+        valueA = valueA.replacingOccurrences(of: ":false", with: "")
+        return valueA
+    }
+}
+
