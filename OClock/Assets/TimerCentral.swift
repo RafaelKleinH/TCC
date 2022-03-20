@@ -53,11 +53,10 @@ class TimerCentral {
     
     //MARK: Main Timer Functions
     func startTimer() {
-        if isOpen == false && timerNum == 0{
+        if isOpen == false && (timerNum == 0 || timerNum == nil)  {
             let date = Date()
             let component = Calendar.current.dateComponents([.month, .weekday, .hour, .day, .minute, .second], from: date)
             initialTime = "\(component)"
-            print(initialTime)
         }
         if let stop = stopTime {
             let restartTime = calcRestartTime(start: startTime!, stop: stop)
@@ -185,7 +184,6 @@ class TimerCentral {
             let diff = Date().timeIntervalSince(start)
             intervalMidTime.onNext(Int(diff))
             intervalTimerNum = Int(diff)
-            print(diff)
         }
         else {
             intervalPauseTimer()
@@ -213,27 +211,39 @@ class TimerCentral {
         let dbref = RFKDatabase()
         let date = Date()
         let component = Calendar.current.dateComponents([.month, .weekday, .hour, .day, .minute, .second], from: date)
+        let componentOnlyNumber = "\(component)".removeCalendar()
+        let componentInit = initialTime?.removeCalendar()
+        
+        var mounth = ""
+        var initTime = ""
+        var initDay = ""
+        var initWeekDay = ""
+        var endTime = ""
+        var endDay = ""
+        var endWeekDay = ""
+        if componentOnlyNumber.count == 6 && componentInit?.count == 6, let componentInit = componentInit{
+            mounth = componentInit[0]
+            initTime = "\(componentInit[2]):\(componentInit[3]):\(componentInit[4])"
+            initDay = componentInit[1]
+            initWeekDay = componentInit[5]
+            endDay = componentOnlyNumber[1]
+            endTime = "\(componentOnlyNumber[2]):\(componentOnlyNumber[3]):\(componentOnlyNumber[4])"
+            endWeekDay = componentOnlyNumber[5]
+            
+        }
+        
         if let timerNum = timerNum, let initialTime = initialTime  {
-            dbref.userReportDataBase.childByAutoId().updateChildValues(["totalHours": timerNum, "initialDate": initialTime.removeCalendar(), "interValTime": intervalTimerNum ?? 0, "endTime": "\(component)".removeCalendar()]) {  _, _  in
+            dbref.userReportDataBase.childByAutoId().updateChildValues(["month": mounth, "totalHours": timerNum, "initialHours": initTime, "initialDay": initDay, "initWeekday": initWeekDay, "intervalTotalHours": intervalTimerNum ?? 0, "endDay": endDay, "endHours": endTime, "endWeekday": endWeekDay]) {  _, _  in
                 
             }
         }
-        //pegar isso na tela principal fazer um filter pra qual vai mandar.
-        //la passar por um array de items que geram um array de stackView que adicionam cada um na tela
-        //fazer uma var que pega o tempo total e joga em qualquer canto
-        //Vapo no corona
-        //
-        dbref.userReportDataBaseWithoutID.queryOrdered(byChild: dbref.uid ?? "").observe(.value) { data in
-            print(data)
-        }
-       
     }
 }
 
 
 extension String {
-    func removeCalendar() -> String{
-        var valueA = self.replacingOccurrences(of: "month: ", with: ":")
+    func removeCalendar() -> [String] {
+        var valueA = self.replacingOccurrences(of: "month: ", with: "")
         valueA = valueA.replacingOccurrences(of: "day: ", with: ":")
         valueA = valueA.replacingOccurrences(of: "hour: ", with: ":")
         valueA = valueA.replacingOccurrences(of: "minute: ", with: ":")
@@ -243,7 +253,8 @@ extension String {
         valueA = valueA.replacingOccurrences(of: " isLeapMonth: ", with: ":")
         valueA = valueA.replacingOccurrences(of: " ", with: "")
         valueA = valueA.replacingOccurrences(of: ":false", with: "")
-        return valueA
+        let valB = valueA.components(separatedBy: ":")
+        return valB
     }
 }
 

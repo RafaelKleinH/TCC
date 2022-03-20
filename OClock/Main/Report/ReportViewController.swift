@@ -29,7 +29,7 @@ class ReportViewController: UIViewController {
         super.viewDidLoad()
         view = baseView
         baseView.tableView.rx.setDelegate(self).disposed(by: viewModel.disposeBag)
-        viewModel.viewDidLoad.onNext(())
+       
         rxFuncs()
     }
     
@@ -42,6 +42,7 @@ class ReportViewController: UIViewController {
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         super.viewWillAppear(animated)
+        viewModel.viewDidLoad.onNext(())
     }
     
     private func rxFuncs() {
@@ -52,6 +53,24 @@ class ReportViewController: UIViewController {
             }
             .disposed(by: viewModel.disposeBag)
         
+        viewModel.data
+            .subscribe(onNext: { value in
+                
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        baseView.tableView
+            .rx
+            .itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.index.onNext(indexPath.row)
+                self?.viewModel.didTap.onNext(indexPath.row)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.subs
+            .subscribe()
+            .disposed(by: viewModel.disposeBag)
     }
 }
 

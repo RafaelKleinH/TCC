@@ -26,7 +26,7 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage.add, tag: 0)
         homeViewController.tabBarItem = homeTabBarItem
         
-        let reportViewModel = ReportViewModel()
+        let reportViewModel = ReportViewModel(navC: navigationController)
         let reportBaseView = ReportView()
         let reportViewController = ReportViewController(v: reportBaseView, vm: reportViewModel)
         let reportTabBarItem = UITabBarItem(title: "Report", image: UIImage.checkmark, tag: 1)

@@ -25,6 +25,7 @@
 		9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */; };
 		9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF72797818700DCCB25 /* LoginModel.swift */; };
 		9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BFD2797875000DCCB25 /* tabBarController.swift */; };
+		9D34E8B227E6D66C009CA52B /* secReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */; };
 		9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399715273C12FB00600544 /* SceneDelegate.swift */; };
 		9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D39971E273C12FD00600544 /* LaunchScreen.storyboard */; };
 		9D39972B273C12FE00600544 /* OClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39972A273C12FE00600544 /* OClockTests.swift */; };
@@ -48,6 +49,7 @@
 		9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F3DCC2745897A004D7FD8 /* Extensions.swift */; };
 		9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCD9927938E53000CA720 /* RFKProgress.swift */; };
 		9D5D918127A257E9004FB869 /* ConfigViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D918027A257E9004FB869 /* ConfigViewService.swift */; };
+		9D5EA34227E69A3F00F0CED3 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5EA34127E69A3F00F0CED3 /* ReportModel.swift */; };
 		9D6037B82795FE6B006B991C /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6037B72795FE6B006B991C /* DataBase.swift */; };
 		9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C127CC37010067A254 /* RFKIndicatorView.swift */; };
 		9D6091C427CC3DF40067A254 /* RFKErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6091C327CC3DF40067A254 /* RFKErrorView.swift */; };
@@ -143,6 +145,7 @@
 		9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValue.swift; sourceTree = "<group>"; };
 		9D231BF72797818700DCCB25 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9D231BFD2797875000DCCB25 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
+		9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportTableViewCell.swift; sourceTree = "<group>"; };
 		9D399710273C12FB00600544 /* OClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D399715273C12FB00600544 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D39971F273C12FD00600544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 		9D4F3DCC2745897A004D7FD8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9D5CCD9927938E53000CA720 /* RFKProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKProgress.swift; sourceTree = "<group>"; };
 		9D5D918027A257E9004FB869 /* ConfigViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewService.swift; sourceTree = "<group>"; };
+		9D5EA34127E69A3F00F0CED3 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		9D6037B72795FE6B006B991C /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		9D6091C127CC37010067A254 /* RFKIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKIndicatorView.swift; sourceTree = "<group>"; };
 		9D6091C327CC3DF40067A254 /* RFKErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFKErrorView.swift; sourceTree = "<group>"; };
@@ -515,6 +519,7 @@
 				9DC334BB27E5BF0200741E14 /* secReportView.swift */,
 				9DC334BF27E5BF2100741E14 /* secReportViewModel.swift */,
 				9DC334C127E5BF2A00741E14 /* secReportModel.swift */,
+				9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */,
 			);
 			path = secReport;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				9DEBDC2327E2A98C0003F579 /* ReportViewModel.swift */,
 				9DEBDC2527E2AAAA0003F579 /* ReportService.swift */,
 				9DC334B827E5B03300741E14 /* ReportTableViewCell.swift */,
+				9D5EA34127E69A3F00F0CED3 /* ReportModel.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -866,9 +872,11 @@
 				9D74176F27865218007BCF6A /* HomeViewCoordinator.swift in Sources */,
 				9D5CCD9A27938E53000CA720 /* RFKProgress.swift in Sources */,
 				9DC334C427E5BF3700741E14 /* secReportCoordinator.swift in Sources */,
+				9D5EA34227E69A3F00F0CED3 /* ReportModel.swift in Sources */,
 				9D4F3DBB274570BE004D7FD8 /* RegisterViewCoordinator.swift in Sources */,
 				9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */,
 				9D4EF1D327DAD206003A4583 /* TimerCentral.swift in Sources */,
+				9D34E8B227E6D66C009CA52B /* secReportTableViewCell.swift in Sources */,
 				9D7E7CCC279228C400336E2B /* HomeViewService.swift in Sources */,
 				9D4F3DCD2745897A004D7FD8 /* Extensions.swift in Sources */,
 				9D6091C227CC37010067A254 /* RFKIndicatorView.swift in Sources */,
