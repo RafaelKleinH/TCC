@@ -113,6 +113,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        baseView.appleLogin.rx.tap
+            .bind(to: viewModel.didTapResetPassword)
+            .disposed(by: viewModel.myDisposeBag)
+        
         baseView.loginButton.rx.tap
             .bind(to: viewModel.didTapLoginButton)
             .disposed(by: viewModel.myDisposeBag)
@@ -155,13 +159,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
             .disposed(by: viewModel.myDisposeBag)
         
-        baseView.errorView
-            .errorButton
-            .rx
-            .tap
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.didTapLoginButton.onNext(())
-            })
+        viewModel.returnTfValidation
+            .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.state
@@ -169,12 +168,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 guard let self = self else { return }
                 switch state {
                 case .error:
-                    self.baseView.contentView.isHidden = true
                     self.baseView.activityIndicator.activityIndicator.stopAnimating()
                     self.baseView.activityIndicator.isHidden = true
-                    self.baseView.errorView.isHidden = false
+                    self.baseView.returnAlert(isSuccess: false, vc: self)
+                    self.baseView.contentView.isHidden = false
                 case .loading:
-                    self.baseView.errorView.isHidden = true
                     self.baseView.contentView.isHidden = true
                     self.baseView.activityIndicator.isHidden = false
                     self.baseView.activityIndicator.activityIndicator.startAnimating()
@@ -186,6 +184,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 case .initial:
                     self.baseView.activityIndicator.isHidden = true
                     self.baseView.contentView.isHidden = false
+                }
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
+ 
+        viewModel.tfState
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .isEmptyF:
+                    self.baseView.emailTextField.setErrorView(withError: "LoginTFisEmpty".localized())
+                    self.baseView.passwordTextField.setRemoveError()
+                case .isEmptyS:
+                    self.baseView.emailTextField.setRemoveError()
+                    self.baseView.passwordTextField.setErrorView(withError: "LoginTFisEmpty".localized())
+                case .emailInvalid:
+                    self.baseView.emailTextField.setErrorView(withError: "LoginTFEmailInvalid".localized())
+                    self.baseView.passwordTextField.setRemoveError()
+                case .passwordLessThanSixCaracters:
+                    self.baseView.emailTextField.setRemoveError()
+                    self.baseView.passwordTextField.setErrorView(withError: "LoginTFPassLessThanSixCharacters".localized())
+                case .success:
+                    self.baseView.emailTextField.setRemoveError()
+                    self.baseView.passwordTextField.setRemoveError()
+                    self.viewModel.didReturnTFValidation.onNext(())
                 }
             })
             .disposed(by: viewModel.myDisposeBag)

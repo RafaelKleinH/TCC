@@ -38,6 +38,7 @@ class PersonalRegisterViewController: UIViewController {
         super.viewWillAppear(animated)
         navConfig()
         baseView.addGradient(firstColor: RFKolors.primaryBlue, secondColor: RFKolors.secondaryBlue)
+        viewModel.viewdidLoad.onNext(())
     }
     
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
@@ -69,6 +70,14 @@ class PersonalRegisterViewController: UIViewController {
                 guard let self = self else { return }
                 self.present(self.baseView.imagePicker, animated: true, completion: nil)
             })
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.userImage
+            .bind(to: baseView.imageView.rx.image)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.userImage
+            .bind(to: viewModel.userImageInput)
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.userImageOutput
@@ -125,7 +134,9 @@ class PersonalRegisterViewController: UIViewController {
             .subscribe(onNext: { [weak self] data in
                 guard let data = data else { return }
                 self?.baseView.nameTextField.rx.text.onNext(data.name)
+                self?.viewModel.nameText.onNext(data.name)
                 self?.baseView.occupationTextField.rx.text.onNext(data.occupation)
+                self?.viewModel.occupationText.onNext(data.occupation)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -134,19 +145,30 @@ class PersonalRegisterViewController: UIViewController {
                 guard let self = self else { return }
                 switch state {
                 case .initial:
-                    print("init")
+                    self.baseView.errorView.isHidden = true
+                    self.baseView.contentView.isHidden = false
+                    self.baseView.activityIndicator.isHidden = true
+                    self.baseView.activityIndicator.activityIndicator.startAnimating()
                 case .loading:
-                    print("loading")
+                    self.baseView.errorView.isHidden = true
+                    self.baseView.contentView.isHidden = true
+                    self.baseView.activityIndicator.isHidden = false
+                    self.baseView.activityIndicator.activityIndicator.startAnimating()
                 case .success:
+                    self.baseView.contentView.isHidden = false
+                    self.baseView.activityIndicator.isHidden = true
+                    self.baseView.activityIndicator.activityIndicator.stopAnimating()
                     if self.viewModel.isFirstRegister {
                         self.viewModel.didGoToNextView.onNext(())
                     } else {
-                        //TODO
+                        self.viewModel.didTapBackButton.onNext(())
                     }
                 case let .error(error):
-                    print(error)
+                    self.baseView.contentView.isHidden = true
+                    self.baseView.activityIndicator.isHidden = true
+                    self.baseView.errorView.isHidden = false
                 }
-            })
+            }).disposed(by: viewModel.myDisposeBag)
             
     }
     

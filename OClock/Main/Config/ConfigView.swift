@@ -18,11 +18,9 @@ class ConfigView: UIView {
         setupSubview()
         setupConstraints()
         registerDataBtn.addTStyle(haveArrow: true)
-        notifiesDataBtn.addTStyle(haveArrow: true)
         logOffBtn.addTStyle()
         
         registerDataBtn.contentHorizontalAlignment = .left
-        notifiesDataBtn.contentHorizontalAlignment = .left
         
     }
     
@@ -41,8 +39,6 @@ class ConfigView: UIView {
     
     let registerDataBtn = RFKButton()
     
-    let notifiesDataBtn = RFKButton()
-    
     let logOffBtn = RFKButton()
     
     
@@ -50,7 +46,6 @@ class ConfigView: UIView {
         addSubview(contentView)
         contentView.addSubview(separatorNav)
         contentView.addSubview(registerDataBtn)
-        contentView.addSubview(notifiesDataBtn)
         contentView.addSubview(logOffBtn)
     }
     
@@ -60,8 +55,7 @@ class ConfigView: UIView {
         
         separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
         
-        registerDataBtn.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24,  height: 52)
-        notifiesDataBtn.anchor(top: registerDataBtn.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24, height: 52)
+        registerDataBtn.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium,  height: 52)
         
         logOffBtn.anchor(left: contentView.leftAnchor, bottom: contentView.layoutMarginsGuide.bottomAnchor, right: contentView.rightAnchor, paddingBottom: 0, height: 52)
     }

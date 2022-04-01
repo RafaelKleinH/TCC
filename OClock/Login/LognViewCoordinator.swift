@@ -31,6 +31,8 @@ class LoginViewCoordinator: CoordinatorProtocol {
                     MainTabBarCoordinator(navC: self.navigationController).start()
                 case .registerButton:
                     RegisterViewCoordinator(navigationController: self.navigationController).start()
+                case .resetPassword:
+                    ResetCoordinator(navC: self.navigationController).start()
                 }
             }).disposed(by: viewModel.myDisposeBag)
         
@@ -42,5 +44,6 @@ extension LoginViewCoordinator {
     enum Target {
         case loginButton
         case registerButton
+        case resetPassword
     }
 }

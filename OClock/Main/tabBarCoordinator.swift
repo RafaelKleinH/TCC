@@ -23,19 +23,22 @@ class MainTabBarCoordinator: CoordinatorProtocol {
         let homeViewModel = HomeViewModel(timerCentral: timerCentral)
         let homeBaseView = HomeView()
         let homeViewController = HomeViewController(vm: homeViewModel, v: homeBaseView)
-        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage.add, tag: 0)
+        let hokeImage = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
+        let homeTabBarItem = UITabBarItem(title: "Home", image: hokeImage?.withTintColor(RFKolors.primaryBlue).resize(targetSize: CGSize(width: 32, height: 32)), tag: 0)
         homeViewController.tabBarItem = homeTabBarItem
         
         let reportViewModel = ReportViewModel(navC: navigationController)
         let reportBaseView = ReportView()
         let reportViewController = ReportViewController(v: reportBaseView, vm: reportViewModel)
-        let reportTabBarItem = UITabBarItem(title: "Report", image: UIImage.checkmark, tag: 1)
+        let reportImage = UIImage(named: "relatorio")?.withRenderingMode(.alwaysTemplate)
+        let reportTabBarItem = UITabBarItem(title: "Report", image: reportImage?.withTintColor(RFKolors.primaryBlue).resize(targetSize: CGSize(width: 32, height: 32)), tag: 1)
         reportViewController.tabBarItem = reportTabBarItem
         
         let healthViewModel = HealthViewModel(timerCentral: timerCentral)
         let healthView = HealthView()
         let healthViewController = HealthViewController(v: healthView, vm: healthViewModel)
-        let healthTabBarItem = UITabBarItem(title: "Health", image: UIImage.remove, tag: 2)
+        let healthImage = UIImage(named: "saude")?.withRenderingMode(.alwaysTemplate)
+        let healthTabBarItem = UITabBarItem(title: "Health", image: healthImage?.withTintColor(RFKolors.primaryBlue).resize(targetSize: CGSize(width: 32, height: 32)), tag: 2)
         healthViewController.tabBarItem = healthTabBarItem
         
         let configViewModel = ConfigViewModel(timerCentral: timerCentral)
@@ -71,7 +74,7 @@ class MainTabBarCoordinator: CoordinatorProtocol {
                 }
             }).disposed(by: configViewModel.myDisposeBag)
         
-        navigationController.pushViewController(tabBarController, animated: true)
+        navigationController.pushViewController(tabBarController, animated: false)
     }
 }
 

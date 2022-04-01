@@ -83,6 +83,15 @@ class RFKTextField: UITextField {
         return label
     }()
     
+    let errorLabel: UILabel = {
+        var label = UILabel()
+        label.text = ""
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 1, green: 0.2, blue: 0.2, alpha: 0.8)
+        label.font = UIFont(name: RFontsK.QuicksandMedium, size: 14)
+        return label
+    }()
+    
     func setTrailingImageView(isHidden: Bool = true, image: UIImage) {
         trailingImageView.setImage(image, for: .normal)
         trailingImageView.isHidden = isHidden
@@ -107,7 +116,7 @@ class RFKTextField: UITextField {
                 self.floatinglabel.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 18)
                 self.addSubview(self.floatinglabel)
                 self.floatinglabel.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-                self.floatinglabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+                self.floatinglabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: RFKSize.xsmall).isActive = true
             }
          
             
@@ -154,6 +163,21 @@ class RFKTextField: UITextField {
         let paddingText = textWillHaveAImage ? UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 40) : UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         let rect = super.textRect(forBounds: bounds)
         return rect.inset(by: paddingText)
+    }
+    
+    func setErrorView(withError error: String) {
+        addSubview(errorLabel)
+        errorLabel.anchor(top: bottomAnchor, left: leftAnchor, paddingLeft: RFKSize.xsmall)
+        
+        errorLabel.text = error
+        floatinglabel.textColor = UIColor(red: 1, green: 0.2, blue: 0.2, alpha: 0.8)
+        layer.borderColor = UIColor(red: 1, green: 0.2, blue: 0.2, alpha: 0.8).cgColor
+    }
+    
+    func setRemoveError() {
+        errorLabel.text = ""
+        floatinglabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
     }
 }
 

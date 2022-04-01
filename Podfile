@@ -16,11 +16,13 @@ target 'OClock' do
   pod 'Firebase/Auth', '8.8.0'
   pod 'Firebase/Firestore', '8.8.0'
   pod 'Firebase/Database', '8.8.0'
+  pod 'Firebase/Storage', '8.8.0'
   pod 'KDCircularProgress', '1.5.4'
   pod 'NVActivityIndicatorView', '5.1.1'
   pod 'JGProgressHUD', '2.2'
   pod 'RxDataSources', '5.0.0'
   pod 'CBFlashyTabBarController'
+  pod 'SimplePDF'
 
  
   target 'OClockTests' do

@@ -24,6 +24,8 @@ class RegisterView: UIView {
    // let scrollView = UIScrollView()
     var scrollBottomConstraint: NSLayoutConstraint?
     
+    let activityIndicator = RFKIndicatorView()
+    
     let scrollView = UIScrollView()
     
     let contentView = UIView()
@@ -66,37 +68,49 @@ class RegisterView: UIView {
         
    
         registerButton.addPrimaryStyle()
-       
+        activityIndicator.isHidden = true
     }
     
     private func addSubviews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(separatorNav)
+        addSubview(separatorNav)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
         contentView.addSubview(confirmPasswordTextField)
         contentView.addSubview(registerButton)
+        addSubview(activityIndicator)
        
     }
     
     private func installConstraints() {
+        
+        separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
+        
         scrollView.centerX(inView: self)
         scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        scrollView.anchor(top: layoutMarginsGuide.topAnchor, bottom: layoutMarginsGuide.bottomAnchor)
-     
+        scrollView.anchor(top: separatorNav.bottomAnchor, bottom: layoutMarginsGuide.bottomAnchor)
+        
         contentView.centerX(inView: scrollView)
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
         
-        separatorNav.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 1)
+        emailTextField.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.mhigh, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
         
-        emailTextField.anchor(top: separatorNav.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
+        passwordTextField.anchor(top: emailTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.mhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
         
-        passwordTextField.anchor(top: emailTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
-        
-        confirmPasswordTextField.anchor(top: passwordTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        confirmPasswordTextField.anchor(top: passwordTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.mhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
         
         registerButton.anchor(top: confirmPasswordTextField.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingBottom: RFKSize.xsmall, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        
+        activityIndicator.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+    }
+    
+    func returnAlert(isSuccess: Bool, vc: UIViewController) {
+        let alert = UIAlertController(title: isSuccess ? "RegisterAlertSuccessTittle".localized() : "RegisterAlertErrorTittle".localized(), message: isSuccess ? "RegisterAlertSuccessMessage".localized() : "RegisterAlertErrorMessage".localized(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "alertDismissAction".localized(), style: .default, handler: { _ in
+        }))
+        
+        vc.present(alert, animated: true, completion: nil)
     }
 }

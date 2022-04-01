@@ -39,9 +39,11 @@ protocol PersonalRegisterViewModelProtocol {
     var userImageInput: AnyObserver<UIImage> { get }
     var userImageOutput: Observable<UIImage> { get }
     
+    var viewdidLoad: AnyObserver<Void> { get }
+ 
     var nameText: AnyObserver<String> { get }
     var occupationText: AnyObserver<String> { get }
-
+    var userImage: Observable<UIImage> { get }
     var requests: Observable<Bool> { get }
     
     var myDisposeBag: DisposeBag { get }
@@ -64,6 +66,7 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     
     let state: Observable<PersonalRegisterState>
     
+    let viewdidLoad: AnyObserver<Void>
     let userImageInput: AnyObserver<UIImage>
     let userImageOutput: Observable<UIImage>
     
@@ -71,7 +74,7 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     
     let nameText: AnyObserver<String>
     let occupationText: AnyObserver<String>
-    
+    let userImage: Observable<UIImage>
     let requests: Observable<Bool>
     
     let personalDataObs: Observable<PersonalData?>
@@ -79,6 +82,9 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
     init(service: PersonalRegisterViewServiceProtocol = PersonalRegisterViewService(), isFirstRegister: Bool = false, personalData: PersonalData?) {
         
         self.isFirstRegister = isFirstRegister
+        
+        let _viewdidLoad = PublishSubject<Void>()
+        viewdidLoad = _viewdidLoad.asObserver()
         
         let _didTapBackButton = PublishSubject<Void>()
         didTapBackButton = _didTapBackButton.asObserver()
@@ -122,6 +128,11 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
                     }
             }.share()
             
+        userImage = _viewdidLoad.flatMap({ _ in
+            service.getImage()
+                .asObservable()
+                .observe(on: MainScheduler.instance)
+        })
         
         navigationTarget = Observable.merge(
             _didTapBackButton.map { .pop },

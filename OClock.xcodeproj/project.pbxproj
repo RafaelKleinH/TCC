@@ -22,10 +22,16 @@
 		9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */; };
 		9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */; };
 		9D0686AB278A4FA30009A6B9 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */; };
+		9D1E189027EEB3C8007776FD /* ResetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E188F27EEB3C8007776FD /* ResetCoordinator.swift */; };
+		9D1E189227EEB3E6007776FD /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E189127EEB3E6007776FD /* ResetViewController.swift */; };
+		9D1E189427EEB408007776FD /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E189327EEB408007776FD /* ResetView.swift */; };
+		9D1E189627EEB415007776FD /* ResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E189527EEB415007776FD /* ResetViewModel.swift */; };
+		9D1E189827EEB423007776FD /* ResetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E189727EEB423007776FD /* ResetService.swift */; };
 		9D231BF327977E1C00DCCB25 /* UserDefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */; };
 		9D231BF82797818700DCCB25 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BF72797818700DCCB25 /* LoginModel.swift */; };
 		9D231BFE2797875000DCCB25 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231BFD2797875000DCCB25 /* tabBarController.swift */; };
 		9D34E8B227E6D66C009CA52B /* secReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */; };
+		9D34E8B427E6E466009CA52B /* pdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34E8B327E6E466009CA52B /* pdfCreator.swift */; };
 		9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D399715273C12FB00600544 /* SceneDelegate.swift */; };
 		9D399720273C12FD00600544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D39971E273C12FD00600544 /* LaunchScreen.storyboard */; };
 		9D39972B273C12FE00600544 /* OClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39972A273C12FE00600544 /* OClockTests.swift */; };
@@ -142,10 +148,16 @@
 		9D0686A0278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewModel.swift; sourceTree = "<group>"; };
 		9D0686A5278A460C0009A6B9 /* TimeDataRegisterViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataRegisterViewService.swift; sourceTree = "<group>"; };
 		9D0686AA278A4FA30009A6B9 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		9D1E188F27EEB3C8007776FD /* ResetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCoordinator.swift; sourceTree = "<group>"; };
+		9D1E189127EEB3E6007776FD /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
+		9D1E189327EEB408007776FD /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
+		9D1E189527EEB415007776FD /* ResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewModel.swift; sourceTree = "<group>"; };
+		9D1E189727EEB423007776FD /* ResetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetService.swift; sourceTree = "<group>"; };
 		9D231BF227977E1C00DCCB25 /* UserDefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValue.swift; sourceTree = "<group>"; };
 		9D231BF72797818700DCCB25 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9D231BFD2797875000DCCB25 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secReportTableViewCell.swift; sourceTree = "<group>"; };
+		9D34E8B327E6E466009CA52B /* pdfCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pdfCreator.swift; sourceTree = "<group>"; };
 		9D399710273C12FB00600544 /* OClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D399715273C12FB00600544 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D39971F273C12FD00600544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -324,6 +336,18 @@
 			path = TimeDataRegister;
 			sourceTree = "<group>";
 		};
+		9D1E188E27EEB36E007776FD /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				9D1E188F27EEB3C8007776FD /* ResetCoordinator.swift */,
+				9D1E189127EEB3E6007776FD /* ResetViewController.swift */,
+				9D1E189327EEB408007776FD /* ResetView.swift */,
+				9D1E189527EEB415007776FD /* ResetViewModel.swift */,
+				9D1E189727EEB423007776FD /* ResetService.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
 		9D231BFC2797872A00DCCB25 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +387,7 @@
 		9D399712273C12FB00600544 /* OClock */ = {
 			isa = PBXGroup;
 			children = (
+				9D1E188E27EEB36E007776FD /* ResetPassword */,
 				9D231BFC2797872A00DCCB25 /* Main */,
 				9DEF4CF72796157E00750AF2 /* userDataRegister */,
 				9DFD178D2790E2EF004E4CBF /* Assets.xcassets */,
@@ -520,6 +545,7 @@
 				9DC334BF27E5BF2100741E14 /* secReportViewModel.swift */,
 				9DC334C127E5BF2A00741E14 /* secReportModel.swift */,
 				9D34E8B127E6D66C009CA52B /* secReportTableViewCell.swift */,
+				9D34E8B327E6E466009CA52B /* pdfCreator.swift */,
 			);
 			path = secReport;
 			sourceTree = "<group>";
@@ -821,12 +847,14 @@
 				9DD91716279797810015947E /* ConfigView.swift in Sources */,
 				9D0686A1278A45FD0009A6B9 /* TimeDataRegisterViewModel.swift in Sources */,
 				9D765BDF27419A4800AF5884 /* RFKitButton.swift in Sources */,
+				9D1E189627EEB415007776FD /* ResetViewModel.swift in Sources */,
 				9D646FCE27E11AF500375ED0 /* HealthService.swift in Sources */,
 				9D7192B127C6F3A200C3849E /* PreRegisterViewController.swift in Sources */,
 				9D6037B82795FE6B006B991C /* DataBase.swift in Sources */,
 				9DC334BC27E5BF0200741E14 /* secReportView.swift in Sources */,
 				9D68F78B278A9D970036CBAB /* RFKDividerView.swift in Sources */,
 				9D39977B273C13FD00600544 /* LoginViewController.swift in Sources */,
+				9D1E189827EEB423007776FD /* ResetService.swift in Sources */,
 				9D4F3DB0274570AD004D7FD8 /* RegisterView.swift in Sources */,
 				9D74176A2786520A007BCF6A /* HomeViewController.swift in Sources */,
 				9D06867E278A45850009A6B9 /* PersonalRegisterViewController.swift in Sources */,
@@ -852,6 +880,7 @@
 				9D068697278A45D30009A6B9 /* TimeDataRegisterViewController.swift in Sources */,
 				9D06868D278A45B10009A6B9 /* PersonalRegisterViewService.swift in Sources */,
 				9DEF4CF9279615AE00750AF2 /* UserDataCoordinator.swift in Sources */,
+				9D1E189227EEB3E6007776FD /* ResetViewController.swift in Sources */,
 				9D40AA98279A156D009C493E /* RFKMiniLoader.swift in Sources */,
 				9D0686A6278A460C0009A6B9 /* TimeDataRegisterViewService.swift in Sources */,
 				9D765BBF2741786400AF5884 /* RFKGradient.swift in Sources */,
@@ -866,6 +895,7 @@
 				9D399783273C140300600544 /* LoginViewModel.swift in Sources */,
 				9D646FC827E11AB000375ED0 /* HealthViewController.swift in Sources */,
 				9D7E7CD127922C7C00336E2B /* HomeModel.swift in Sources */,
+				9D1E189427EEB408007776FD /* ResetView.swift in Sources */,
 				9DEF4D012796162C00750AF2 /* UserDataViewController.swift in Sources */,
 				9DEBDC2227E2A97C0003F579 /* ReportViewController.swift in Sources */,
 				9D765BDA274198FA00AF5884 /* RFontsK.swift in Sources */,
@@ -888,8 +918,10 @@
 				9DC334C027E5BF2100741E14 /* secReportViewModel.swift in Sources */,
 				9D399716273C12FB00600544 /* SceneDelegate.swift in Sources */,
 				9D6324FA27D0692300C122A3 /* TimeDataRegisterModel.swift in Sources */,
+				9D1E189027EEB3C8007776FD /* ResetCoordinator.swift in Sources */,
 				9D74177427865221007BCF6A /* HomeView.swift in Sources */,
 				9D7192AB27C6F37300C3849E /* PreRegisterCoordinator.swift in Sources */,
+				9D34E8B427E6E466009CA52B /* pdfCreator.swift in Sources */,
 				9D765BC4274184B600AF5884 /* RFKitTextField.swift in Sources */,
 				9D06869C278A45E90009A6B9 /* TimeDataRegisterView.swift in Sources */,
 				9D46DBE027C2FFAB00EA0A44 /* CustomImages.swift in Sources */,

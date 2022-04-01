@@ -57,10 +57,6 @@ class ConfigViewController: UIViewController {
             .bind(to: baseView.logOffBtn.rx.title())
             .disposed(by: viewModel.myDisposeBag)
         
-        viewModel.notifiesRegister
-            .bind(to: baseView.notifiesDataBtn.rx.title())
-            .disposed(by: viewModel.myDisposeBag)
-        
         viewModel.hourRegister
             .bind(to: baseView.registerDataBtn.rx.title())
             .disposed(by: viewModel.myDisposeBag)

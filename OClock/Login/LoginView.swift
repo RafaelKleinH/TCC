@@ -24,8 +24,6 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let errorView = RFKErrorView()
 
     let contentView: UIView = {
         var view = UIView()
@@ -46,13 +44,14 @@ class LoginView: UIView {
         var stack = UIStackView()
         stack.axis = .vertical
         stack.isUserInteractionEnabled = true
-        stack.spacing = RFKSize.medium
+        stack.spacing = RFKSize.mhigh
         return stack
     }()
     
     let iconImageView: UIImageView = {
         var iv = UIImageView()
-        iv.image = UIImage(named: "apple")?.withRenderingMode(.alwaysOriginal)
+        iv.image = UIImage(named: "clockWithName")?.withRenderingMode(.alwaysTemplate)
+        iv.tintColor = .white
         return iv
     }()
     
@@ -75,11 +74,6 @@ class LoginView: UIView {
         let button = RFKButton(type: .system)
         button.addSecondaryStyle()
         return button
-    }()
-    let appleImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "apple")?.withRenderingMode(.alwaysOriginal)
-        return iv
     }()
     
     let activityIndicator = RFKIndicatorView()
@@ -131,37 +125,36 @@ class LoginView: UIView {
         contentView.addSubview(stack)
         stack.addArrangedSubview(emailTextField)
         stack.addArrangedSubview(passwordTextField)
-        stack.addArrangedSubview(thirdStack)
+        contentView.addSubview(thirdStack)
         thirdStack.addArrangedSubview(userDefaultLabel)
         thirdStack.addArrangedSubview(userDefaultSwith)
         contentView.addSubview(secondaryStack)
         secondaryStack.addArrangedSubview(loginButton)
         secondaryStack.addArrangedSubview(dividerView)
         secondaryStack.addArrangedSubview(appleLogin)
-        contentView.addSubview(appleImage)
         contentView.addSubview(registerButton)
         
         addSubview(activityIndicator)
-
-        addSubview(errorView)
     }
     
     private func installConstraints(){
         activityIndicator.isHidden = true
-        errorView.isHidden = true
 
         contentView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
         iconImageView.centerX(inView: self)
-        iconImageView.setDimensions(height: RFKSize.xxhigh, width: RFKSize.xxhigh)
-        iconImageView.anchor(top: contentView.safeAreaLayoutGuide.topAnchor, paddingTop: RFKSize.high)
+        iconImageView.setDimensions(height: RFKSize.xxxhigh, width: RFKSize.xxxhigh)
+        iconImageView.anchor(top: contentView.safeAreaLayoutGuide.topAnchor, paddingTop: RFKSize.small)
         
-        stack.anchor(top: iconImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.xhigh, paddingLeft: RFKSize.high, paddingRight: RFKSize.high)
-        secondaryStack.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.high, paddingBottom: RFKSize.high, paddingRight: RFKSize.high)
+        stack.anchor(top: iconImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.xxsmall, paddingLeft: RFKSize.high, paddingRight: RFKSize.high)
         
         emailTextField.setHeight(height: RFKSize.xhigh)
         
         passwordTextField.setHeight(height: RFKSize.xhigh)
+        
+        thirdStack.anchor(top: stack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.high, paddingRight: RFKSize.high)
+        
+        secondaryStack.anchor(top: thirdStack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.high, paddingBottom: RFKSize.high, paddingRight: RFKSize.high)
         
         loginButton.setHeight(height: RFKSize.xhigh)
        
@@ -171,10 +164,13 @@ class LoginView: UIView {
         registerButton.setHeight(height: RFKSize.xhigh)
         
         activityIndicator.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
+    }
+    
+    func returnAlert(isSuccess: Bool, vc: UIViewController) {
+        let alert = UIAlertController(title: isSuccess ? "alertSuccessTitle".localized() : "alertErrorTitle".localized(), message: isSuccess ? "alertSuccessMessage".localized() : "alertErrorMessage".localized(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "alertDismissAction".localized(), style: .default, handler: { _ in
+        }))
         
-        errorView.fillSuperview()
-        
-        appleImage.centerY(inView: appleLogin)
-        appleImage.anchor(right: appleLogin.titleLabel?.leftAnchor, paddingRight: RFKSize.small, width: RFKSize.medium, height: RFKSize.medium)
+        vc.present(alert, animated: true, completion: nil)
     }
 }

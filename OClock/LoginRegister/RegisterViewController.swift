@@ -114,19 +114,67 @@ class RegisterViewController: UIViewController {
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.state
-            .subscribe(onNext: { state in
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
                 switch state {
                     case .data:
-                        print("DEBUG: data")
+                        self.baseView.contentView.isHidden = false
+                        self.baseView.activityIndicator.isHidden = true
+                        self.baseView.activityIndicator.activityIndicator.stopAnimating()
+                        self.baseView.returnAlert(isSuccess: true, vc: self)
                     case .loading:
-                        print("DEBUG: load")
+                        self.baseView.contentView.isHidden = true
+                        self.baseView.activityIndicator.isHidden = false
+                        self.baseView.activityIndicator.activityIndicator.startAnimating()
                     case let .error(error):
-                        print("DEBUG: \(error)")
+                        self.baseView.contentView.isHidden = false
+                        self.baseView.activityIndicator.isHidden = true
+                        self.baseView.activityIndicator.activityIndicator.stopAnimating()
+                        self.baseView.returnAlert(isSuccess: false, vc: self)
                 }
                 
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.tfReturn
+            .subscribe()
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.tfState
+            .subscribe(onNext: { [weak self] state in
+                switch state {
+                case .isEmptyF:
+                    self?.baseView.emailTextField.setErrorView(withError: "RegisterTFIsEmpty".localized())
+                    self?.baseView.passwordTextField.setRemoveError()
+                    self?.baseView.confirmPasswordTextField.setRemoveError()
+                case .isEmptyS:
+                    self?.baseView.emailTextField.setRemoveError()
+                    self?.baseView.passwordTextField.setErrorView(withError: "RegisterTFIsEmpty".localized())
+                    self?.baseView.confirmPasswordTextField.setRemoveError()
+                case .isEmptyT:
+                    self?.baseView.emailTextField.setRemoveError()
+                    self?.baseView.confirmPasswordTextField.setErrorView(withError: "RegisterTFIsEmpty".localized())
+                    self?.baseView.passwordTextField.setRemoveError()
+                case .passwordDoesntMatch:
+                    self?.baseView.emailTextField.setRemoveError()
+                    self?.baseView.confirmPasswordTextField.setErrorView(withError: "RegisterTFPasswordDoesntMatch".localized())
+                    self?.baseView.passwordTextField.setErrorView(withError: "RegisterTFPasswordDoesntMatch".localized())
+                case .emailInvalid:
+                    self?.baseView.emailTextField.setErrorView(withError: "RegisterTFEmailInvalid".localized())
+                    self?.baseView.passwordTextField.setRemoveError()
+                    self?.baseView.confirmPasswordTextField.setRemoveError()
+                case .passwordLessThanSixCharacters:
+                    self?.baseView.emailTextField.setRemoveError()
+                    self?.baseView.passwordTextField.setErrorView(withError: "RegisterTFPasswordLessThanSixCharacters".localized())
+                    self?.baseView.confirmPasswordTextField.setRemoveError()
+                case .success:
+                    self?.baseView.emailTextField.setRemoveError()
+                    self?.baseView.passwordTextField.setRemoveError()
+                    self?.baseView.confirmPasswordTextField.setRemoveError()
+                    self?.viewModel.didReturnTFValidation.onNext(())
+                }
+            })
+            .disposed(by: viewModel.myDisposeBag)
         
         baseView.emailTextField.rx.text
             .map { $0 ?? "" }
@@ -152,11 +200,6 @@ class RegisterViewController: UIViewController {
             .disposed(by: viewModel.myDisposeBag)
             
     }
-    
-//    private func keyboardWillHide(notification: Notification) {
-//        self.baseView.scrollView.frame.origin.y = 0
-//    }
-    
 }
 
 extension RegisterViewController: UITextFieldDelegate {}

@@ -7,6 +7,9 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import RxGesture
 
 class HealthViewController: UIViewController {
     
@@ -26,6 +29,7 @@ class HealthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = baseView
+        rxBind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,5 +41,21 @@ class HealthViewController: UIViewController {
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         super.viewWillAppear(animated)
+    }
+    
+    func rxBind() {
+        
+        baseView.explicationOpen
+            .rx
+            .gesture(.tap(configuration: nil))
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                UIView.animate(withDuration: 0.3) {
+                    self.baseView.explanationaView.isHidden = !self.viewModel.isOpen
+                    self.baseView.explicationLabel.alpha = !self.viewModel.isOpen ? 0 : 1
+                    self.viewModel.isOpen.toggle()
+                }
+            })
+            .disposed(by: viewModel.myDisposeBag)
     }
 }

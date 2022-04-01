@@ -26,12 +26,21 @@ class SecReportViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         tabBarController?.navigationItem.largeTitleDisplayMode = .always
-       
+        navigationItem.rightBarButtonItem = .init(image: UIImage.actions, style: .plain, target: self, action: #selector(action))
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         super.viewWillAppear(animated)
       
     }
+    
+    @objc func action() {
+        let activityViewController = UIActivityViewController(activityItems: [ viewModel.pdfCreator.createPDF(totalHours: viewModel.totalHoursDumb)], applicationActivities: nil)
+
+        // Show the share-view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -65,6 +74,12 @@ class SecReportViewController: UIViewController, UIScrollViewDelegate {
         
         viewModel.totalHours
             .bind(to: baseView.totalHoursLabel.rx.text)
+            .disposed(by: viewModel.disposebag)
+        
+        viewModel.totalHours
+            .subscribe(onNext: { [weak self] val in
+                self?.viewModel.totalHoursDumb = val
+            })
             .disposed(by: viewModel.disposebag)
     }
     

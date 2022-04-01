@@ -24,6 +24,8 @@ protocol HomeViewModelProtocol {
     
     func calculatePercentage(value: Double ,min: Double, max: Double) -> Double
     
+    var initStateController: HomeState? { get set }
+    
     var navigationTarget: Observable<Target> { get }
     
     var timerCentral: TimerCentral { get }
@@ -47,6 +49,7 @@ protocol HomeViewModelProtocol {
     
     var myDisposeBag: DisposeBag { get }
     
+    var userImage: Observable<UIImage> { get }
     var hasBreak: Bool { get set }
     var isFirstFinished: Bool { get set }
     var isSecondFinished: Bool { get set }
@@ -67,7 +70,7 @@ protocol HomeViewModelProtocol {
 class HomeViewModel: HomeViewModelProtocol {
     
     let navigationTarget: Observable<Target>
-    
+    var initStateController: HomeState?
     let didTapButton: AnyObserver<Void>
     let didGoToPersonalRegister: AnyObserver<Void>
     let didTapBackButton: AnyObserver<Void>
@@ -97,7 +100,8 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let usableHoursData: Observable<(Int, Int, Bool?)>
     //MARK: Models
-
+    
+    let userImage: Observable<UIImage>
     let userName: Observable<String>
     let totalHours: Observable<Int>
     let totalBreakHours: Observable<Int>
@@ -237,7 +241,11 @@ class HomeViewModel: HomeViewModelProtocol {
         buttonBack = _didTapButton.withLatestFrom(hoursData.map { $0.hasBreak })
         
         
-        
+        userImage = _didViewLoad.flatMap({ _ in
+            service.getImage()
+                .asObservable()
+                .observe(on: MainScheduler.instance)
+        }).share()
         
         navigationTarget = Observable.merge(
             _didGoToRegisterView.map { .registerBaseData },

@@ -12,14 +12,26 @@
 "LoginWithApple" = "Entrar com Apple";
 "LoginUserDefaults" = "Salvar usuario";
 
+"LoginTFisEmpty" = "Campo não pode estar vazio";
+"LoginTFEmailInvalid" = "Email inválido";
+"LoginTFPassLessThanSixCharacters" = "Senha muito pequena";
 
-// MARK: REGISTER
+// MARK: LOGIN REGISTER
 
 "RegisterEmailTF" = "Email";
 "RegisterPasswordTF" = "Senha";
 "RegisterConfirmPasswordTF" = "Confirmar Senha";
 "RegisterButton" = "Registrar";
 
+"RegisterAlertErrorTittle" = "Opss!";
+"RegisterAlertSuccessTittle" = "Registrado!";
+"RegisterAlertErrorMessage" = "Ocorreu algum erro, tente novamente mais tarde.";
+"RegisterAlertSuccessMessage" = "Registrado com sucesso.";
+
+"RegisterTFIsEmpty" = "Campo não pode estar vazio";
+"RegisterTFPasswordDoesntMatch" = "Campos devem coincidir";
+"RegisterTFEmailInvalid" = "Email inválido";
+"RegisterTFPasswordLessThanSixCharacters" = "Senha deve ser maior que seis digitos";
 
 // MARK: PERSONALREGISTER
 
@@ -27,3 +39,30 @@
 "PersonalRegisterOccupation" = "Ocupação";
 "PersonalRegisterExplication" = "Clique na imagem para selecionar";
 "PersonalRegisterButton" = "Registrar";
+
+// MARK: RESETPASSWORD
+
+"ResetPasswordEmail" = "Email";
+"ResetPasswordConfirmEmail" = "Conrfirmar Email";
+"ResetPasswordButton" = "Enviar";
+
+"errorTFisntEqual" = "Os emails devem ser iguais";
+"errorTFisntMail" = "Email inválido";
+"errorTFisEmpty" = "Campo não pode ser vazio";
+
+
+"alertErrorTitle" = "Opss!";
+"alertSuccessTitle" = "Foi!";
+
+"alertErrorMessage" = "Algo deu errado, tente novamente mais tarde.";
+"alertSuccessMessage" = "Email de troca de senha enviado com sucesso!";
+
+"alertDismissAction" = "Ok";
+
+
+
+//MARK: HealthView
+
+"healthViewExplanation" = " Assistencia de saúde é uma funcionalidade que visa lhe ajudar com algumas boas praticas durante o periodo de trabalho, fazendo assim com que a sua jornada de trabalho seja um pouco melhor, e a longo praso tenha um grande ganho em saúde. ";
+"healthViewActivateText" = "Deseja ativar?";
+"healthWantToKnow" = "Saber mais ∆";

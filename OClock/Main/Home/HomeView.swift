@@ -91,7 +91,7 @@ class HomeView: UIView {
     let fourthSubProgress = RFKMiniLoader()
     
     let cronoImgView: UIImageView = {
-        $0.image = UIImage(named: "apple")?.withRenderingMode(.alwaysTemplate)
+        $0.image = UIImage(named: "clockName")?.withRenderingMode(.alwaysTemplate)
         $0.tintColor = RFKolors.modeSecondary
         return $0
     }(UIImageView())

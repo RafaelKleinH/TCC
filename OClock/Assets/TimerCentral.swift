@@ -71,11 +71,13 @@ class TimerCentral {
     }
     
     func startHelper() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(action), userInfo: nil, repeats: true)
-        setTimerCounting(true)
-        guard let time = totalHours else { return }
-        let less = Double(timerNum ?? 0)
-        NotificationsCentral.calcNotifications(isOpen: true, time: Double(time), less: less)
+        if timer?.isValid == nil || timer?.isValid == false {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(action), userInfo: nil, repeats: true)
+            setTimerCounting(true)
+            guard let time = totalHours else { return }
+            let less = Double(timerNum ?? 0)
+            NotificationsCentral.calcNotifications(isOpen: true, time: Double(time), less: less)
+        }
     }
 
     func pauseTimer() {
@@ -155,11 +157,13 @@ class TimerCentral {
     }
     
     func intervalStartHelper() {
-        intervalTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(intervalAction), userInfo: nil, repeats: true)
-        intervalSetTimerCounting(true)
-        guard let time = intervalTotalHours else { return }
-        let less = Double(intervalTimerNum ?? 0)
-        NotificationsCentral.intervalCalcNotifications(intervalIsOpen: true, time: Double(time), less: less)
+        if intervalTimer?.isValid == nil || intervalTimer?.isValid == false {
+            intervalTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(intervalAction), userInfo: nil, repeats: true)
+            intervalSetTimerCounting(true)
+            guard let time = intervalTotalHours else { return }
+            let less = Double(intervalTimerNum ?? 0)
+            NotificationsCentral.intervalCalcNotifications(intervalIsOpen: true, time: Double(time), less: less)
+        }
     }
     
     func intervalPauseTimer() {

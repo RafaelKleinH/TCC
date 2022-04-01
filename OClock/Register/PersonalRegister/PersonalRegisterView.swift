@@ -19,6 +19,9 @@ class PersonalRegisterView: UIView {
         setupSubviews()
         setupConstraints()
         setupViewBasics()
+        
+        activityIndicator.isHidden = true
+        errorView.isHidden = true
     }
     
     required init?(coder: NSCoder) {
@@ -28,6 +31,10 @@ class PersonalRegisterView: UIView {
     let scrollView = UIScrollView()
     
     let contentView = UIView()
+    
+    let errorView = RFKErrorView()
+    
+    let activityIndicator = RFKIndicatorView()
     
     let separatorNav: UIView = {
         $0.backgroundColor = RFKolors.whiteTexts
@@ -64,6 +71,8 @@ class PersonalRegisterView: UIView {
     
     func setupSubviews() {
         addSubview(UIView(frame: .zero))
+        addSubview(activityIndicator)
+        addSubview(errorView)
         addSubview(scrollView)
         addSubview(separatorNav)
         scrollView.addSubview(contentView)
@@ -97,6 +106,10 @@ class PersonalRegisterView: UIView {
         occupationTextField.anchor(top: nameTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
     
         registerButton.anchor(top: occupationTextField.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop:  RFKSize.xhigh, paddingLeft:  RFKSize.medium, paddingRight:  RFKSize.medium, height:  RFKSize.xhigh)
+        
+        activityIndicator.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
+        
+        errorView.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, bottom: layoutMarginsGuide.bottomAnchor, right: rightAnchor)
     }
     
 }

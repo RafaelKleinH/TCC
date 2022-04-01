@@ -362,6 +362,9 @@ PODS:
   - Firebase/Firestore (8.8.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.8.0)
+  - Firebase/Storage (8.8.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 8.8.0)
   - FirebaseAnalytics (8.8.0):
     - FirebaseAnalytics/AdIdSupport (= 8.8.0)
     - FirebaseCore (~> 8.0)
@@ -415,6 +418,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseStorage (8.8.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - GoogleAppMeasurement (8.8.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -512,6 +518,7 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - SimplePDF (3.0.0)
 
 DEPENDENCIES:
   - CBFlashyTabBarController
@@ -519,6 +526,7 @@ DEPENDENCIES:
   - Firebase/Auth (= 8.8.0)
   - Firebase/Database (= 8.8.0)
   - Firebase/Firestore (= 8.8.0)
+  - Firebase/Storage
   - IQKeyboardManagerSwift (= 6.1.1)
   - JGProgressHUD (= 2.2)
   - KDCircularProgress (= 1.5.4)
@@ -528,6 +536,7 @@ DEPENDENCIES:
   - RxGesture (= 4.0.3)
   - RxKeyboard (= 2.0.0)
   - RxSwift (= 6.2.0)
+  - SimplePDF
 
 SPEC REPOS:
   trunk:
@@ -543,6 +552,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseFirestore
     - FirebaseInstallations
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -562,6 +572,7 @@ SPEC REPOS:
     - RxKeyboard
     - RxRelay
     - RxSwift
+    - SimplePDF
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -576,6 +587,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: bc4610ff3a816dcc680c1dbccf7f9f4bd94ac07d
   FirebaseFirestore: 29baf05d5e7e0d5003eb34e5805d92b9858b36d4
   FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
+  FirebaseStorage: 54ff752ecbd27f1c354c3f5e8c55f6ad5783699b
   GoogleAppMeasurement: 5ba1164e3c844ba84272555e916d0a6d3d977e91
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040
@@ -595,7 +607,8 @@ SPEC CHECKSUMS:
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
 
-PODFILE CHECKSUM: 110e57bd7ce00a94387b9c8d2615cf9f0b974d79
+PODFILE CHECKSUM: 5d5f16c9c22fd5a6d9e1a6422ba9647ba24ad170
 
 COCOAPODS: 1.11.2

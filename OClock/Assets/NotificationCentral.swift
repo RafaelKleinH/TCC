@@ -43,12 +43,14 @@ class NotificationsCentral {
             content.title = "Passou metade do seu periodo"
             content.body = "Voce ja fez metade do seu horario previsto :D."
             content.sound = .default
-            let timeinterval = TimeInterval(realtime)
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
-            let request = UNNotificationRequest(identifier: NotificationNames.halfTime.rawValue, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print(error.localizedDescription)
+            if realtime > 0 {
+                let timeinterval = TimeInterval(realtime)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
+                let request = UNNotificationRequest(identifier: NotificationNames.halfTime.rawValue, content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
@@ -103,33 +105,37 @@ class NotificationsCentral {
     //MARK: interval Funcs
     
     class func intervalFirstNotification(intervalTime: Double, less: Double) {
-        let realtime = intervalTime - less - 60 * 15
+        let realtime = (intervalTime - less) / 4 * 3
         let content = UNMutableNotificationContent()
         content.title = "Intervalo Acabando."
         content.body = "Só mais 15 minutos de intevalo."
         content.sound = .default
-        let timeinterval = TimeInterval(realtime)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
-        let request = UNNotificationRequest(identifier: NotificationNames.firstInterval.rawValue, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print(error.localizedDescription)
+        if realtime > 0 {
+            let timeinterval = TimeInterval(realtime)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
+            let request = UNNotificationRequest(identifier: NotificationNames.firstInterval.rawValue, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
     
     class func intervalSecondNotification(intervalTime: Double, less: Double) {
-        let realtime = intervalTime - less - 60 * 5
+        let realtime = (intervalTime - less) / 10 * 9
         let content = UNMutableNotificationContent()
         content.title = "Arrume-se para voltar."
         content.body = "Só mais 5 minutos de intevalo."
         content.sound = .default
-        let timeinterval = TimeInterval(realtime)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
-        let request = UNNotificationRequest(identifier: NotificationNames.secondInterval.rawValue, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print(error.localizedDescription)
+        if realtime > 0 {
+            let timeinterval = TimeInterval(realtime)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
+            let request = UNNotificationRequest(identifier: NotificationNames.secondInterval.rawValue, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
@@ -140,12 +146,14 @@ class NotificationsCentral {
         content.title = "Intervalo acabou."
         content.body = "Chegou a hora de voltar... :)"
         content.sound = .default
-        let timeinterval = TimeInterval(realtime)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
-        let request = UNNotificationRequest(identifier: NotificationNames.thirdInterval.rawValue, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print(error.localizedDescription)
+        if realtime > 0 {
+            let timeinterval = TimeInterval(realtime)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
+            let request = UNNotificationRequest(identifier: NotificationNames.thirdInterval.rawValue, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
         }
     }

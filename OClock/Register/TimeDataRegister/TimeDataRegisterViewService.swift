@@ -23,6 +23,7 @@ class TimeDataRegisterViewService: TimeDataRegisterViewServiceProtocol {
                     observer.onError(error)
                 } else {
                     observer.onNext(true)
+                    UserDefaults.standard.set(true, forKey: UserDefaultValue.NEED_RELOAD.rawValue)
                 }
                 observer.onCompleted()
             }

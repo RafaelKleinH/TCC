@@ -179,7 +179,6 @@ class TimeDataRegisterViewController: UIViewController {
         
         viewModel.notTrigger
             .subscribe(onNext: {  initialHrs in
-                NotificationsCentral.eliminateOthers()
                 NotificationsCentral.initialHourNotification(initHours: initialHrs)
                 self.viewModel.didReturnHome.onNext(())
             })

@@ -9,10 +9,12 @@ import Foundation
 import RxSwift
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 protocol HomeViewServiceProtocol {
     func getPersonalData() -> Observable<PersonalData>
     func getHoursData() -> Observable<HoursData>
+    func getImage() ->Observable<UIImage>
 }
 
 class HomeViewService: HomeViewServiceProtocol {
@@ -48,6 +50,20 @@ class HomeViewService: HomeViewServiceProtocol {
                     }
                 }
             }
+            return Disposables.create()
+        }
+    }
+    
+    func getImage() ->Observable<UIImage> {
+            return Observable.create { observer in
+                guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+                let imgData = UserDefaults.standard.data(forKey: "profImg\(uid)")
+                if let imgData = imgData {
+                    let uiimage = UIImage(data: imgData)
+                    if let uiimage = uiimage {
+                        observer.onNext(uiimage)
+                    }
+                }
             return Disposables.create()
         }
     }

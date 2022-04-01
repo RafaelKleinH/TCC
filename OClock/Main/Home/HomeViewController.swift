@@ -43,10 +43,26 @@ class HomeViewController: UIViewController {
         
         viewModel.timerCentral.intervalIsOpen = viewModel.timerCentral.userDefaults.bool(forKey: viewModel.timerCentral.INTERVAL_COUNTING_KEY)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        let needReload = UserDefaults.standard.bool(forKey: UserDefaultValue.NEED_RELOAD.rawValue)
+        if needReload == true {
+            viewModel.didViewLoad.onNext(())
+            viewModel.timerCentral.startTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.START_TIME_KEY) as? Date
+            
+            viewModel.timerCentral.stopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.STOP_TIME_KEY) as? Date
+            
+            viewModel.timerCentral.isOpen =  viewModel.timerCentral.userDefaults.bool(forKey:  viewModel.timerCentral.COUNTING_KEY)
+            
+            viewModel.timerCentral.intervalStartTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_START_TIME_KEY) as? Date
+            
+            viewModel.timerCentral.intervalStopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_STOP_TIME_KEY) as? Date
+            
+            viewModel.timerCentral.intervalIsOpen = viewModel.timerCentral.userDefaults.bool(forKey: viewModel.timerCentral.INTERVAL_COUNTING_KEY)
+           
+        }
     }
     
     func rxBinds() {
@@ -65,10 +81,15 @@ class HomeViewController: UIViewController {
             .subscribe()
             .disposed(by: viewModel.myDisposeBag)
         
+        viewModel.userImage
+            .bind(to: baseView.personalImageView.rx.image)
+            .disposed(by: viewModel.myDisposeBag)
+        
         
         viewModel.usableHoursData
             .subscribe(onNext: { [weak self] totalBreak, totalHours, hasBreak in
                 guard let self = self else { return }
+                let needReload = UserDefaults.standard.bool(forKey: UserDefaultValue.NEED_RELOAD.rawValue)
                 self.viewModel.timerCentral.totalHours = totalHours
                 self.viewModel.timerCentral.hasBreak = hasBreak
                 self.viewModel.timerCentral.intervalTotalHours = totalBreak
@@ -76,11 +97,11 @@ class HomeViewController: UIViewController {
                     self.baseView.addSubProgress(hasBreak: hasBreak)
                 }
                 
-                if self.viewModel.timerCentral.intervalIsOpen {
+                if self.viewModel.timerCentral.intervalIsOpen && needReload == false {
                     //MARK: Interval
                     self.viewModel.timerCentral.intervalStartHelper()
                    
-                } else {
+                } else if self.viewModel.timerCentral.intervalIsOpen == false && needReload == false {
                     self.viewModel.timerCentral.intervalStopTimer()
                     if let startTime = self.viewModel.timerCentral.intervalStartTime {
                         if let stopTime = self.viewModel.timerCentral.intervalStopTime {
@@ -92,9 +113,9 @@ class HomeViewController: UIViewController {
                     }
                 }
                 
-                if  self.viewModel.timerCentral.isOpen {
+                if  self.viewModel.timerCentral.isOpen && needReload == false {
                     self.viewModel.timerCentral.startHelper()
-                } else {
+                } else if self.viewModel.timerCentral.isOpen == false && needReload == false {
                     //MARK: NormalTimer
                     self.viewModel.timerCentral.stopTimer()
                     if let startTime = self.viewModel.timerCentral.startTime {
@@ -107,7 +128,7 @@ class HomeViewController: UIViewController {
                     
                     
                 }
-                
+                UserDefaults.standard.set(false, forKey: UserDefaultValue.NEED_RELOAD.rawValue)
                 
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -221,11 +242,9 @@ class HomeViewController: UIViewController {
                 if self.viewModel.timerCentral.isOpen {
                     self.viewModel.timerCentral.pauseTimer()
                     self.viewModel.timerCentral.intervalStartTimer()
-                    //self.viewModel.saveHours(inOrOut: "Out: ")
                 } else {
                     self.viewModel.timerCentral.startTimer()
                     self.viewModel.timerCentral.intervalPauseTimer()
-                    //self.viewModel.saveHours(inOrOut: "In: ")
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -242,7 +261,6 @@ class HomeViewController: UIViewController {
             .rx
             .longPressGesture(configuration: .none)
             .skip(1)
-            //.throttle(RxTimeInterval.seconds(2), scheduler: MainScheduler.instance)
             .subscribe(onNext: {  value in
                 if value.state == .began {
                     self.viewModel.didLongPressButton.onNext(())
@@ -312,6 +330,7 @@ class HomeViewController: UIViewController {
                 case .hoursError:
                     self.baseView.viewState(hstate: .hoursError(""))
                 case .registerData:
+                    self.viewModel.initStateController = .registerData
                     self.viewModel.didGoToRegisterView.onNext(())
                 }
             })

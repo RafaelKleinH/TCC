@@ -14,4 +14,9 @@ enum UserDefaultValue: String{
     case START_TIME_KEY = "startTime"
     case STOP_TIME_KEY = "stopTime"
     case COUNTING_KEY = "countingKey"
+    case profile_image = "profImg"
+    case NEED_RELOAD = "needReload"
+    case INTERVAL_START_TIME_KEY = "intervalStartTime"
+    case INTERVAL_STOP_TIME_KEY = "intervalStopTime"
+    case INTERVAL_COUNTING_KEY = "intervalCountingKey"
 }

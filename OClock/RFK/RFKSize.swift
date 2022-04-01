@@ -25,6 +25,9 @@ struct RFKSize {
     /// high 32
     public static let high = CGFloat(32)
     
+    /// mhigh 40
+    public static let mhigh = CGFloat(40)
+    
     /// xhigh 56
     public static let xhigh = CGFloat(56)
     

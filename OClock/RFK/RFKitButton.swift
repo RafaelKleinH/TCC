@@ -36,13 +36,13 @@ class RFKButton: UIButton {
             let uiimage = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
             
             let imageView: UIImageView = {
-                $0.image = uiimage?.withHorizontallyFlippedOrientation()
+                $0.image = uiimage
                 $0.tintColor = RFKolors.modeSecondary
                 return $0
             }(UIImageView())
             
             addSubview(imageView)
-            imageView.anchor(right: rightAnchor, width: 16, height: 16)
+            imageView.anchor(right: rightAnchor, width: 32, height: 32)
             imageView.centerY(inView: self)
         }
     }

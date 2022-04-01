@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PDFKit
 
 class ReportViewController: UIViewController {
     

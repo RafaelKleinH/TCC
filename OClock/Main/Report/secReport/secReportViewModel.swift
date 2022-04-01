@@ -9,6 +9,8 @@ import Foundation
 import RxSwift
 
 protocol SecReportViewModelProtocol {
+    var totalHoursDumb: String { get set }
+    var pdfCreator: PDFCreator { get }
     var report: Observable<[ReportModel]> { get }
     var month: Observable<String> { get }
     var totalHours: Observable<String> { get }
@@ -17,6 +19,9 @@ protocol SecReportViewModelProtocol {
 
 class SecReportViewModel: SecReportViewModelProtocol {
    
+    var pdfCreator: PDFCreator
+    var totalHoursDumb: String = ""
+    
     let report: Observable<[ReportModel]>
     
     let month: Observable<String>
@@ -28,6 +33,9 @@ class SecReportViewModel: SecReportViewModelProtocol {
     init(monthModel: String, model: [ReportModel]) {
         report = .just(model)
         month = .just(monthModel)
+        
+        
+        pdfCreator = PDFCreator(monthI: monthModel, reportDataI: model)
         
         totalHours = report.map({ report in
             var hours = 0
