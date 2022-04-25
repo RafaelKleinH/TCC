@@ -101,7 +101,7 @@ class LoginViewModel: LoginViewModelProtocol {
         
         emailTextFieldPlaceholder = .just("LoginEmailTF".localized())
         passwordTextFieldPlaceholder = .just("LoginPasswordTF".localized())
-        loginWithAppleText = .just("Resetar senha")
+        loginWithAppleText = .just("LoginResetPassword".localized())
         loginDefaults = .just("LoginUserDefaults".localized())
         registerButtonText = .just("LoginDontHaveAccount".localized())
         

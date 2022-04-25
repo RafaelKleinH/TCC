@@ -22,13 +22,8 @@ class SecReportViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarController?.navigationItem.largeTitleDisplayMode = .always
+        styleNavBar(navTitle: nil)
         navigationItem.rightBarButtonItem = .init(image: UIImage.actions, style: .plain, target: self, action: #selector(action))
-        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
         super.viewWillAppear(animated)
       
     }
@@ -39,8 +34,6 @@ class SecReportViewController: UIViewController, UIScrollViewDelegate {
         // Show the share-view
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -81,7 +74,9 @@ class SecReportViewController: UIViewController, UIScrollViewDelegate {
                 self?.viewModel.totalHoursDumb = val
             })
             .disposed(by: viewModel.disposebag)
+        
+        viewModel.totalHoursLabelText
+            .bind(to: baseView.totalHoursSuport.rx.text)
+            .disposed(by: viewModel.disposebag)
     }
-    
-  
 }

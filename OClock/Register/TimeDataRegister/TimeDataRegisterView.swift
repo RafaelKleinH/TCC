@@ -25,11 +25,6 @@ class TimeDataRegisterView: UIView {
         setPicker()
     }
     
-    //totalDeHoras
-    //SeTemPause
-    //SeSim Horas de Pausa
-    //Horario de inicio
-    
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -142,24 +137,23 @@ class TimeDataRegisterView: UIView {
         
         
         
-        totalHoursTF.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 36, paddingLeft: 24, paddingRight: 24, height: RFKSize.xhigh)
+        totalHoursTF.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 36, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
         
-        mainPauseStack.anchor(top: totalHoursTF.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingRight: 24)
+        mainPauseStack.anchor(top: totalHoursTF.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
         
-        //TODO deixar essa caceta reta
         pauseStack.setHeight(height: 52)
     
         pauseSwith.anchor(top: pauseLabel.topAnchor)
         
-        totalPauseHoursView.anchor(top: pauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingRight: 24, height: 52)
+        totalPauseHoursView.anchor(top: pauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: 52)
         
         totalPauseHoursTF.anchor(top: totalPauseHoursView.topAnchor, left: totalPauseHoursView.leftAnchor, bottom: totalPauseHoursView.bottomAnchor, right: totalPauseHoursView.rightAnchor, height: RFKSize.xhigh)
     
         
-        initialHour.anchor(top: mainPauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 32, paddingLeft: 24, paddingRight: 24, height: RFKSize.xhigh)
+        initialHour.anchor(top: mainPauseStack.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.high, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium, height: RFKSize.xhigh)
         
 
-        confirmButton.anchor(top: initialHour.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 16, paddingRight: 24, height: 52)
+        confirmButton.anchor(top: initialHour.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: RFKSize.medium, paddingLeft: RFKSize.medium, paddingBottom: RFKSize.small, paddingRight: RFKSize.medium, height: 52)
     }
     
     func setPicker() {

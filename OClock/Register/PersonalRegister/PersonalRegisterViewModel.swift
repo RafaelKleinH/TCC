@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import UIKit
 
 enum PersonalRegisterState {
     case loading
@@ -113,9 +114,9 @@ class PersonalRegisterViewModel: PersonalRegisterViewModelProtocol {
         
         userImageOutput = _userImage.map { $0 }
         
-        requests = _loadData.withLatestFrom(Observable.combineLatest(_nameText, _occupupationText, _userImage))
+        requests = _loadData.withLatestFrom(Observable.combineLatest(_nameText, _occupupationText.startWith(""), _userImage.startWith(UIImage(named: "userCircle") ?? UIImage.add)))
             .filter({ name, occupation, _ in
-                name != "" && occupation != ""
+                name != ""
             }).flatMapLatest { name, occupationText, image in
                 service.postInformations(name: name, occupation: occupationText, image: image)
                     .asObservable()

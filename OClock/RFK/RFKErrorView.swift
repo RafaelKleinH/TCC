@@ -14,19 +14,14 @@ class RFKErrorView: UIView {
         $0.textColor = RFKolors.whiteTexts
         $0.textAlignment = .center
         $0.font = UIFont(name: RFontsK.QuicksandSemiBold, size: 21)
-        $0.text =
-        
-"""
-Ops, Ocorreu um erro.
-  Tente novamente.
-"""
+        $0.text = "errorViewText".localized()
         
         return $0
     }(UILabel())
     
     var errorButton: RFKButton = {
         $0.addSecondaryStyle()
-        $0.setTitle("Recarregar", for: .normal)
+        $0.setTitle("realodErrorView".localized(), for: .normal)
         return $0
     }(RFKButton())
     

@@ -44,9 +44,9 @@ class PreRegisterViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.title = "OLÁ, TUDO BEM ?"
+        navigationController?.navigationBar.topItem?.title = "preRegisterViewTitle".localized()
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: RFKSize.medium) ?? UIFont.systemFont(ofSize: RFKSize.medium)]
     }
     
     func rxSwift() {

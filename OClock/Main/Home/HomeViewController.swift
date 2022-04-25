@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         self.view = baseView
         rxBinds()
@@ -50,15 +49,15 @@ class HomeViewController: UIViewController {
         let needReload = UserDefaults.standard.bool(forKey: UserDefaultValue.NEED_RELOAD.rawValue)
         if needReload == true {
             viewModel.didViewLoad.onNext(())
-            viewModel.timerCentral.startTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.START_TIME_KEY) as? Date
+            viewModel.timerCentral.startTime = viewModel.timerCentral.userDefaults.object(forKey: viewModel.timerCentral.START_TIME_KEY) as? Date
             
-            viewModel.timerCentral.stopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.STOP_TIME_KEY) as? Date
+            viewModel.timerCentral.stopTime = viewModel.timerCentral.userDefaults.object(forKey: viewModel.timerCentral.STOP_TIME_KEY) as? Date
             
-            viewModel.timerCentral.isOpen =  viewModel.timerCentral.userDefaults.bool(forKey:  viewModel.timerCentral.COUNTING_KEY)
+            viewModel.timerCentral.isOpen = viewModel.timerCentral.userDefaults.bool(forKey: viewModel.timerCentral.COUNTING_KEY)
             
-            viewModel.timerCentral.intervalStartTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_START_TIME_KEY) as? Date
+            viewModel.timerCentral.intervalStartTime =  viewModel.timerCentral.userDefaults.object(forKey: viewModel.timerCentral.INTERVAL_START_TIME_KEY) as? Date
             
-            viewModel.timerCentral.intervalStopTime =  viewModel.timerCentral.userDefaults.object(forKey:  viewModel.timerCentral.INTERVAL_STOP_TIME_KEY) as? Date
+            viewModel.timerCentral.intervalStopTime =  viewModel.timerCentral.userDefaults.object(forKey: viewModel.timerCentral.INTERVAL_STOP_TIME_KEY) as? Date
             
             viewModel.timerCentral.intervalIsOpen = viewModel.timerCentral.userDefaults.bool(forKey: viewModel.timerCentral.INTERVAL_COUNTING_KEY)
            
@@ -84,7 +83,6 @@ class HomeViewController: UIViewController {
         viewModel.userImage
             .bind(to: baseView.personalImageView.rx.image)
             .disposed(by: viewModel.myDisposeBag)
-        
         
         viewModel.usableHoursData
             .subscribe(onNext: { [weak self] totalBreak, totalHours, hasBreak in
@@ -124,16 +122,12 @@ class HomeViewController: UIViewController {
                             let diff = Date().timeIntervalSince(time)
                             self.viewModel.timerCentral.midTime.onNext(Int(diff))
                         }
-                    }
-                    
-                    
+                    }  
                 }
                 UserDefaults.standard.set(false, forKey: UserDefaultValue.NEED_RELOAD.rawValue)
                 
             })
             .disposed(by: viewModel.myDisposeBag)
-        
-        
         
         viewModel.timerCentral
             .intervalMidTime
@@ -206,9 +200,26 @@ class HomeViewController: UIViewController {
                         }, completion: nil)
                     }
                 } else {
+                    let thirdSub = self.viewModel.calculatePercentage(value: num, min: Double(0), max: Double(totalHours))
+                    if thirdSub < 0.0 {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("0.0%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = 0.0
+                        }, completion: nil)
+                    } else if thirdSub < 100.0 {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("\(thirdSub.rounded(toPlaces: 1))%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = thirdSub / 100
+                        }, completion: nil)
+                    } else {
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                            self.baseView.thirdSubProgress.progressLabel.rx.text.onNext("100.0%")
+                            self.baseView.thirdSubProgress.progress.circularProgress.progress = 1.0
+                        }, completion: nil)
+                    }
                   
                 }
-                let fourthMax = totalHours + 5
+                let fourthMax = totalHours + (3600 * 2)
                 let fourthSub = self.viewModel.calculatePercentage(value: num, min: Double(totalHours), max: Double(fourthMax))
                 if fourthSub < 0.0 {
                     UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
@@ -238,13 +249,13 @@ class HomeViewController: UIViewController {
             .disposed(by: viewModel.myDisposeBag)
 
         viewModel.buttonBack
-            .subscribe(onNext: { _ in
-                if self.viewModel.timerCentral.isOpen {
-                    self.viewModel.timerCentral.pauseTimer()
-                    self.viewModel.timerCentral.intervalStartTimer()
+            .subscribe(onNext: { [weak self] _ in
+                if self?.viewModel.timerCentral.isOpen == true {
+                    self?.viewModel.timerCentral.pauseTimer()
+                    self?.viewModel.timerCentral.intervalStartTimer()
                 } else {
-                    self.viewModel.timerCentral.startTimer()
-                    self.viewModel.timerCentral.intervalPauseTimer()
+                    self?.viewModel.timerCentral.startTimer()
+                    self?.viewModel.timerCentral.intervalPauseTimer()
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
@@ -255,39 +266,38 @@ class HomeViewController: UIViewController {
             .bind(to: viewModel.didTapButton)
             .disposed(by: viewModel.myDisposeBag)
         
-       // var valsue = 0
-        
         baseView.timeButton
             .rx
             .longPressGesture(configuration: .none)
             .skip(1)
-            .subscribe(onNext: {  value in
+            .subscribe(onNext: { [weak self] value in
                 if value.state == .began {
-                    self.viewModel.didLongPressButton.onNext(())
+                    self?.viewModel.didLongPressButton.onNext(())
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
         
+        let alert = UIAlertController(title: viewModel.alertTitleText, message: viewModel.alertMessageText, preferredStyle: .alert)
         
+        alert
+            .addAction(UIAlertAction(title: viewModel.alertCancelText, style: .default, handler: nil))
         
-        baseView.alert
-            .addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
-        
-        baseView.alert
-            .addAction(UIAlertAction(title: "Encerrar", style: .default, handler: { _ in
-                self.viewModel.timerCentral.saveDate()
-                self.viewModel.timerCentral.resetAction()
+        alert
+            .addAction(UIAlertAction(title: viewModel.alertConfirmText, style: .default, handler: { [weak self] _ in
+                self?.viewModel.timerCentral.saveDate()
+                self?.viewModel.timerCentral.resetAction()
             }))
         
         viewModel.didReturnLongPress
-            .subscribe(onNext: {
-                self.present(self.baseView.alert, animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.present(alert, animated: true, completion: nil)
             })
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.stringTime
-            .subscribe(onNext: { (text, num) in
-                self.baseView.timeLabel.rx.text.onNext(text)
+            .subscribe(onNext: { [weak self] (text, num) in
+                self?.baseView.timeLabel.rx.text.onNext(text)
             })
             .disposed(by: viewModel.myDisposeBag)
         
@@ -307,12 +317,15 @@ class HomeViewController: UIViewController {
         baseView.personalImageView
             .rx
             .tapGesture()
+            .skip(1)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.didGoToPersonalRegister.onNext(())
+                guard let self = self else { return }
+                self.viewModel.didGoToPersonalRegister.onNext(())
             })
             .disposed(by: viewModel.myDisposeBag)
         
         viewModel.state
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
                 switch state {

@@ -19,4 +19,5 @@ enum UserDefaultValue: String{
     case INTERVAL_START_TIME_KEY = "intervalStartTime"
     case INTERVAL_STOP_TIME_KEY = "intervalStopTime"
     case INTERVAL_COUNTING_KEY = "intervalCountingKey"
+    case HEALTH_IS_ON = "healthIsOn"
 }

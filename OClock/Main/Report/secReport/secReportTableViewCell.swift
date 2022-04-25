@@ -44,12 +44,10 @@ class SecReportTableViewCell: UITableViewCell {
 
     let initialDayHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
-        $0.text = "Dia de inicio:"
+        $0.text = "SecReportCellInitialDayHelper".localized()
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
         return $0
     }(UILabel())
-    
-    
     
     let secondSubStack: UIStackView = {
         $0.distribution = .equalSpacing
@@ -66,7 +64,7 @@ class SecReportTableViewCell: UITableViewCell {
     let initialWeekDayHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Dia na semana:"
+        $0.text = "SecReportCellInitialWeekDayHelper".localized()
         return $0
     }(UILabel())
     
@@ -85,7 +83,7 @@ class SecReportTableViewCell: UITableViewCell {
     let initHourHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Hora de inicio:"
+        $0.text = "SecReportCellInitHourHelper".localized()
         return $0
     }(UILabel())
     
@@ -104,7 +102,7 @@ class SecReportTableViewCell: UITableViewCell {
     let endDayHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Dia de encerramento:"
+        $0.text = "SecReportCellEndDayHelper".localized()
         return $0
     }(UILabel())
     
@@ -123,7 +121,7 @@ class SecReportTableViewCell: UITableViewCell {
     let endWeekDayHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Dia na semana:"
+        $0.text = "SecReportCellEndWeekDayHelper".localized()
         return $0
     }(UILabel())
     
@@ -142,7 +140,7 @@ class SecReportTableViewCell: UITableViewCell {
     let endHourHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Hora do encerramento:"
+        $0.text = "SecReportCellEndHourHelper".localized()
         return $0
     }(UILabel())
     
@@ -161,7 +159,7 @@ class SecReportTableViewCell: UITableViewCell {
     let intervalHoursHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Total de intervalo:"
+        $0.text = "SecReportCellIntervalHoursHelper".localized()
         return $0
     }(UILabel())
     
@@ -180,7 +178,7 @@ class SecReportTableViewCell: UITableViewCell {
     let totalHoursHelper: UILabel = {
         $0.textColor = RFKolors.modeSecondary
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
-        $0.text = "Total de horas:"
+        $0.text = "SecReportCellTotalHoursHelper".localized()
         return $0
     }(UILabel())
     

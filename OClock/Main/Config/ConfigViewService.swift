@@ -24,7 +24,7 @@ class ConfigViewService: ConfigViewServiceProtocol {
             UserDefaults.standard.removeObject(forKey: UserDefaultValue.INTERVAL_START_TIME_KEY.rawValue)
             UserDefaults.standard.removeObject(forKey: UserDefaultValue.INTERVAL_STOP_TIME_KEY.rawValue)
             UserDefaults.standard.removeObject(forKey: UserDefaultValue.INTERVAL_COUNTING_KEY.rawValue)
-            
+            timerCentral.saveDate()
             timerCentral.resetAction()
             NotificationsCentral.eliminateOthers()
             observer.onNext(())

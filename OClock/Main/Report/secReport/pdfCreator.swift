@@ -30,7 +30,7 @@ class PDFCreator {
         
         pdf.setContentAlignment(.left)
         
-        pdf.addText("Horas totais do mes: \(totalHours)")
+        pdf.addText("\("pdfTotalMonthTime".localized()) \(totalHours)")
         
         pdf.addLineSpace(12)
         
@@ -42,20 +42,20 @@ class PDFCreator {
           
            pdf.addText(
 """
-Dia de inicio: \(rep.initialDay ?? "") - \(rep.initialWeekday.weekDay())
-Dia de encerramento: \(rep.endDay ?? "") - \(rep.endWeekday.weekDay())
-Hora de inicio: \(rep.initialHours ?? "")
-Hora de encenrramento: \(rep.endHours ?? "")
-Total de intervalo: \(rep.intervalTotalHours.toSec())
-Total trabalhado: \(rep.totalHours.toSec())
-""", font: UIFont(name: RFontsK.QuicksandSemiBold, size: 16) ?? UIFont.boldSystemFont(ofSize: 12))
+\("pdfInitialDay".localized()) \(rep.initialDay ?? "") - \(rep.initialWeekday.weekDay())
+\("pdfEndDay".localized()) \(rep.endDay ?? "") - \(rep.endWeekday.weekDay())
+\("pdfInitTime".localized()) \(rep.initialHours ?? "")
+\("pdfEndTime".localized()) \(rep.endHours ?? "")
+\("pdfTotalInterval".localized()) \(rep.intervalTotalHours.toSec())
+\("pdfTotalHours".localized()) \(rep.totalHours.toSec())
+""", font: UIFont(name: RFontsK.QuicksandSemiBold, size: RFKSize.small) ?? UIFont.boldSystemFont(ofSize: 12))
             pdf.addLineSpace(12)
             pdf.addLineSeparator()
             pdf.addLineSpace(12)
           
        }
         pdf.setContentAlignment(.center)
-        pdf.addText("Relatório gerado pelo App: O`Clock", font: UIFont(name: RFontsK.QuicksandLight, size: 6) ?? UIFont.systemFont(ofSize: 6))
+        pdf.addText("pdfCreatedBy".localized(), font: UIFont(name: RFontsK.QuicksandLight, size: 6) ?? UIFont.systemFont(ofSize: 6))
         let pdfData = pdf.generatePDFdata()
         return pdfData
     }

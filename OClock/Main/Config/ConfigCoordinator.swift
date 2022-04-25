@@ -18,11 +18,7 @@ class ConfigCoordinator: CoordinatorProtocol {
         viewModel = vm
     }
     
-    func start() {
-        
-      
-        
-    }
+    func start() {}
 }
 
 extension ConfigCoordinator {

@@ -35,13 +35,7 @@ class ReportViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.title = "RELATÓRIO"
-        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        styleNavBar(navTitle: viewModel.navBarTitle)
         super.viewWillAppear(animated)
         viewModel.viewDidLoad.onNext(())
     }
@@ -55,9 +49,7 @@ class ReportViewController: UIViewController {
             .disposed(by: viewModel.disposeBag)
         
         viewModel.data
-            .subscribe(onNext: { value in
-                
-            })
+            .subscribe()
             .disposed(by: viewModel.disposeBag)
         
         baseView.tableView

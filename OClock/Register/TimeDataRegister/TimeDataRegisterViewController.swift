@@ -56,28 +56,7 @@ class TimeDataRegisterViewController: UIViewController {
     }
     
     private func rxBinds() {
-        
-//        baseView.totalHoursTF
-//            .rx
-//            .text
-//            .map { $0 ?? "" }
-//            .bind(to: viewModel.totalHoursTFValue)
-//            .disposed(by: viewModel.disposeBag)
-//
-//        baseView.totalPauseHoursTF
-//            .rx
-//            .text
-//            .map { $0 ?? "" }
-//            .bind(to: viewModel.pauseHoursTFValue)
-//            .disposed(by: viewModel.disposeBag)
-//
-//        baseView.initialHour
-//            .rx
-//            .text
-//            .map { $0 ?? "" }
-//            .bind(to: viewModel.initialHoursTFValue)
-//            .disposed(by: viewModel.disposeBag)
-        
+
         baseView.confirmButton
             .rx
             .tap
@@ -130,9 +109,9 @@ class TimeDataRegisterViewController: UIViewController {
             .disposed(by: viewModel.disposeBag)
         
         viewModel.initText
-            .subscribe(onNext: { text in
-                self.baseView.initialHour.text = text
-                self.baseView.initialHour.test()
+            .subscribe(onNext: { [weak self] text in
+                self?.baseView.initialHour.text = text
+                self?.baseView.initialHour.test()
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -149,9 +128,9 @@ class TimeDataRegisterViewController: UIViewController {
             .disposed(by: viewModel.disposeBag)
         
         viewModel.pauseText
-            .subscribe(onNext: { text in
-                self.baseView.totalPauseHoursTF.text = text
-                self.baseView.totalPauseHoursTF.test()
+            .subscribe(onNext: { [weak self] text in
+                self?.baseView.totalPauseHoursTF.text = text
+                self?.baseView.totalPauseHoursTF.test()
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -167,9 +146,9 @@ class TimeDataRegisterViewController: UIViewController {
             .disposed(by: viewModel.disposeBag)
         
         viewModel.totalText
-            .subscribe(onNext: { text in
-                self.baseView.totalHoursTF.text = text
-                self.baseView.totalHoursTF.test()
+            .subscribe(onNext: { [weak self]  text in
+                self?.baseView.totalHoursTF.text = text
+                self?.baseView.totalHoursTF.test()
             })
             .disposed(by: viewModel.disposeBag)
             
@@ -178,9 +157,9 @@ class TimeDataRegisterViewController: UIViewController {
             .disposed(by: viewModel.disposeBag)
         
         viewModel.notTrigger
-            .subscribe(onNext: {  initialHrs in
+            .subscribe(onNext: { [weak self] initialHrs in
                 NotificationsCentral.initialHourNotification(initHours: initialHrs)
-                self.viewModel.didReturnHome.onNext(())
+                self?.viewModel.didReturnHome.onNext(())
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -192,7 +171,7 @@ class TimeDataRegisterViewController: UIViewController {
                     self.baseView.scrollView.isHidden = true
                     self.baseView.activityIndicator.isHidden = false
                     self.baseView.activityIndicator.activityIndicator.startAnimating()
-                case let .error(error):
+                case .error(_):
                     print("error")
                 case .success:
                     self.baseView.scrollView.isHidden = false

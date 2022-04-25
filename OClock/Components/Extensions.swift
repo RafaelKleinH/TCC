@@ -152,3 +152,68 @@ extension Double {
     }
 }
     
+
+extension UIViewController {
+    func styleNavBar(navTitle: String?) {
+        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+        if navTitle != nil {
+            navigationController?.navigationBar.topItem?.title = navTitle
+        }
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: RFKSize.medium) ?? UIFont.systemFont(ofSize: RFKSize.medium)]
+    }
+}
+
+extension Int {
+    func toSec() -> String {
+        let base = "\(self / 3600):\((self % 3600) / 60):\((self % 3600) % 60)"
+        let arrays = base.components(separatedBy: ":")
+        var correctArray: [String] = []
+        for b in arrays {
+            correctArray.append(b.count != 1 ? b : "0\(b)")
+        }
+        return "\(correctArray[0]):\(correctArray[1]):\(correctArray[2])"
+    }
+}
+
+extension String {
+    func weekDay() -> String {
+        if self == "1" {
+            return "WeekExtensionSun".localized()
+        } else if self == "2" {
+            return "WeekExtensionMon".localized()
+        } else if self == "3" {
+            return "WeekExtensionTue".localized()
+        } else if self == "4" {
+            return "WeekExtensionWed".localized()
+        } else if self == "5" {
+            return "WeekExtensionThur".localized()
+        } else if self == "6" {
+            return "WeekExtensionFri".localized()
+        } else if self == "7" {
+            return "WeekExtensionSat".localized()
+        } else {
+            return ""
+        }
+    }
+}
+
+extension UIView {
+    public func removeAllConstraints() {
+        for constraint in self.constraints {
+                  
+            if let first = constraint.firstItem as? UIView, first == self {
+                self.removeConstraint(constraint)
+            }
+                  
+            if let second = constraint.secondItem as? UIView, second == self {
+                //self.removeConstraint(constraint)
+            }
+        }
+          
+        //self.removeConstraints(self.constraints)
+      }
+}

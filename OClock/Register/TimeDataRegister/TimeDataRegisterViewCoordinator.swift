@@ -22,7 +22,6 @@ class TimeDataRegisterViewCoordinator: CoordinatorProtocol {
         let viewModel: TimeDataRegisterViewModelProtocol = TimeDataRegisterViewModel()
         let viewController = TimeDataRegisterViewController(vm: viewModel, bv: view)
         
-        //TODO weak
         viewModel.navigationTarget
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak navigationController] target in

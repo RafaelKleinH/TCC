@@ -29,21 +29,43 @@ class HealthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = baseView
+        baseView.tableView.rx.setDelegate(self).disposed(by: viewModel.myDisposeBag)
         rxBind()
+        viewModel.didLoad.onNext(())
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.title = "ASSISTENTE DE SAÚDE"
-        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        styleNavBar(navTitle: viewModel.navBarTitle)
         super.viewWillAppear(animated)
     }
     
     func rxBind() {
+        
+        viewModel.explicationOpenText
+            .bind(to: baseView.explicationOpen.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.explicationText
+            .bind(to: baseView.explicationLabel.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.switchLabelText
+            .bind(to: baseView.switchLabel.rx.text)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.healthSwitch
+            .rx
+            .isOn
+            .bind(to: viewModel.isOn)
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.isOnOpen
+            .bind(to: baseView.healthSwitch.rx.isOn)
+            .disposed(by: viewModel.myDisposeBag)
         
         baseView.explicationOpen
             .rx
@@ -53,9 +75,34 @@ class HealthViewController: UIViewController {
                 UIView.animate(withDuration: 0.3) {
                     self.baseView.explanationaView.isHidden = !self.viewModel.isOpen
                     self.baseView.explicationLabel.alpha = !self.viewModel.isOpen ? 0 : 1
+                  
                     self.viewModel.isOpen.toggle()
                 }
             })
             .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.titles
+            .bind(to: baseView.tableView.rx.items(cellIdentifier: HealthTableViewCell.description(), cellType: HealthTableViewCell.self)) { index, element, cell in
+                cell.healthLabel.text = element
+            }
+            .disposed(by: viewModel.myDisposeBag)
+        
+        viewModel.dataReceive
+            .subscribe()
+            .disposed(by: viewModel.myDisposeBag)
+        
+        baseView.tableView
+            .rx
+            .itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.selectedRow.onNext(indexPath.row)
+                self?.viewModel.didTapTableViewCell.onNext(())
+            })
+            .disposed(by: viewModel.myDisposeBag)
+        
     }
+}
+
+extension HealthViewController: UITableViewDelegate {
+
 }

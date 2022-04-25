@@ -210,6 +210,14 @@ class TimerCentral {
         userDefaults.set(intervalIsOpen, forKey: INTERVAL_COUNTING_KEY)
     }
     
+    //MARK: Health
+    
+    func healthTrigger(healthBool: Bool) {
+        if isOpen {
+            NotificationsCentral.healthIsOpen(healthIsOpen: healthBool)
+        }
+    }
+    
     func saveDate() {
         
         let dbref = RFKDatabase()
@@ -260,5 +268,7 @@ extension String {
         let valB = valueA.components(separatedBy: ":")
         return valB
     }
+    
+   
 }
 

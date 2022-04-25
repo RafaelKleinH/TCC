@@ -17,26 +17,35 @@ enum ReportState: Equatable {
 
 protocol ReportViewModelProtocol {
     
+    var navBarTitle: String { get }
+    
     var index: PublishSubject<Int> { get }
-    var subs: Observable<Void> { get }
-    var viewDidLoad: AnyObserver<Void> { get }
-    var didTap: AnyObserver<Int> { get }
+    
     var dataSource: Observable<[String]> { get }
     var data: Observable<[ReportModel]> { get }
-    var disposeBag: DisposeBag { get }
+    var subs: Observable<Void> { get }
+   
+    var viewDidLoad: AnyObserver<Void> { get }
+    var didTap: AnyObserver<Int> { get }
     var state: AnyObserver<ReportState> { get }
+
+    var disposeBag: DisposeBag { get }
+    
 }
 
 class ReportViewModel: ReportViewModelProtocol {
     
+    let navBarTitle: String = "ReportViewNavBarTitle".localized()
+    
     var index = PublishSubject<Int>()
+    
+    let subs: Observable<Void>
+    let dataSource: Observable<[String]>
+    let data: Observable<[ReportModel]>
+    
     let didTap: AnyObserver<Int>
     let viewDidLoad: AnyObserver<Void>
     let state: AnyObserver<ReportState>
-    let subs: Observable<Void>
-    
-    let dataSource: Observable<[String]>
-    let data: Observable<[ReportModel]>
     
     let disposeBag = DisposeBag()
     
@@ -68,7 +77,18 @@ class ReportViewModel: ReportViewModelProtocol {
             }
             .share()
         
-        dataSource = .just(["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"])
+        dataSource = .just(["ReportViewJan".localized(),
+                            "ReportViewFeb".localized(),
+                            "ReportViewMar".localized(),
+                            "ReportViewApr".localized(),
+                            "ReportViewMay".localized(),
+                            "ReportViewJun".localized(),
+                            "ReportViewJul".localized(),
+                            "ReportViewAug".localized(),
+                            "ReportViewSept".localized(),
+                            "ReportViewOct".localized(),
+                            "ReportViewNov".localized(),
+                            "ReportViewDez".localized()])
              
              subs = _didTap.withLatestFrom(Observable.combineLatest(dataSource, data, index)).map { (string, report, index) in
                      let a = report.filter({ $0.month == "\(index + 1)" })

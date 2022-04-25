@@ -22,13 +22,7 @@ class ConfigViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.title = "CONFIGURAÇÕES"
-        navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.modeSecondary, NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        styleNavBar(navTitle: viewModel.navBarTitle)
         super.viewWillAppear(animated)
     }
     
@@ -43,6 +37,7 @@ class ConfigViewController: UIViewController {
     }
     
     func rxBinds() {
+        
         baseView.logOffBtn.rx.tap
             .bind(to: viewModel.didClickLogoff)
             .disposed(by: viewModel.myDisposeBag)

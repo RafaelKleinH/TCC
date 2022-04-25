@@ -17,10 +17,9 @@ class HomeView: UIView {
         setupSubview()
         setupAnchors()
         
-        firstSubProgress.titleLabel.text = "1 turno"
-        secondSubProgress.titleLabel.text = "Intervalo"
-        thirdSubProgress.titleLabel.text = "2 turno"
-        fourthSubProgress.titleLabel.text = "Hora Extra"
+        firstSubProgress.titleLabel.text = "HomeFirstSub".localized()
+        secondSubProgress.titleLabel.text = "HomeSecondSub".localized()
+        fourthSubProgress.titleLabel.text = "HomeFourth".localized()
         
         firstSubProgress.progress.circularProgress.startAngle = 180
         secondSubProgress.progress.circularProgress.startAngle = 180
@@ -110,8 +109,6 @@ class HomeView: UIView {
         return $0
     }(UIButton())
     
-    let alert = UIAlertController(title: "Encerrar dia?", message: "Com isto fechamos o dados do dia de hoje para relatorios futuros.", preferredStyle: .alert)
-    
     var clockImageView = UIImageView()
     
     func setupSubview() {
@@ -128,7 +125,6 @@ class HomeView: UIView {
         contentView.addSubview(cronoImgView)
         contentView.addSubview(timeButton)
         contentView.addSubview(timeLabel)
-       
     }
     
     func setupAnchors() {
@@ -164,6 +160,8 @@ class HomeView: UIView {
     func addSubProgress(hasBreak: Bool) {
         
         if hasBreak {
+            
+            thirdSubProgress.titleLabel.text = "HomeThirdSubHasBreak".localized()
             
             contentView.addSubview(firstSubProgress)
             contentView.addSubview(secondSubProgress)
@@ -205,6 +203,8 @@ class HomeView: UIView {
             
         } else {
             
+            thirdSubProgress.titleLabel.text = "HomeThirdSubHasntBreak".localized()
+            
             contentView.addSubview(thirdSubProgress)
             contentView.addSubview(fourthSubProgress)
             
@@ -243,6 +243,7 @@ class HomeView: UIView {
             errorView.isHidden = false
         } else if hstate == .personalData ||
                     hstate == .hoursData {
+
             errorView.isHidden = true
             loaderView.activityIndicator.stopAnimating()
             loaderView.isHidden = true

@@ -1,7 +1,5 @@
 // MARK: PORTUGUES
 
-
-
 // MARK: Login
 
 "LoginEmailTF" = "Email";
@@ -15,6 +13,7 @@
 "LoginTFisEmpty" = "Campo não pode estar vazio";
 "LoginTFEmailInvalid" = "Email inválido";
 "LoginTFPassLessThanSixCharacters" = "Senha muito pequena";
+"LoginResetPassword" = "Resetar senha";
 
 // MARK: LOGIN REGISTER
 
@@ -39,9 +38,11 @@
 "PersonalRegisterOccupation" = "Ocupação";
 "PersonalRegisterExplication" = "Clique na imagem para selecionar";
 "PersonalRegisterButton" = "Registrar";
+"PersonalRegisterViewTitle" = "REGISTRO PESSOAL";
 
 // MARK: RESETPASSWORD
 
+"ResetPasswordNavBarTitle" = "REDEFINIR SENHA";
 "ResetPasswordEmail" = "Email";
 "ResetPasswordConfirmEmail" = "Conrfirmar Email";
 "ResetPasswordButton" = "Enviar";
@@ -63,6 +64,189 @@
 
 //MARK: HealthView
 
+"healthViewNavBarTitle" = "ASSISTENTE DE SAÚDE";
 "healthViewExplanation" = " Assistencia de saúde é uma funcionalidade que visa lhe ajudar com algumas boas praticas durante o periodo de trabalho, fazendo assim com que a sua jornada de trabalho seja um pouco melhor, e a longo praso tenha um grande ganho em saúde. ";
-"healthViewActivateText" = "Deseja ativar?";
-"healthWantToKnow" = "Saber mais ∆";
+"healthViewActivateText" = "Deseja ativar ?";
+"healthWantToKnow" = "Saber mais";
+"firstAdvertiseTitle" = "Porque fazer alongamentos ?";
+"secondAdvertiseTitle" = "Alongamentos basicos";
+"thirdAdvertiseTitle" = "Alongamentos avançados";
+"fourthAdvertiseTitle" = "Outras dicas";
+
+// MARK: SecHealthView
+"secHealthNavBarTitle0" = "POR QUE?";
+"secHealthNavBarTitle1" = "BASICOS";
+"secHealthNavBarTitle2" = "AVANÇADOS";
+"secHealthNavBarTitle3" = "DICAS";
+
+"secHealthWhyText" = "Todo mundo sabe que realizar exercícios físicos é fundamental para se ter uma boa saúde física e mental. Reserve alguns minutos todos os dias para se exercitar antes ou durante sua jornada de trabalho, alguns minutos dedicados exercícios podem te trazer grandes benefícios e tornar o home office muito mais saudável e produtivo, veja abaixo os principais benefícios:
+
+1. Aumento do foco, produtividade e desempenho;
+
+2. Ajudam no combate à depressão e ansiedade, aumentam a resistência física e mental, além de ajudar na concentração.
+
+3. Regulam atividades como o sono e as emoções, além de proporcionar em grandes quantidades sensação de bem-estar durante o turno de trabalho.";
+
+"secHealthAlng1Photo" = "adv1";
+"secHealthAlng1Text" = "1 – Com o braço direito esticado na horizontal para o lado esquerdo, segure-o com o braço esquerdo na vertical. Repita o movimento invertendo os braços.";
+
+"secHealthAlng2Photo" = "adv2";
+"secHealthAlng2Text" = "2 – Agora, puxe o braço levemente por trás da cabeça, formando um triângulo com o cotovelo na altura do topo.";
+
+"secHealthAlng3Photo" = "adv3";
+"secHealthAlng3Text" = "3 – Alongue o pescoço puxando a cabeça com o braço direito para o lado direito e em seguida repita o movimento com o braço esquerdo.";
+
+"secHealthAlng4Photo" = "adv4";
+"secHealthAlng4Text" = "4 – Com as duas mãos na nuca, puxe a cabeça levemente para a frente.";
+
+"secHealthAlng5Photo" = "adv5";
+"secHealthAlng5Text" = "5 – Para complementar o ciclo do pescoço, faça agora movimentos circulares no sentido horário e, em seguida, no sentido anti-horário.";
+
+"secHealthAlng6Photo" = "adv6";
+"secHealthAlng6Text" = "6 – Agora trabalhe o tronco e membros superiores inclinando-se levemente para a lateral e, com uma mão na cintura e os joelhos flexionados, estique o outro braço sobre a cabeça.";
+
+"secHealthAlng7Photo" = "adv7";
+"secHealthAlng7Text" = "7 – Com as pernas levemente flexionadas, tente encostar a ponta dos dedos das mãos na ponta dos dedos do pés. Caso não consiga, vá até onde aguentar.";
+
+"secHealthAlng8Photo" = "adv8";
+"secHealthAlng8Text" = "8 – Emendando o movimento anterior, dobre uma perna para a frente e mantenha a outra perna semi-flexionada. O pé da perna da frente deve estar reto e completamente pousado no chão, e o pé da perna de trás deve estar reto com o calcanhar inclinado.";
+
+"secHealthAlng9Photo" = "adv9";
+"secHealthAlng9Text" = "9 – Com o braço esquerdo, segure o pé direito por trás, na altura das nádegas. O pé de apoio deve estar reto e você pode escorar em uma parede para facilitar o movimento. Repita com a perna oposta.";
+
+"secHealthAlng10Photo" = "adv10";
+"secHealthAlng10Text" = "10 – Ainda com o apoio da parede, incline o corpo com a perna direita à frente, levemente flexionada e a perna esquerda afastada para trás. Os dois pés devem estar retos, apontando para frente. Force a parede como se quisesse empurrá-la.";
+
+"secHealthTypeText" = "1. Tenha um lugar reservado na sua casa apenas para a realização de atividades profissionais, assim seu corpo se acostumará com a rotina de trabalho e terá mais facilidade de desligar ao fim do turno;
+
+2. Cuide sua postura, se possível tenha uma cadeira com encosto adequado para dar a sua coluna o suporte adequado durante seu horário de trabalho;
+
+3. Faça pequenas pausas sempre que possível para se alongar e turbinar sua produtividade;
+
+4. Tenha horários fixos para fazer suas refeições;
+
+5. Beba agua regularmente.";
+
+// MARK: ErrorView
+
+"realodErrorView" = "Recarregar";
+"errorViewText" = "Ops, Ocorreu um erro. Tente novamente.";
+
+
+//MARK: PreRegisterView
+"preRegisterViewTitle" = "OLÁ, TUDO BEM ?";
+"preRegisterText" = "Bem vindo ao O`Clock, queremos muito começar logo a te ajudar com suas horas de trabalho, porém precisamos de algumas pequenas informações para deixar a sua experiencia mais interessante. ";
+"preRegisterButtonText" = "Vamos lá";
+
+
+//MARK: TimeRegisterView
+"TimeRegisterNavBarTitle" = "REGISTRO DE HORAS";
+"TimeRegisterTotalHoursPlaceHolder" = "Tempo total de horas de trabalho";
+"TimeRegisterPauseLavelText" = "Faz alguma pausa?";
+"TimeRegisterTotalPauseHoursPlaceHolder" = "Tempo da pausa";
+"TimeRegisterInitialHoursPlaceHolder" = "Hora de começo";
+"TimeRegisterBottomButtonTitle" = "Registrar";
+
+//MARK: tabBarViews
+
+"homeTabBar" = "Inicio";
+"reportTabBar" = "Relatório";
+"healthTabBar" = "Saúde";
+"configTabBar" = "Config";
+
+
+//MARK: configView
+
+"ConfigViewNavBarTitle" = "CONFIGURAÇÕES";
+"ConfigViewHourRegisterButtonTitle" = "Configurar Horarios";
+"ConfigViewLogOffButtonTitle" = "Sair";
+
+//MARK: ReportView
+
+"ReportViewNavBarTitle" = "RELATÓRIO";
+"ReportViewJan" = "Janeiro";
+"ReportViewFeb" = "Fevereiro";
+"ReportViewMar" = "Março";
+"ReportViewApr" = "Abril";
+"ReportViewMay" = "Maio";
+"ReportViewJun" = "Junho";
+"ReportViewJul" = "Julho";
+"ReportViewAug" = "Agosto";
+"ReportViewSept" = "Setembro";
+"ReportViewOct" = "Outubro";
+"ReportViewNov" = "Novembro";
+"ReportViewDez" = "Dezembro";
+
+//MARK: SecReportView
+
+"SecReportViewTotalHoursSuport" = "Total de horas:";
+"SecReportCellInitialDayHelper" = "Dia de inicio:";
+"SecReportCellInitialWeekDayHelper" = "Dia na semana:";
+"SecReportCellInitHourHelper" = "Hora de inicio:";
+"SecReportCellEndDayHelper" = "Dia de encerramento:";
+"SecReportCellEndWeekDayHelper" = "Dia na semana:";
+"SecReportCellEndHourHelper" = "Hora do encerramento:";
+"SecReportCellIntervalHoursHelper" = "Total de intervalo:";
+"SecReportCellTotalHoursHelper" = "Total de horas:";
+
+//MARK: HomeView
+
+"HomeViewAlertCancel" = "Cancelar";
+"HomeViewAlertConfirm" = "Encerrar";
+"HomeViewAlertTitle" = "Encerrar dia?";
+"HomeViewAlertMessage" = "Com isto fechamos o dados do dia de hoje para relatorios futuros.";
+
+"HomeFirstSub" = "1 turno";
+"HomeSecondSub" = "intervalo";
+"HomeThirdSubHasBreak" = "2 turno";
+"HomeThirdSubHasntBreak" = "Total";
+"HomeFourth" = "Hora Extra";
+
+
+//MARK: Extras
+
+"WeekExtensionSun" = "Domingo";
+"WeekExtensionMon" = "Segunda";
+"WeekExtensionTue" = "Terça";
+"WeekExtensionWed" = "Quarta";
+"WeekExtensionThur" = "Quinta";
+"WeekExtensionFri" = "Sexta";
+"WeekExtensionSat" = "Sabado";
+
+
+
+"pdfTotalMonthTime" = "Horas totais do mes:";
+"pdfInitialDay" = "Dia de inicio:";
+"pdfEndDay" = "Dia de encerramento:";
+"pdfInitTime" = "Hora de inicio:";
+"pdfEndTime" = "Hora de encenrramento:";
+"pdfTotalInterval" = "Total de intervalo:";
+"pdfTotalHours" = "Total trabalhado:";
+"pdfCreatedBy" = "Relatório gerado pelo App: O`Clock";
+
+
+// MARK: Notification
+
+"NotificationHalfTimeTitle" = "Metade do expediente já trabalhado :)";
+"NotificationHalfTimeMessage" = "Você já trabalhou metade da sua carga horaria prevista para hoje.";
+
+"NotificationTotalTimeTitle" = "Acabou seu expediente :)";
+"NotificationTotalTimeMessage" = "Você completou sua carga horaria prevista para hoje, bom descanço!";
+
+"NotificationExtraTimeTitle" = "Hora extra.";
+"NotificationExtraTimeMessage" = "Você está excedendo o limite máximo de horas para um dia de trabalho saudável!";
+
+"NotificationIntervalFirstEndingTimeTitle" = "Intervalo acabando.";
+"NotificationIntervalFirstEndingTimeMessage" = "Restam apenas mais 15 minutos de intervalo.";
+
+"NotificationIntervalSecondEndingTimeTitle" = "Ultimos minutos de intervalo.";
+"NotificationIntervalSecondEndingTimeMessage" = "Restam apenas mais 5 minutos de intervalo.";
+
+"NotificationIntervalEndTimeTitle" = "Fim do intervalo.";
+"NotificationIntervalEndTimeMessage" = "Acabou seu horario previsto de intervalo. Bom trabalho :D.";
+
+"NotificationIntervalInitTimeTitle" = "Hora de trabalhar :D";
+"NotificationIntervalInitTimeMessage" = "Seu horario de trabalho começa em 15 minutos.";
+
+"NotificationHealthTitle" = "Pegue leve com você.";
+"NotificationHealthMessage" = "Você já trabalhou por um bom periodo continuo, lembre-se de descansar um pouco e refazer os exercicios.";

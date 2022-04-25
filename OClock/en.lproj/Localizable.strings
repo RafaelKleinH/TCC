@@ -1,28 +1,232 @@
-// MARK: INGLES
-
-
-
-// MARK: LOGIN
+// MARK: Login
 
 "LoginEmailTF" = "Email";
 "LoginPasswordTF" = "Password";
-"LoginDontHaveAccount" = "Without account? SignUp";
+"LoginDontHaveAccount" = "Not registered yet? Create an account";
 "LoginButton"= "Login";
 "DividerText" = "OR";
 "LoginWithApple" = "Login with Apple";
-"LoginUserDefaults" = "Save user";
+"LoginUserDefaults" = "Keep me connected";
 
-// MARK: REGISTER
+"LoginTFisEmpty" = "This field is required";
+"LoginTFEmailInvalid" = "Email is inavlid";
+"LoginTFPassLessThanSixCharacters" = "Password must be at least 6 characters";
+"LoginResetPassword" = "Reset password";
+
+// MARK: LOGIN REGISTER
 
 "RegisterEmailTF" = "Email";
 "RegisterPasswordTF" = "Password";
-"RegisterConfirmPasswordTF" = "Confirm Password";
-"RegisterButton" = "Register";
+"RegisterConfirmPasswordTF" = "confirm password";
+"RegisterButton" = "Create account";
+
+"RegisterAlertErrorTittle" = "Opss!";
+"RegisterAlertSuccessTittle" = "Registered!";
+"RegisterAlertErrorMessage" = "An error ocurred, try again later.";
+"RegisterAlertSuccessMessage" = "Registered succesfully.";
+
+"RegisterTFIsEmpty" = "This field is required";
+"RegisterTFPasswordDoesntMatch" = "The fields must match";
+"RegisterTFEmailInvalid" = "Email is inavlid";
+"RegisterTFPasswordLessThanSixCharacters" = "Password must be at least 6 characters";
+
+// MARK: PERSONALREGISTER
+
+"PersonalRegisterName" = "Name";
+"PersonalRegisterOccupation" = "Ocupation";
+"PersonalRegisterExplication" = "Click to select an image";
+"PersonalRegisterButton" = "Create account";
+"PersonalRegisterViewTitle" = "Personal information";
+
+// MARK: RESETPASSWORD
+
+"ResetPasswordNavBarTitle" = "PASSWORD RESET";
+"ResetPasswordEmail" = "Email";
+"ResetPasswordConfirmEmail" = "Conrfirm Email";
+"ResetPasswordButton" = "Send email";
+
+"errorTFisntEqual" = "The fields must match";
+"errorTFisntMail" = "Email is inavlid";
+"errorTFisEmpty" = "Field can't be empty";
 
 
-// MARK: PERSONALREGISTER -- erro
+"alertErrorTitle" = "Opss!";
+"alertSuccessTitle" = "Success!";
 
-"PersonalRegisterName" = "Nome";
-"PersonalRegisterOccupation" = "Ocupação";
-"PersonalRegisterExplication" = "Clique na imagem para selecionar";
-"PersonalRegisterButton" = "Registrar";
+"alertErrorMessage" = "Something went wrong, try again later.";
+"alertSuccessMessage" = "Password recovery email succesfully sent!";
+
+"alertDismissAction" = "Ok";
+
+
+
+//MARK: HealthView
+
+"healthViewNavBarTitle" = "Health Assistant";
+"healthViewExplanation" = " Health Assistant is a functionality that seeks to help you with some good practices during work hours, doing so that your work days could be a better, and that in a long term you keep yourself healthy. ";
+"healthViewActivateText" = "Turn On ?";
+"healthWantToKnow" = "More about this";
+"firstAdvertiseTitle" = "Why should you stretch ?";
+"secondAdvertiseTitle" = "Basic stretches";
+"thirdAdvertiseTitle" = "Advanced stretches";
+"fourthAdvertiseTitle" = "Other hints";
+
+// MARK: SecHealthView
+"secHealthNavBarTitle0" = "WHY?";
+"secHealthNavBarTitle1" = "BASIC";
+"secHealthNavBarTitle2" = "ADVANCED";
+"secHealthNavBarTitle3" = "HINTS";
+
+"secHealthWhyText" = "Why not? :D";
+
+"secHealthAlng1Photo" = "adv1";
+"secHealthAlng1Text" = "1 – With your right arm stretched out horizontally to your left side, hold it with your left arm vertically. Repeat the movement by inverting the arms.";
+
+"secHealthAlng2Photo" = "adv2";
+"secHealthAlng2Text" = "2 – Now, pull your arm slightly behind your head, forming a triangle with your elbow at the top.";
+
+"secHealthAlng3Photo" = "adv3";
+"secHealthAlng3Text" = "3 – Stretch your neck by pulling the head with the right arm to the right side and then repeat the movement with the left arm.";
+
+"secHealthAlng4Photo" = "adv4";
+"secHealthAlng4Text" = "4 – With both hands behind your neck, pull your head slightly forward.";
+
+"secHealthAlng5Photo" = "adv5";
+"secHealthAlng5Text" = "5 – To complement the neck cycle, now make circular movements clockwise and then counterclockwise.";
+
+"secHealthAlng6Photo" = "adv6";
+"secHealthAlng6Text" = "6 – Now work your torso and upper limbs by leaning slightly to the side and, with one hand on your waist and knees bent, stretch your other arm over your head.";
+
+"secHealthAlng7Photo" = "adv7";
+"secHealthAlng7Text" = "7 – With your legs slightly bent, try to touch your fingertips to your toes. If not, go as far as you can.";
+
+"secHealthAlng8Photo" = "adv8";
+"secHealthAlng8Text" = "8 – Mending the previous movement, bend one leg forward and keep the other leg semi-bent. The foot of the front leg should be straight and flat on the floor, and the foot of the back leg should be straight with the heel bent.";
+
+"secHealthAlng9Photo" = "adv9";
+"secHealthAlng9Text" = "9 – With your left arm, hold your right foot from behind, at the level of the buttocks. The support foot should be straight and you can lean against a wall for easy movement. Repeat with the opposite leg.";
+
+"secHealthAlng10Photo" = "adv10";
+"secHealthAlng10Text" = "10 – Still with the support of the wall, lean the body with the right leg in front, slightly bent and the left leg far back. Both feet should be straight, pointing forward. Force the wall as if you want to push it.";
+
+"secHealthTypeText" = "11";
+
+// MARK: ErrorView
+
+"realodErrorView" = "Reload";
+"errorViewText" = "Ops, an error ocurred. Try again.";
+
+
+//MARK: PreRegisterView
+"preRegisterViewTitle" = "HELLO !";
+"preRegisterText" = "Welcome to O`Clock, we really want to start helping you with your workflow, however firstly we need to know you better so that you can have a best experience. ";
+"preRegisterButtonText" = "Let's go!";
+
+
+//MARK: TimeRegisterView
+"TimeRegisterNavBarTitle" = "TIME RECORD";
+"TimeRegisterTotalHoursPlaceHolder" = "Total working time";
+"TimeRegisterPauseLavelText" = "Do you take any breaks?";
+"TimeRegisterTotalPauseHoursPlaceHolder" = "Break duration";
+"TimeRegisterInitialHoursPlaceHolder" = "Start time";
+"TimeRegisterBottomButtonTitle" = "Register";
+
+//MARK: tabBarViews
+
+"homeTabBar" = "Start";
+"reportTabBar" = "Report";
+"healthTabBar" = "Heath";
+"configTabBar" = "Config";
+
+
+//MARK: configView
+
+"ConfigViewNavBarTitle" = "CONFIGURATION";
+"ConfigViewHourRegisterButtonTitle" = "Change time record";
+"ConfigViewLogOffButtonTitle" = "Logout";
+
+//MARK: ReportView
+
+"ReportViewNavBarTitle" = "Report";
+"ReportViewJan" = "January";
+"ReportViewFeb" = "February";
+"ReportViewMar" = "March";
+"ReportViewApr" = "April";
+"ReportViewMay" = "May";
+"ReportViewJun" = "June";
+"ReportViewJul" = "July";
+"ReportViewAug" = "August";
+"ReportViewSept" = "September";
+"ReportViewOct" = "October";
+"ReportViewNov" = "November";
+"ReportViewDez" = "December";
+
+//MARK: SecReportView
+
+"SecReportViewTotalHoursSuport" = "Total hours:";
+"SecReportCellInitialDayHelper" = "Initial day:";
+"SecReportCellInitialWeekDayHelper" = "Week day:";
+"SecReportCellInitHourHelper" = "Initial time:";
+"SecReportCellEndDayHelper" = "Ending day:";
+"SecReportCellEndWeekDayHelper" = "Week day:";
+"SecReportCellEndHourHelper" = "Ending time:";
+"SecReportCellIntervalHoursHelper" = "Total breaktime:";
+"SecReportCellTotalHoursHelper" = "Total hours:";
+
+//MARK: HomeView
+
+"HomeViewAlertCancel" = "Cancel";
+"HomeViewAlertConfirm" = "End";
+"HomeViewAlertTitle" = "End the day?";
+"HomeViewAlertMessage" = "The day timer ended, you can see your timesheet on the report view.";
+
+"HomeFirstSub" = "1 shift";
+"HomeSecondSub" = "interval";
+"HomeThirdSubHasBreak" = "2 shift";
+"HomeThirdSubHasntBreak" = "Total";
+"HomeFourth" = "Extra";
+
+//MARK: Extras
+
+"WeekExtensionSun" = "Sunday";
+"WeekExtensionMon" = "Monday";
+"WeekExtensionTue" = "Tuesday";
+"WeekExtensionWed" = "Wednesday";
+"WeekExtensionThur" = "Thursday";
+"WeekExtensionFri" = "Friday";
+"WeekExtensionSat" = "Saturday";
+
+
+
+"pdfTotalMonthTime" = "Month total time:";
+"pdfInitialDay" = "Initial day:";
+"pdfEndDay" = "Ending day:";
+"pdfInitTime" = "Initial time:";
+"pdfEndTime" = "Ending time:";
+"pdfTotalInterval" = "Total breaktime:";
+"pdfTotalHours" = "Total hours:";
+"pdfCreatedBy" = "Report created by: O`Clock";
+
+
+// MARK: Notification
+
+"NotificationHalfTimeTitle" = "Metade do expediente já trabalhado :)";
+"NotificationHalfTimeMessage" = "Você já trabalhou metade da sua carga horaria prevista para hoje.";
+
+"NotificationTotalTimeTitle" = "Acabou seu expediente :)";
+"NotificationTotalTimeMessage" = "Você completou sua carga horaria prevista para hoje, bom descanço!";
+
+"NotificationExtraTimeTitle" = "Hora extra.";
+"NotificationExtraTimeMessage" = "Você está excedendo o limite máximo de horas para um dia de trabalho saudável!";
+
+"NotificationIntervalFirstEndingTimeTitle" = "Intervalo acabando.";
+"NotificationIntervalFirstEndingTimeMessage" = "Restam apenas mais 15 minutos de intervalo.";
+
+"NotificationIntervalSecondEndingTimeTitle" = "Ultimos minutos de intervalo.";
+"NotificationIntervalSecondEndingTimeMessage" = "Restam apenas mais 5 minutos de intervalo.";
+
+"NotificationIntervalEndTimeTitle" = "Fim do intervalo.";
+"NotificationIntervalEndTimeMessage" = "Acabou seu horario previsto de intervalo. Bom trabalho :D.";
+
+"NotificationIntervalInitTimeTitle" = "Hora de trabalhar :D";
+"NotificationIntervalInitTimeMessage" = "Seu horario de trabalho começa em 15 minutos.";

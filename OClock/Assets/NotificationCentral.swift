@@ -18,6 +18,7 @@ enum NotificationNames: String{
     case firstInterval = "firstInterval"
     case secondInterval = "secondInterval"
     case thirdInterval = "thirdInterval"
+    case health = "helthNotf"
 }
 
 class NotificationsCentral {
@@ -40,8 +41,8 @@ class NotificationsCentral {
         let realtime = time / 2 - less
         if realtime > 0 {
             let content = UNMutableNotificationContent()
-            content.title = "Passou metade do seu periodo"
-            content.body = "Voce ja fez metade do seu horario previsto :D."
+            content.title = "NotificationHalfTimeTitle".localized()
+            content.body = "NotificationHalfTimeMessage".localized()
             content.sound = .default
             if realtime > 0 {
                 let timeinterval = TimeInterval(realtime)
@@ -60,8 +61,8 @@ class NotificationsCentral {
         let realtime = time - less
         if realtime > 0 {
             let content = UNMutableNotificationContent()
-            content.title = "Acaboooou!"
-            content.body = "Voce terminou seu expediente, seja livre meu amigo."
+            content.title = "NotificationTotalTimeTitle".localized()
+            content.body = "NotificationTotalTimeMessage".localized()
             content.sound = .default
             let timeinterval = TimeInterval(realtime)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
@@ -78,8 +79,8 @@ class NotificationsCentral {
         let realtime = time - less + 7200
         if realtime > 0 {
             let content = UNMutableNotificationContent()
-            content.title = "Não se mate"
-            content.body = "Ei meu rei não vá se matar"
+            content.title = "NotificationExtraTimeTitle".localized()
+            content.body = "NotificationExtraTimeMessage".localized()
             content.sound = .default
             let timeinterval = TimeInterval(realtime)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: false)
@@ -92,11 +93,40 @@ class NotificationsCentral {
         }
     }
     
+    class func healthIsOpen(healthIsOpen bool: Bool) {
+        if bool {
+           healthNormalNotifications()
+        } else {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationNames.health.rawValue])
+        }
+    }
+    
+    class func healthNormalNotifications() {
+        let content = UNMutableNotificationContent()
+        content.title = "NotificationHealthTitle".localized()
+        content.body = "NotificationHealthMessage".localized()
+        content.sound = .default
+        let timeinterval = TimeInterval(60 * 30)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeinterval, repeats: true)
+        let request = UNNotificationRequest(identifier: NotificationNames.health.rawValue, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: Health notifications
+    
     class func calcNotifications(isOpen: Bool, time: Double, less: Double) {
         if isOpen {
             halfTimeNotification(time: time, less: less)
             totalTimeNotification(time: time, less: less)
             extraHoursNotifications(time: time, less: less)
+            let value = UserDefaults.standard.bool(forKey: UserDefaultValue.HEALTH_IS_ON.rawValue)
+            if value == true {
+                healthNormalNotifications()
+            }
         } else {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationNames.halfTime.rawValue, NotificationNames.totalTime.rawValue])
         }
@@ -105,10 +135,10 @@ class NotificationsCentral {
     //MARK: interval Funcs
     
     class func intervalFirstNotification(intervalTime: Double, less: Double) {
-        let realtime = (intervalTime - less) / 4 * 3
+        let realtime = (intervalTime - less) - (60 * 15)
         let content = UNMutableNotificationContent()
-        content.title = "Intervalo Acabando."
-        content.body = "Só mais 15 minutos de intevalo."
+        content.title = "NotificationIntervalFirstEndingTimeTitle".localized()
+        content.body = "NotificationIntervalFirstEndingTimeMessage".localized()
         content.sound = .default
         if realtime > 0 {
             let timeinterval = TimeInterval(realtime)
@@ -123,10 +153,10 @@ class NotificationsCentral {
     }
     
     class func intervalSecondNotification(intervalTime: Double, less: Double) {
-        let realtime = (intervalTime - less) / 10 * 9
+        let realtime = (intervalTime - less) - (60 * 5)
         let content = UNMutableNotificationContent()
-        content.title = "Arrume-se para voltar."
-        content.body = "Só mais 5 minutos de intevalo."
+        content.title = "NotificationIntervalSecondEndingTimeTitle".localized()
+        content.body = "NotificationIntervalSecondEndingTimeMessage".localized()
         content.sound = .default
         if realtime > 0 {
             let timeinterval = TimeInterval(realtime)
@@ -143,8 +173,8 @@ class NotificationsCentral {
     class func intervalThirdNotification(intervalTime: Double, less: Double) {
         let realtime = intervalTime - less
         let content = UNMutableNotificationContent()
-        content.title = "Intervalo acabou."
-        content.body = "Chegou a hora de voltar... :)"
+        content.title = "NotificationIntervalEndTimeTitle".localized()
+        content.body = "NotificationIntervalEndTimeMessage".localized()
         content.sound = .default
         if realtime > 0 {
             let timeinterval = TimeInterval(realtime)
@@ -164,7 +194,7 @@ class NotificationsCentral {
             intervalSecondNotification(intervalTime: time, less: less)
             intervalThirdNotification(intervalTime: time, less: less)
         } else {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationNames.firstInterval.rawValue, NotificationNames.secondInterval.rawValue, NotificationNames.thirdInterval.rawValue])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationNames.firstInterval.rawValue, NotificationNames.secondInterval.rawValue, NotificationNames.thirdInterval.rawValue, NotificationNames.health.rawValue])
         }
     }
     
@@ -172,24 +202,28 @@ class NotificationsCentral {
     
     class func initialHourNotification(initHours: [Int]) {
         let content = UNMutableNotificationContent()
-        content.title = "Hora de trabalhar!"
-        content.body = "Falta 15 minutos para seu horario de trabalho."
+        content.title = "NotificationIntervalInitTimeTitle".localized()
+        content.body = "NotificationIntervalInitTimeMessage".localized()
         content.sound = .default
-        var dateComponents = DateComponents()
-        for i in 2...6 {
-            dateComponents.weekday = i
+            var dateComponents = DateComponents()
+            dateComponents.calendar = Calendar.current
             dateComponents.hour = initHours.first
-            if let minutes = initHours.last {
-                dateComponents.minute = minutes - 15
-            }
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            if let minutes = initHours.last, let hour = dateComponents.hour{
+                if (minutes - 15) < 0 {
+                    dateComponents.hour = hour - 1
+                    dateComponents.minute =  60 + (minutes - 15)
+                } else {
+                    dateComponents.minute = minutes - 15
+                }
+                print(dateComponents)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-            let uuidString = "DailyNotf"
-            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+                let uuidString = NotificationNames.dailyNotification.rawValue
+                let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
             
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print(error.localizedDescription)
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
                 }
             }
         }

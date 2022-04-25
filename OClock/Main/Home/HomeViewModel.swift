@@ -19,7 +19,7 @@ enum HomeState: Equatable {
     case registerData
 }
 
-protocol HomeViewModelProtocol {
+protocol  HomeViewModelProtocol {
     typealias Target = MainTabBarCoordinator.TargetH
     
     func calculatePercentage(value: Double ,min: Double, max: Double) -> Double
@@ -31,6 +31,11 @@ protocol HomeViewModelProtocol {
     var timerCentral: TimerCentral { get }
     
     var afterReturnBackGround: Bool { get set }
+    
+    var alertConfirmText: String { get }
+    var alertCancelText: String { get }
+    var alertTitleText: String { get }
+    var alertMessageText: String { get }
     
     var didTapButton: AnyObserver<Void> { get }
     var didGoToPersonalRegister: AnyObserver<Void> { get }
@@ -90,6 +95,10 @@ class HomeViewModel: HomeViewModelProtocol {
     
     let myDisposeBag = DisposeBag()
     
+    let alertConfirmText: String = "HomeViewAlertConfirm".localized()
+    let alertCancelText: String = "HomeViewAlertCancel".localized()
+    let alertTitleText: String = "HomeViewAlertTitle".localized()
+    let alertMessageText: String = "HomeViewAlertMessage".localized()
     var isOpen: Bool = false
     var hasBreak: Bool = false
     var isFirstFinished: Bool = false
@@ -174,7 +183,7 @@ class HomeViewModel: HomeViewModelProtocol {
                     _state.onNext(.personalError(error.localizedDescription))
                     return Observable.empty()
                 })
-        }.share()
+            }.share()
         
         userName = userData.map { $0.name }.map { name in
             guard let name = name else { return "Olá :D" }

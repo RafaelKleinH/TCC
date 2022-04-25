@@ -12,34 +12,34 @@ import RxCocoa
 protocol ConfigViewModelProtocol {
     typealias Target = MainTabBarCoordinator.TargetC
     
-    var myDisposeBag: DisposeBag { get }
+    var navBarTitle: String { get }
+    
+    var navigationTarget: Observable<Target> { get }
+    var logoffBack: Observable<Void> { get }
+    var logOffText: Observable<String> { get }
+    var hourRegister: Observable<String> { get }
     
     var didClickLogoff: AnyObserver<Void> { get }
     var didClickHoursRegister: AnyObserver<Void> { get }
     
-    var logoffBack: Observable<Void> { get }
-    var logOffText: Observable<String> { get }
-    var hourRegister: Observable<String> { get }
-    var notifiesRegister: Observable<String> { get }
-    
-    var navigationTarget: Observable<Target> { get }
+    var myDisposeBag: DisposeBag { get }
     
 }
 
 class ConfigViewModel: ConfigViewModelProtocol {
     
-    let myDisposeBag = DisposeBag()
+    let navigationTarget: Observable<Target>
+
+    let logOffText: Observable<String>
+    let hourRegister: Observable<String>
+    let navBarTitle: String
+    let logoffBack: Observable<Void>
     
     let didClickHoursRegister: AnyObserver<Void>
     let didClickLogoff: AnyObserver<Void>
-    let logoffBack: Observable<Void>
     let didPop: AnyObserver<Void>
     
-    let navigationTarget: Observable<Target>
-    
-    let logOffText: Observable<String>
-    let hourRegister: Observable<String>
-    let notifiesRegister: Observable<String>
+    let myDisposeBag = DisposeBag()
     
     var timerCentral: TimerCentral
     
@@ -56,9 +56,9 @@ class ConfigViewModel: ConfigViewModelProtocol {
         let _didClickHoursRegister = PublishSubject<Void>()
         didClickHoursRegister = _didClickHoursRegister.asObserver()
         
-        hourRegister = .just("Registros dos Horarios")
-        notifiesRegister = .just("Opções de Notificações")
-        logOffText = .just("Sair")
+        navBarTitle = "ConfigViewNavBarTitle".localized()
+        hourRegister = .just("ConfigViewHourRegisterButtonTitle".localized())
+        logOffText = .just("ConfigViewLogOffButtonTitle".localized())
         
         logoffBack = _didClickLogoff
             .flatMapLatest {

@@ -31,7 +31,6 @@ class SecReportView: UIView {
     
     let totalHoursSuport: UILabel = {
         $0.textColor = RFKolors.modeSecondary
-        $0.text = "Total de horas:"
         $0.font = UIFont(name: RFontsK.QuicksandRegular, size: 21)
         return $0
     }(UILabel())
@@ -56,12 +55,9 @@ class SecReportView: UIView {
         return $0
     }(UITableView())
     
-    
     private func setupSubviews() {
         addSubview(UIView(frame: .zero))
         addSubview(separatorNav)
-      //  addSubview(scrollView)
-       // addSubview(contentView)//
         addSubview(totalHoursStack)
         totalHoursStack.addArrangedSubview(totalHoursSuport)
         totalHoursStack.addArrangedSubview(totalHoursLabel)
@@ -71,40 +67,10 @@ class SecReportView: UIView {
     private func setupConstraints() {
         separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
         
-       // scrollView.centerX(inView: self)
-        //scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-       // scrollView.anchor(top: layoutMarginsGuide.topAnchor, bottom: bottomAnchor)
-     
-        //contentView.centerX(inView: scrollView)
-        //contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        //contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor)
-        
         totalHoursStack.anchor(top: separatorNav.bottomAnchor, left:  leftAnchor, right: rightAnchor, paddingTop: RFKSize.small, paddingLeft: RFKSize.medium, paddingRight: RFKSize.medium)
     
         tableView.anchor(top: totalHoursStack.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: RFKSize.xsmall)
     }
-    
-    
 }
 
-extension String {
-    func weekDay() -> String {
-        if self == "1" {
-            return "Domingo"
-        } else if self == "2" {
-            return "Segunda"
-        } else if self == "3" {
-            return "Terça"
-        } else if self == "4" {
-            return "Quarta"
-        } else if self == "5" {
-            return "Quinta"
-        } else if self == "6" {
-            return "Sexta"
-        } else if self == "7" {
-            return "Sabado"
-        } else {
-            return ""
-        }
-    }
-}
+

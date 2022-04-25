@@ -16,6 +16,7 @@ class ReportView: UIView {
         setupSubview()
         setupConstraints()
         tableView.separatorStyle = .singleLine
+        tableView.showsVerticalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +27,6 @@ class ReportView: UIView {
         $0.backgroundColor = RFKolors.modeSecondary
         return $0
     }(UIView())
-    
     
     let tableView: UITableView = {
         $0.rowHeight = UITableView.automaticDimension
@@ -46,7 +46,5 @@ class ReportView: UIView {
         separatorNav.anchor(top: layoutMarginsGuide.topAnchor, left: leftAnchor, right: rightAnchor, height: 1)
         
         tableView.anchor(top: separatorNav.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        
     }
-    
 }

@@ -46,9 +46,9 @@ class ResetViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         tabBarController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.title = "REGISTRO"
+        navigationController?.navigationBar.topItem?.title = "ResetPasswordNavBarTitle".localized()
         navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts.withAlphaComponent(1), NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: 24) ?? UIFont.systemFont(ofSize: 24)]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: RFKolors.whiteTexts.withAlphaComponent(1), NSAttributedString.Key.font: UIFont(name: RFontsK.QuicksandBold, size: RFKSize.medium) ?? UIFont.systemFont(ofSize: RFKSize.medium)]
         navigationController?.navigationItem.leftBarButtonItem?.rx.tap
             .bind(to: viewModel.didTapNavigationBackButtom)
             .disposed(by: viewModel.myDisposeBag)

@@ -18,8 +18,8 @@ protocol ReportServiceProtocol {
 }
 
 class ReportService: ReportServiceProtocol {
+    
     func getData() -> Observable<[ReportModel]> {
-       
         return Observable.create { observer in
             RFKDatabase().userReportDataBaseWithoutID.child( RFKDatabase().uid ?? "").queryOrderedByValue().observe(.value, with: { dataSnap in
                 var returnData: [ReportModel] = []

@@ -39,9 +39,9 @@ class PreRegisterViewModel: PreRegisterViewModelProtocol {
     
     init() {
         
-        titleLabelText = .just("Olá, tudo bem?")
-        textLabelText = .just("Bem vindo ao O`Clock, queremos muito começar logo a te ajudar com suas horas de trabalho, porém precisamos de algumas pequenas informações para deixar a sua experiencia mais interessante. ")
-        confirmButtonText = .just("Vamos lá")
+        titleLabelText = .just("preRegisterViewTitle".localized())
+        textLabelText = .just("preRegisterText".localized())
+        confirmButtonText = .just("preRegisterButtonText".localized())
         
         let _didTapBottomButton = PublishSubject<Void>()
         didTapBottomButton = _didTapBottomButton.asObserver()

@@ -69,7 +69,7 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
     let totalHoursPickerValue: Observable<HoursModel>
     let totalPauseHoursPickerValue: Observable<HoursModel>
     let initialHoursPickerValue: Observable<HoursModel>
-    let navBarTitle: String = "REGISTRO DE HORAS"
+    let navBarTitle: String = "TimeRegisterNavBarTitle".localized()
     
     let returnedValue: Observable<Bool>
     
@@ -157,11 +157,11 @@ class TimeDataRegisterViewModel: TimeDataRegisterViewModelProtocol {
         selectedPause = _selectedPause.asObserver()
         
         
-        totalHoursTextPH = .just("Tempo total de horas de trabalho")
-        pauseLabelTextPH = .just("Faz alguma pausa?")
-        totalPauseHoursTextPH = .just("Tempo da pausa")
-        initialHoursPH = .just("Hora de começo")
-        buttonTitle = .just("Registrar")
+        totalHoursTextPH = .just("TimeRegisterTotalHoursPlaceHolder".localized())
+        pauseLabelTextPH = .just("TimeRegisterPauseLavelText".localized())
+        totalPauseHoursTextPH = .just("TimeRegisterTotalPauseHoursPlaceHolder".localized())
+        initialHoursPH = .just("TimeRegisterInitialHoursPlaceHolder".localized())
+        buttonTitle = .just("TimeRegisterBottomButtonTitle".localized())
         
         initialHoursPickerValue = Observable.just(()).map {
             var res: ([String], [String]) = ([], [])
